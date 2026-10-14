@@ -1,8 +1,27 @@
-//! Chapter 2 — The King's Planet (STUB). Registered so the flow works end to
-//! end; the chapter agent replaces it with the full chapter following the
-//! original's design. See chapters/b612 for a complete API example.
+//! Chapter 2 — The King's planet (the original's KingStory, scene
+//! RoyalCourt). Beats, in order:
+//!
+//! 1. Card over the opening shot of the whole planet (push-in 3 m), then the
+//!    camera settles to the play view while the narration plays.
+//! 2. "Go and see the King": the prince pushes the palace door open himself
+//!    (CourtDoor), walks into the throne hall (arrival hint), and talks to
+//!    the King (radius 3.1 m, facing ±70°, front side ±70°).
+//! 3. The audience: route to the stance on the King's right, two-shot and a
+//!    slow 14 s push-in, the subject lines, the sunset request, the King
+//!    consults his calendar (shot "calendar", nod at 5.2 s) and names 7:40,
+//!    the prince's aside, the chair line, the hall shot, "I must go", and
+//!    after 0.35 m the King leans out and appoints him ambassador.
+//! 4. Departure.
+//!
+//! World: world.rs. Mechanics: systems.rs. Shots use King space
+//! (+x = his right, +z = in front of him) exactly as the original's numbers.
+
+mod models;
+pub mod systems;
+mod world;
 
 use crate::core::prelude::*;
+use systems::Gesture;
 
 pub struct King;
 
@@ -10,15 +29,68 @@ const ID: &str = "king";
 
 pub const STRINGS: StringTable = &[
     ("king.title", "国王的星球", "The King's Planet"),
-    ("king.subtitle", "一位统治一切的君主", "A monarch who rules over everything"),
-    ("king.line", "一位国王独自住在这里，他的长袍几乎铺满了整颗星球。", "A king lives here alone; his robe covers almost the whole planet."),
-    ("king.visited", "国王还在等待“条件成熟”的日落。", "The king is still waiting for favourable conditions for his sunset."),
-    ("king.loading", "一件长袍铺满了地平线……", "A robe stretches to the horizon…"),
-    ("king.ev.meet", "觐见国王", "An audience with the king"),
-    ("king.st.meet", "去和国王说话", "Speak to the king"),
-    ("king.verb.talk", "觐见", "Greet"),
-    ("king.l.npc", "啊！来了一个臣民。走近些，让我好好看看你。", "Ah! Here is a subject. Come closer, so I can see you better."),
-    ("king.l.prince", "可是……这里只有您一个人呀。", "But… you are all alone here."),
+    ("king.subtitle", "一座空荡荡的宫殿，住着一位国王", "An empty palace where a king lives"),
+    (
+        "king.line",
+        "一位国王独自住在这里。在他眼里，所有人都是臣民。",
+        "A king lives here alone. To him, everyone is a subject.",
+    ),
+    (
+        "king.visited",
+        "国王还坐在王座上，等着下一位臣民。",
+        "The king is still on his throne, waiting for the next subject.",
+    ),
+    ("king.loading", "王宫的大门紧闭着……", "The palace door is shut…"),
+    ("king.n1", "这里住着一位国王。", "A king lives here."),
+    (
+        "king.n2",
+        "在他看来，所有人都是他的臣民——连星星也要听他的。",
+        "To him, everyone is his subject — even the stars obey him.",
+    ),
+    ("king.ev.meet", "去见国王", "Go and see the King"),
+    ("king.st.meet", "推开宫殿的大门，去见国王", "Push open the palace door and see the King"),
+    ("king.target.king", "国王", "The King"),
+    ("king.verb.door", "推开宫殿的大门", "Push the palace door"),
+    ("king.verb.talk", "说话", "Talk"),
+    (
+        "king.hint.arrive",
+        "大厅尽头的王座上，坐着一位国王。",
+        "On the throne at the end of the hall sits a king.",
+    ),
+    // the audience (our own wording)
+    ("king.l.subject", "啊！来了一位臣民！", "Ah! Here comes a subject!"),
+    (
+        "king.l.how",
+        "（他从来没见过我，怎么知道我是他的臣民呢？）",
+        "(He has never seen me. How can he know I am his subject?)",
+    ),
+    (
+        "king.l.all",
+        "凡是来到朕面前的，都是朕的臣民。这里的一切都服从朕——连星星也不例外。",
+        "Whoever comes before me is my subject. Everything here obeys me — even the stars.",
+    ),
+    (
+        "king.l.sunset",
+        "那您能让太阳现在就落下去吗？我好想看一次日落。",
+        "Then could you make the sun set right now? I would so like to see a sunset.",
+    ),
+    (
+        "king.l.calendar",
+        "当然可以。不过命令得在合适的时候下达。让朕查查……嗯，今晚七点四十分左右。到时候，朕会命令它落山。",
+        "Of course. But an order must be given at the proper time. Let me see… hm, about twenty to eight this evening. Then I shall order it to set.",
+    ),
+    (
+        "king.l.aside",
+        "（到了七点四十分，太阳本来就会落山呀。）",
+        "(At twenty to eight it would set anyway.)",
+    ),
+    (
+        "king.l.chair",
+        "在我的星球上，只要把椅子挪几步，就能看到日落。",
+        "On my planet, I only had to move my chair a few steps to see a sunset.",
+    ),
+    ("king.l.go", "我该走了。", "I must be going."),
+    ("king.l.ambassador", "等等！朕任命你为朕的大使！", "Wait! I appoint you my ambassador!"),
 ];
 
 impl Chapter for King {
@@ -43,49 +115,74 @@ impl Chapter for King {
     }
 
     fn setup_app(&self, app: &mut App) {
-        app.register_model("king.npc", npc);
+        models::register(app);
+        app.add_systems(Update, systems::tick.in_set(CoreSet::Gameplay).run_if(in_chapter(ID)));
     }
 
     fn build(&self, cx: &mut ChapterCx) {
-        let mut p = PlanetParams::sized(12.0);
-        p.ground = hex(0xe9e2ec);
-        p.ground2 = hex(0xd9cfe0);
-        p.mods = vec![TerrainMod::Flatten { center: Vec2::new(0.0, 5.0), radius: 2.0, blend: 1.5, height: None }];
-        cx.planet(p);
-        cx.sky(10.5, 0.5, Some(16.5), SkyPalette::default());
-        let npc_p = cx.ground(0.0, 5.0);
-        let npc = cx.model("model.king.npc", npc_p, 180.0, 1.0);
-        cx.collider(npc, Collider::cylinder(0.35, 1.5));
-        cx.interactable(npc, Interactable::new("npc", "king.verb.talk").radius(2.2).focus(Vec3::Y * 1.0).prompt_height(0.8));
-        cx.anchor("npc", npc_p, 180.0);
-        cx.scatter("model.rock", 6, 4.0, 11.0, 2, (0.5, 1.1), &[(Vec2::new(0.0, 5.0), 2.0)]);
-        let start = cx.ground(0.0, -2.0);
-        cx.player(start, 0.0);
+        world::build(cx);
     }
 
     fn story(&self) -> Story {
+        let king = || Pos::anchor("king");
         Story {
             events: vec![event("king.ev.meet", &["king.st.meet"])],
             hidden: None,
             script: vec![
+                // 1. card over the opening shot, then the camera settles
+                run(systems::opening_shot),
                 card(),
+                run(systems::opening_settle),
+                narrate(&["king.n1", "king.n2"]),
+                // 2. go and see the King: push the door, walk in, talk
                 start_event(0),
-                target(Pos::anchor("npc"), "king.ev.meet"),
-                wait_use("npc"),
-                face(Pos::anchor("npc")),
-                say(speakers::KING, "king.l.npc"),
-                say(speakers::PRINCE, "king.l.prince"),
+                target(king(), "king.target.king"),
+                wait_flag("door_open", vec![t_use("door")]),
+                wait_use("king"),
+                // 3. the audience
+                run(systems::audience_begin),
+                lock(),
+                walk_to(Pos::anchor("aud_a")),
+                walk_to(Pos::anchor("aud_b")),
+                face(king()),
+                run(systems::shot_two),
+                run(|w| systems::gesture(w, Gesture::TalkA)),
+                wait(1.0),
+                run(systems::shot_push),
+                say(speakers::KING, "king.l.subject"),
+                say(speakers::PRINCE, "king.l.how"),
+                run(|w| systems::gesture(w, Gesture::TalkB)),
+                say(speakers::KING, "king.l.all"),
+                run(systems::shot_king),
+                say(speakers::PRINCE, "king.l.sunset"),
+                wait(2.2),
+                run(|w| {
+                    systems::shot_calendar(w);
+                    systems::gesture(w, Gesture::Consult);
+                }),
+                wait(5.2),
+                run(|w| {
+                    systems::shot_king(w);
+                    systems::gesture(w, Gesture::TalkA);
+                }),
+                say(speakers::KING, "king.l.calendar"),
+                run(systems::shot_prince),
+                say(speakers::PRINCE, "king.l.aside"),
+                say(speakers::PRINCE, "king.l.chair"),
+                run(systems::shot_hall),
+                wait(1.0),
+                say(speakers::PRINCE, "king.l.go"),
+                run(systems::leave_walk),
+                wait_until(|w| systems::walked(w, 0.35), vec![]),
+                run(|w| systems::gesture(w, Gesture::LeanOut)),
+                wait(0.35),
+                say_for(speakers::KING, "king.l.ambassador", 3.0),
+                wait_until(systems::arrived, vec![]),
+                run(systems::audience_end),
+                unlock(),
                 complete_event(0),
                 departure(),
             ],
         }
     }
-}
-
-fn npc(p: &mut ModelParts) {
-    let mut m = MeshBuilder::new();
-    m.lathe(Vec3::ZERO, &[(0.36, 0.0), (0.33, 0.55), (0.24, 1.05), (0.13, 1.3), (0.0, 1.34)], 10, hex(0x7a5aa8));
-    m.sphere(Vec3::Y * 1.5, 0.21, 4, 8, hex(0xf2d2b6));
-    m.ellipsoid(Vec3::new(0.0, 1.56, -0.03), Vec3::new(0.22, 0.14, 0.22), 3, 8, hex(0x8a8a8a));
-    p.add(&m);
 }

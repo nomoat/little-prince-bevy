@@ -1,56 +1,151 @@
-//! Chapter 1 — Asteroid B-612 (STUB, but a complete worked example of the
-//! core API; see docs/CORE_API.md). The chapter agent replaces this with the
-//! full chapter following the original's design.
+//! Chapter 1 — Asteroid B-612, the last day at home (the original's
+//! B612Story). Beats, in order:
 //!
-//! Shows: planet params + terrain mods, sky + sunset, manifest models with a
-//! procedural fallback, colliders, interactables (press + hold), anchors,
-//! a chapter system reacting to `Interacted` and setting a story flag,
-//! events/steps, dialogue, a choice, a hidden goal, camera shot, test hints
-//! and departure.
+//! 1. The chapter card plays over the sleeping prince; he wakes, the camera
+//!    rises and orbits from behind to his front, then hands over (B612Opening).
+//! 2. Free roam + the three-step controls tutorial (move / look / run).
+//! 3. Coming within 4 m of the rose, she calls him: he is walked to 1.3 m,
+//!    medium shot, two lines (RoseCalls).
+//! 4. "Look after the rose": can from the tool shed → fill it at the spring
+//!    (four fetch slabs) → water her one last time (1.8 s soak).
+//! 5. Farewell (part 1), the glass-cloche ritual (part 2) and the hold-E put-back.
+//! 6. "Watch the last sunset": sit on the chair at the west edge → the clock
+//!    hops to the golden hour (3.5 s) and the sun sets (22 s) → departure.
+//!
+//! Layout and props: world.rs. Mechanics: systems.rs. Lens helper: director.rs.
+
+pub mod director;
+mod models;
+pub mod systems;
+pub mod world;
 
 use crate::core::prelude::*;
-use crate::core::story::found_hidden;
+use systems::{RosePose, set_rose_pose, tremble};
 
 pub struct B612;
 
 const ID: &str = "b612";
 
+pub const NARR: Speaker = speakers::NARRATOR;
+
 pub const STRINGS: StringTable = &[
     ("b612.title", "小行星 B612", "Asteroid B-612"),
-    ("b612.subtitle", "三座火山与一朵玫瑰", "Three volcanoes and a rose"),
-    ("b612.line", "这是小王子的家。一颗比房子大不了多少的星星。", "The little prince's home: a star hardly bigger than a house."),
-    ("b612.visited", "火山已经打扫干净，玫瑰在玻璃罩下睡着。", "The volcanoes are swept; the rose sleeps under her glass."),
+    ("b612.subtitle", "在 B612 的最后一天", "The last day on B-612"),
+    (
+        "b612.line",
+        "这是小王子的家。一颗比房子大不了多少的星星。",
+        "The little prince's home: a star hardly bigger than a house.",
+    ),
+    (
+        "b612.visited",
+        "火山还在冒着轻烟，玫瑰独自守着她的星球。",
+        "The volcanoes still smoke a little; the rose keeps the planet alone.",
+    ),
     ("b612.loading", "清晨，太阳从东边升起……", "Morning. The sun rises in the east…"),
+    ("b612.free", "到处走走，熟悉一下你的星球", "Walk around and get to know your planet"),
+    ("b612.st.see_rose", "去看看玫瑰", "Go and see the rose"),
     // events & steps
-    ("b612.ev.wake", "醒来", "Waking up"),
-    ("b612.st.rose", "去看看玫瑰", "Go and see the rose"),
-    ("b612.ev.chores", "每天的功课", "The daily chores"),
-    ("b612.st.volcano", "打扫火山（按住 E）", "Sweep the volcano (hold E)"),
-    ("b612.st.sprouts", "拔掉猴面包树的幼苗（0/3）", "Pull up the baobab sprouts (0/3)"),
-    ("b612.ev.sunset", "看日落", "Watching the sunset"),
-    ("b612.st.chair", "坐到椅子上", "Sit in the chair"),
-    ("b612.hidden", "在星球的另一边看看远方", "Look out from the far side of the planet"),
+    ("b612.ev.rose", "照顾玫瑰", "Look after the rose"),
+    ("b612.st.can", "去工具棚取来水壶", "Fetch the watering can from the tool shed"),
+    ("b612.st.fill", "在泉边把水壶灌满", "Fill it at the spring"),
+    ("b612.st.water", "最后一次给她浇水", "Water her one last time"),
+    ("b612.ev.sunset", "看最后一次日落", "Watch the last sunset"),
+    ("b612.st.chair", "去星球边上的椅子坐下", "Go and sit on the chair at the planet's edge"),
+    // tutorial
+    ("b612.key.mouse", "鼠标", "Mouse"),
+    (
+        "b612.teach.look",
+        "点一下画面，再移动鼠标环顾四周",
+        "Click the view, then move the mouse to look around",
+    ),
+    ("b612.teach.run", "按住奔跑", "Hold to run"),
+    ("b612.teach.tasks", "按住查看本章目标", "Hold to see the chapter goals"),
+    ("b612.teach.touch_move", "用左下角的摇杆走动", "Use the stick at the lower left to walk"),
+    (
+        "b612.teach.touch_look",
+        "在屏幕右侧拖动，环顾四周",
+        "Drag on the right side of the screen to look around",
+    ),
+    (
+        "b612.teach.touch_tasks",
+        "点“任务”按钮查看本章目标",
+        "Tap the tasks button to see the chapter goals",
+    ),
     // targets & verbs
     ("b612.target.rose", "玫瑰", "The rose"),
-    ("b612.target.volcano", "火山", "Volcano"),
-    ("b612.target.chair", "椅子", "Chair"),
-    ("b612.verb.talk", "说话", "Talk"),
-    ("b612.verb.sweep", "打扫", "Sweep"),
-    ("b612.verb.pull", "拔掉", "Pull up"),
-    ("b612.verb.sit", "坐下", "Sit"),
-    // dialogue (our own words)
-    ("b612.l.rose1", "你醒啦。今天早上的风有点凉。", "You're awake. The wind is a little cold this morning."),
-    ("b612.l.prince1", "我先去把火山打扫干净，再回来陪你。", "I'll sweep the volcanoes first, then come back to you."),
-    ("b612.l.rose2", "别忘了那些猴面包树的小苗。", "Don't forget those little baobab sprouts."),
-    ("b612.l.sprout_done", "好了，它们再也长不成大树了。", "There. They won't grow into trees now."),
-    ("b612.l.sit", "在这颗小星星上，只要把椅子挪几步，就能再看一次日落。", "On a star this small, moving the chair a few steps gives you another sunset."),
-    ("b612.l.rose_q", "你喜欢日落，对吗？", "You love sunsets, don't you?"),
-    ("b612.opt.yes", "人难过的时候，就会喜欢日落。", "When one is sad, one loves sunsets."),
-    ("b612.opt.quiet", "（不说话，只是看着天边）", "(Say nothing, just watch the sky)"),
-    ("b612.l.rose_yes", "那今天，你难过吗？", "And today — are you sad?"),
-    ("b612.l.rose_quiet", "……天边真好看。", "…The sky is lovely."),
-    ("b612.mono.sunset", "太阳慢慢沉下去了。", "The sun sinks slowly away."),
-    ("b612.l.depart", "鸟群从远处飞来了。也许，是时候出发去看看别的星星。", "A flock of birds is coming. Perhaps it is time to go and see other stars."),
+    ("b612.target.can", "水壶", "Watering can"),
+    ("b612.target.spring", "泉水", "The spring"),
+    ("b612.target.cloche", "玻璃罩", "The glass cloche"),
+    ("b612.target.chair", "椅子", "The chair"),
+    ("b612.target.spot", "她身边", "Beside her"),
+    ("b612.verb.pick_can", "拿起水壶", "Pick up the can"),
+    ("b612.verb.put_back", "把水壶放回去", "Put the can back"),
+    ("b612.verb.fill", "灌水", "Fill"),
+    ("b612.verb.water", "浇水", "Water"),
+    ("b612.verb.can_empty", "水壶是空的", "The can is empty"),
+    ("b612.verb.lift_glass", "拿起玻璃罩", "Lift the glass"),
+    ("b612.verb.put_glass", "把玻璃罩放回去", "Put the glass back"),
+    ("b612.verb.put_spot", "把水壶放在花旁边", "Set the can down beside her"),
+    ("b612.verb.sit", "坐下", "Sit down"),
+    // inner voice
+    (
+        "b612.mono.empty",
+        "水壶是空的。先去泉边灌满水吧。",
+        "The can is empty. Fill it at the spring first.",
+    ),
+    ("b612.mono.put_first", "先把水壶放在她身边吧。", "Set the can down beside her first."),
+    ("b612.mono.chair", "我很喜欢看日落。", "I'm very fond of sunsets."),
+    ("b612.mono.day_over", "今天的太阳已经落下了。", "The sun has set for today."),
+    // the rose calls
+    ("b612.l.call1", "我想……现在该是吃早饭的时候了吧。", "I do believe… it is time for my breakfast."),
+    (
+        "b612.l.call2",
+        "能不能劳驾你，好心地想着我一点？",
+        "Would you be so kind as to think of me a little?",
+    ),
+    // farewell, part 1
+    ("b612.l.silent", "……", "…"),
+    ("b612.l.fw_bye", "再见了。", "Goodbye."),
+    ("b612.l.fw_planets", "我想去看看别的星球。", "I want to go and see other planets."),
+    (
+        "b612.l.fw_cough",
+        "（她轻轻咳了一声。不是因为着凉。）",
+        "(She gives a small cough. It is not from a cold.)",
+    ),
+    ("b612.l.fw_silly", "我以前真傻。请你原谅我。", "I have been silly. Please forgive me."),
+    (
+        "b612.l.fw_love",
+        "是的，我爱你。你一直都不知道，那是我的错。",
+        "Yes, I love you. It was my fault you never knew.",
+    ),
+    ("b612.l.fw_you_too", "不过，你也和我一样傻。", "But you were just as silly as I was."),
+    // the glass, part 2
+    (
+        "b612.l.c_leave",
+        "把玻璃罩放下吧，我不想要它了。",
+        "Put the glass down. I don't want it any more.",
+    ),
+    ("b612.l.c_wind", "可是风……", "But the wind…"),
+    (
+        "b612.l.c_air",
+        "夜里的凉风对我有好处。我是一朵花呀。",
+        "The cool night air will do me good. I am a flower.",
+    ),
+    ("b612.l.c_animals", "可是那些小动物……", "But the animals…"),
+    ("b612.l.c_claws", "我什么也不怕。我有爪子呢。", "I'm afraid of nothing. I have my claws."),
+    (
+        "b612.l.c_thorns",
+        "（她天真地亮出了自己的四根刺。）",
+        "(Quite innocently, she shows her four thorns.)",
+    ),
+    (
+        "b612.l.c_linger",
+        "别再这样磨磨蹭蹭的了，真叫人心烦。",
+        "Don't linger like this. It's tiresome.",
+    ),
+    ("b612.l.c_go", "你已经决定要走了。那就走吧。", "You have decided to go. So go."),
+    // the last sunset
+    ("b612.l.sad", "一个人难过的时候，就会喜欢看日落。", "When one is very sad, one loves sunsets."),
 ];
 
 impl Chapter for B612 {
@@ -75,189 +170,136 @@ impl Chapter for B612 {
     }
 
     fn setup_app(&self, app: &mut App) {
-        app.register_model("b612.volcano", volcano)
-            .register_model("b612.rose", rose)
-            .register_model("b612.sprout", sprout)
-            .add_systems(Update, (pull_sprouts, lookout_hidden).in_set(CoreSet::Gameplay).run_if(in_chapter(ID)));
+        models::register(app);
+        app.add_systems(
+            Update,
+            (
+                systems::tick,
+                systems::trail,
+                systems::birds,
+                systems::butterflies,
+                systems::wings,
+                systems::particles,
+            )
+                .chain()
+                .in_set(CoreSet::Gameplay)
+                .run_if(in_chapter(ID)),
+        )
+        // the lens helper is shared with the king chapter (idle when unused)
+        .add_systems(Update, director::apply_fov.in_set(CoreSet::Presentation));
     }
 
     fn build(&self, cx: &mut ChapterCx) {
-        // --- the planet: a small domed terrain with a knoll for the rose
-        let rose_at = Vec2::new(3.0, 4.0);
-        let chair_at = Vec2::new(-4.5, -2.0);
-        let mut p = PlanetParams::sized(14.0);
-        p.mods = vec![
-            TerrainMod::Mound { center: rose_at, radius: 2.6, height: 0.35 },
-            TerrainMod::Flatten { center: chair_at, radius: 1.2, blend: 1.0, height: None },
-            TerrainMod::Paint { center: rose_at, radius: 1.2, blend: 0.8, color: hex(0x7c6a52) },
-        ];
-        cx.planet(p);
-        cx.sky(8.5, 0.5, Some(16.5), SkyPalette::default());
-        cx.ambience("amb.wind");
-
-        // --- props
-        let rose_p = cx.ground(rose_at.x, rose_at.y);
-        let rose = cx.model("model.b612.rose", rose_p, 0.0, 1.0);
-        cx.collider(rose, Collider::cylinder(0.25, 0.7).no_camera());
-        cx.interactable(rose, Interactable::new("rose", "b612.verb.talk").radius(2.2).focus(Vec3::Y * 0.4).prompt_height(0.6));
-        cx.anchor("rose", rose_p, 0.0);
-
-        for (i, (a, r)) in [(150.0f32, 7.0f32), (205.0, 8.5), (250.0, 6.5)].iter().enumerate() {
-            let pos = cx.polar(*a, *r);
-            let v = cx.model("model.b612.volcano", pos, *a, if i == 2 { 0.8 } else { 1.0 });
-            cx.collider(v, Collider::cylinder(0.75, 0.9));
-            if i == 0 {
-                cx.interactable(v, Interactable::new("volcano", "b612.verb.sweep").radius(2.4).hold(1.2).focus(Vec3::Y * 0.6).disabled());
-                cx.anchor("volcano", pos, 0.0);
-            }
-        }
-        for i in 0..3 {
-            let pos = cx.polar(40.0 + i as f32 * 35.0, 9.0 + i as f32 * 0.8);
-            let s = cx.model("model.b612.sprout", pos, i as f32 * 70.0, 1.0);
-            cx.interactable(s, Interactable::new(&format!("sprout_{i}"), "b612.verb.pull").radius(1.6).prompt_height(0.5).disabled().once());
-            if i == 0 {
-                cx.anchor("sprouts", pos, 0.0);
-            }
-        }
-        let chair_p = cx.ground(chair_at.x, chair_at.y);
-        let chair = cx.model("model.b612.chair", chair_p, 250.0, 1.0);
-        cx.collider(chair, Collider::cuboid(Vec3::new(0.5, 0.45, 0.5)).no_camera());
-        cx.interactable(chair, Interactable::new("chair", "b612.verb.sit").radius(1.8).focus(Vec3::Y * 0.4).disabled());
-        cx.anchor("chair", chair_p, 250.0);
-        cx.anchor("seat", chair_p + Vec3::Y * 0.47, 250.0);
-        cx.anchor("lookout", cx.polar(320.0, 12.5), 0.0);
-
-        cx.scatter("model.rock", 7, 6.0, 13.0, 3, (0.5, 1.2), &[(rose_at, 2.0), (chair_at, 2.0)]);
-        cx.scatter("model.grass_tuft", 60, 1.5, 13.5, 5, (0.8, 1.4), &[(rose_at, 1.0)]);
-        cx.scatter("model.flower", 10, 3.0, 12.0, 9, (0.8, 1.2), &[(rose_at, 1.5)]);
-
-        // --- the prince wakes near the centre, facing east (toward the sunrise)
-        let start = cx.ground(0.0, -3.0);
-        cx.player(start, 90.0);
+        world::build(cx);
     }
 
     fn story(&self) -> Story {
-        use crate::core::story::Pos;
+        let rose = || Pos::anchor("rose");
         Story {
             events: vec![
-                event("b612.ev.wake", &["b612.st.rose"]),
-                event("b612.ev.chores", &["b612.st.volcano", "b612.st.sprouts"]),
+                event("b612.ev.rose", &["b612.st.can", "b612.st.fill", "b612.st.water"]),
                 event("b612.ev.sunset", &["b612.st.chair"]),
             ],
-            hidden: Some("b612.hidden"),
+            hidden: None,
             script: vec![
+                // 1. card over the sleeping prince, wake-up, orbit
                 card(),
-                teach(&["W", "A", "S", "D"], "core.teach.move"),
+                wait_flag("opened", vec![t_wait(60.0)]),
+                // 2. free roam + tutorial; the rose calls at 4 m whenever he comes close
+                run(systems::start_explore),
+                wait_until(
+                    |w| w.resource::<StoryRunner>().has_flag("tut_done") || systems::near(w, w.resource::<systems::Sites>().rose, 4.0),
+                    vec![t_goto(Pos::anchor("rose"))],
+                ),
+                run(|w| {
+                    let r = w.resource::<systems::Sites>().rose;
+                    if systems::near(w, r, 4.0) {
+                        w.resource_mut::<StoryRunner>().set_flag("near_rose");
+                    }
+                }),
+                if_flag("near_rose", "call"),
+                run(systems::guide_to_rose),
+                wait_near(rose(), 4.0),
+                // 3. the rose calls
+                label("call"),
+                run(systems::call_begin),
+                walk_to(Pos::anchor("call_stand")),
+                face(rose()),
+                run(systems::call_shot),
+                wait(0.7),
+                say(speakers::ROSE, "b612.l.call1"),
+                say(speakers::ROSE, "b612.l.call2"),
+                run(systems::call_end),
+                // 4. look after the rose (steps follow the can: shed → spring → rose)
                 start_event(0),
-                target(Pos::anchor("rose"), "b612.target.rose"),
-                wait_near(Pos::anchor("rose"), 2.4),
-                face(Pos::anchor("rose")),
-                say(speakers::ROSE, "b612.l.rose1"),
-                say(speakers::PRINCE, "b612.l.prince1"),
-                say(speakers::ROSE, "b612.l.rose2"),
+                wait_flag("watered", vec![t_use("can"), t_use("spring_0"), t_wait(6.0), t_use("rose_water")]),
+                // 5. farewell
+                run(systems::farewell_begin),
+                if_not_flag("carrying", "farewell"),
+                wait_use("can_spot"),
+                label("farewell"),
+                run(systems::farewell_walk),
+                walk_to(Pos::anchor("fw_stand")),
+                face(rose()),
+                run(systems::two_shot),
+                wait(1.0),
+                say(speakers::PRINCE, "b612.l.fw_bye"),
+                run(|w| {
+                    set_rose_pose(w, RosePose::Droop);
+                    tremble(w, 0.7);
+                }),
+                say_for(speakers::ROSE, "b612.l.silent", 2.6),
+                say(speakers::PRINCE, "b612.l.fw_planets"),
+                run(|w| tremble(w, 0.6)),
+                say_for(NARR, "b612.l.fw_cough", 1.8),
+                run(|w| {
+                    set_rose_pose(w, RosePose::Lift);
+                    systems::rose_close(w);
+                }),
+                say(speakers::ROSE, "b612.l.fw_silly"),
+                run(systems::prince_close),
+                say_for(speakers::PRINCE, "b612.l.silent", 1.4),
+                run(systems::rose_close),
+                say(speakers::ROSE, "b612.l.fw_love"),
+                run(|w| {
+                    set_rose_pose(w, RosePose::Rest);
+                    systems::two_shot(w);
+                }),
+                say(speakers::ROSE, "b612.l.fw_you_too"),
+                // the glass ritual
+                run(systems::ritual_offer),
+                wait_use("cloche"),
+                wait_flag("cloche_held", vec![]),
+                say(speakers::ROSE, "b612.l.c_leave"),
+                say(speakers::PRINCE, "b612.l.c_wind"),
+                run(|w| set_rose_pose(w, RosePose::Proud)),
+                say(speakers::ROSE, "b612.l.c_air"),
+                say(speakers::PRINCE, "b612.l.c_animals"),
+                say(speakers::ROSE, "b612.l.c_claws"),
+                say_for(NARR, "b612.l.c_thorns", 1.6),
+                run(|w| set_rose_pose(w, RosePose::Droop)),
+                say(speakers::ROSE, "b612.l.c_linger"),
+                say(speakers::ROSE, "b612.l.c_go"),
+                run(|w| set_rose_pose(w, RosePose::TurnAway)),
+                wait(0.8),
+                run(systems::place_offer),
+                wait_use("cloche_place"),
+                wait_flag("cloche_done", vec![]),
+                run(systems::to_sunset),
                 complete_event(0),
-                Cmd::HiddenPending,
+                // 6. the last sunset
                 start_event(1),
-                teach(&["E"], "core.teach.interact"),
-                target(Pos::anchor("volcano"), "b612.target.volcano"),
-                wait_use("volcano"),
-                sfx("sfx.wood"),
-                step(1),
-                enable("sprout_0"),
-                enable("sprout_1"),
-                enable("sprout_2"),
-                target(Pos::anchor("sprouts"), "b612.target.volcano"),
-                wait_flag("sprouts_done", vec![t_use("sprout_0"), t_use("sprout_1"), t_use("sprout_2")]),
-                say(speakers::PRINCE, "b612.l.sprout_done"),
-                complete_event(1),
-                start_event(2),
                 target(Pos::anchor("chair"), "b612.target.chair"),
                 wait_use("chair"),
-                disable("chair"),
+                wait_flag("seated", vec![]),
                 clear_target(),
-                teleport(Pos::anchor("seat"), 250.0),
-                pose(Pose::Sit),
-                say_for(speakers::PRINCE, "b612.l.sit", 2.5),
-                shot(Pos::Player(Vec3::new(2.5, 1.6, 2.5)), Pos::Player(Vec3::new(-6.0, 1.5, -2.0)), 2.0),
-                sunset(12.0),
-                mono("b612.mono.sunset"),
-                wait_sunset(),
-                end_shot(),
-                choice_test(Some((speakers::ROSE, "b612.l.rose_q")), &[("b612.opt.yes", "yes"), ("b612.opt.quiet", "quiet")], 0),
-                label("yes"),
-                say(speakers::ROSE, "b612.l.rose_yes"),
-                goto("after"),
-                label("quiet"),
-                say(speakers::ROSE, "b612.l.rose_quiet"),
-                label("after"),
-                pose(Pose::None),
-                complete_event(2),
-                say(speakers::PRINCE, "b612.l.depart"),
+                wait(5.0),
+                say_for(speakers::PRINCE, "b612.l.sad", 5.0),
+                wait_flag("day_over", vec![]),
+                run(systems::stand_up),
+                complete_event(1),
                 departure(),
             ],
         }
     }
-}
-
-/// Chapter system: pulling a sprout despawns it; when all three are gone the
-/// story flag `sprouts_done` is set (the script waits on it).
-fn pull_sprouts(mut commands: Commands, mut msgs: MessageReader<Interacted>, mut runner: ResMut<StoryRunner>, mut audio: MessageWriter<AudioCmd>) {
-    for m in msgs.read() {
-        if m.id.starts_with("sprout_") {
-            commands.entity(m.entity).despawn();
-            audio.write(AudioCmd::sfx("sfx.pop"));
-            runner.set_flag(&m.id);
-            if (0..3).all(|i| runner.has_flag(&format!("sprout_{i}"))) {
-                runner.set_flag("sprouts_done");
-            }
-        }
-    }
-}
-
-/// Hidden goal: walk to the far side of the planet.
-fn lookout_hidden(mut commands: Commands, runner: Res<StoryRunner>, anchors: Res<crate::core::story::Anchors>, player: Query<&Transform, With<Player>>) {
-    if runner.hidden_done || !runner.hidden_shown {
-        return;
-    }
-    let (Some((a, _)), Ok(p)) = (anchors.get("lookout"), player.single()) else { return };
-    if Vec2::new(a.x - p.translation.x, a.z - p.translation.z).length() < 2.0 {
-        commands.queue(|w: &mut World| found_hidden(w));
-    }
-}
-
-// ------------------------------------------------- procedural fallbacks ----
-
-fn volcano(p: &mut ModelParts) {
-    let mut m = MeshBuilder::new();
-    m.lathe(Vec3::ZERO, &[(0.85, 0.0), (0.7, 0.35), (0.42, 0.75), (0.3, 0.82), (0.22, 0.7), (0.0, 0.62)], 9, hex(0x7f6f66));
-    p.add(&m);
-    let mut g = MeshBuilder::new();
-    g.frustum(Vec3::Y * 0.6, 0.2, 0.0, 0.05, 8, hex(0xff8a3d));
-    p.add_part(Some("glow"), &g, Transform::IDENTITY, PartMat::Emissive(hex(0xff7a30), 3.0));
-}
-
-fn rose(p: &mut ModelParts) {
-    let mut m = MeshBuilder::new();
-    m.tube(Vec3::ZERO, Vec3::Y * 0.42, 0.018, 0.014, 5, hex(0x4f8a45));
-    m.with(Transform::from_xyz(0.0, 0.2, 0.0).with_rotation(Quat::from_rotation_z(0.9)), |m| {
-        m.ellipsoid(Vec3::new(0.0, 0.06, 0.0), Vec3::new(0.03, 0.07, 0.015), 2, 5, hex(0x5d9c4e));
-    });
-    for i in 0..4 {
-        m.tube(Vec3::Y * (0.1 + i as f32 * 0.07), Vec3::Y * (0.1 + i as f32 * 0.07) + Vec3::new(0.03, 0.02, 0.0), 0.006, 0.0, 3, hex(0x3f6e3a));
-    }
-    m.sphere(Vec3::Y * 0.5, 0.085, 4, 7, hex(0xd8434e));
-    m.lathe(Vec3::Y * 0.43, &[(0.0, 0.0), (0.07, 0.04), (0.11, 0.1), (0.1, 0.14)], 6, hex(0xc93a46));
-    p.add(&m);
-}
-
-fn sprout(p: &mut ModelParts) {
-    let mut m = MeshBuilder::new();
-    m.tube(Vec3::ZERO, Vec3::Y * 0.25, 0.03, 0.02, 5, hex(0x6c8f3e));
-    for i in 0..3 {
-        let a = i as f32 * 2.1;
-        m.with(Transform::from_xyz(0.0, 0.24, 0.0).with_rotation(Quat::from_rotation_y(a) * Quat::from_rotation_z(0.8)), |m| {
-            m.ellipsoid(Vec3::new(0.0, 0.07, 0.0), Vec3::new(0.05, 0.08, 0.02), 2, 5, hex(0x7fae4e));
-        });
-    }
-    p.add(&m);
 }

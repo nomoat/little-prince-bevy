@@ -1,9 +1,19 @@
 #![enable(implicit_some)]
 // Asset keys of chapter "king" (edited only by that chapter). Same format as
-// assets/manifest.ron; see docs/ASSETS.md.
+// assets/manifest.ron; see docs/ASSETS.md. Every key below uses its procedural
+// fallback (src/chapters/king/models.rs) until a `path` is added.
 (
   entries: {
     "music.king": (procedural: "pad_playful", volume: 0.7, looped: true),
-    "model.king.npc": (procedural: "king.npc", note: "placeholder resident"),
+    "model.king.king": (procedural: "king.king", note: "the seated King (faces +Z, origin on the dais under his seat); parts king_body/king_head/king_arm_r/king_arm_l/king_book are animated"),
+    "model.king.throne": (procedural: "king.throne", note: "high-backed throne, front +Z, seat at 0.5 m"),
+    "model.king.candelabrum": (procedural: "king.candelabrum", note: "three-armed candelabrum ~1.7 m; part 'flames'"),
+    "model.king.door": (procedural: "king.door", note: "one door leaf 1.4 x 2.4 m, origin at the leaf's bottom centre (hinge at x = -0.7)"),
+    "model.king.column": (procedural: "king.column", note: "hall column ~4.8 m"),
+    "model.king.banner": (procedural: "king.banner", note: "hanging banner, faces +Z"),
+    "model.king.tower": (procedural: "king.tower", note: "palace corner tower ~9 m"),
+    "model.king.cushion": (procedural: "king.cushion", note: "velvet footstool (decor)"),
+    "sfx.king.creak": (procedural: "creak", volume: 0.8),
+    "sfx.king.latch": (procedural: "click", volume: 0.7),
   },
 )
