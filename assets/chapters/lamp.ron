@@ -1,9 +1,31 @@
 #![enable(implicit_some)]
 // Asset keys of chapter "lamp" (edited only by that chapter). Same format as
-// assets/manifest.ron; see docs/ASSETS.md.
+// assets/manifest.ron; see docs/ASSETS.md. Every key works without a file: with no
+// `path` (or a file that fails to load) its `procedural` generator is used.
+// Models face +Z, metres, origin on the ground. Files used here are CC0 Kenney
+// assets already listed in assets/CREDITS.md.
 (
   entries: {
-    "music.lamp": (procedural: "pad_wonder", volume: 0.7, looped: true),
-    "model.lamp.npc": (procedural: "lamp.npc", note: "placeholder resident"),
+    // ------------------------------------------------------------- music / ambience
+    "music.lamp": (procedural: "pad_wonder", volume: 0.7, looped: true, note: "Lamplighter music (original: start delay 6 s, duck under dialogue)"),
+    "amb.lamp.sea": (procedural: "wind", volume: 0.3, looped: true, note: "sea breeze bed"),
+
+    // ---------------------------------------------------------------- characters
+    "model.lamp.lamplighter": (procedural: "lamp.lamplighter", note: "the lamplighter, faces +Z; named parts 'body', 'head' (neck pivot y 1.42), 'arm' + 'tip' (right arm and wand, shoulder pivot (-0.2, 1.32, 0.05), modelled RAISED so the wand tip reaches (0.06, 2.92, 0.96)), 'arm_l'"),
+
+    // --------------------------------------------------------------------- props
+    "model.lamp.street_lamp": (procedural: "lamp.street_lamp", note: "street lamp; lantern centre (wick) 2.92 m above the foot; named parts 'glass', 'flame', 'halo'"),
+    "model.lamp.seat": (procedural: "lamp.seat", note: "the sunset seat: rock ledge, flat top 0.42 m up"),
+    "model.lamp.tide_pool": (procedural: "lamp.tide_pool", note: "tide pool r 0.8 with a boulder rim"),
+    "model.lamp.stone": (procedural: "lamp.stone", note: "flat stepping stone of the path / landing stone"),
+    "model.lamp.boulder": (path: "models/nature/rock_largeC.glb", procedural: "lamp.boulder", scale: 0.7, note: "boulders on the island's steep sides (Kenney Nature Kit, CC0)"),
+    "model.lamp.bush": (path: "models/nature/plant_bushSmall.glb", procedural: "bush", scale: 1.2, note: "island cover (Kenney Nature Kit, CC0)"),
+    "model.lamp.cloud": (procedural: "lamp.cloud", note: "cloud puff of the cloud sea at the horizon (scaled ×9-18)"),
+    "tex.lamp.star": (procedural: "flare", note: "the 'first star' that wakes when the lamp is lit; square RGBA PNG"),
+
+    // -------------------------------------------------------------------- sounds
+    "sfx.lamp.light": (procedural: "chime_low", volume: 0.6, note: "the wick catches"),
+    "sfx.lamp.out": (path: "audio/sfx/impactSoft_medium_000.ogg", procedural: "pop", volume: 0.6, note: "the snuffer"),
+    "sfx.lamp.surf": (procedural: "water", volume: 0.5, note: "a wave on the rocks"),
   },
 )

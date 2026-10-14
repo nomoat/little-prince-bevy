@@ -1,9 +1,61 @@
 #![enable(implicit_some)]
 // Asset keys of chapter "businessman" (edited only by that chapter). Same format as
-// assets/manifest.ron; see docs/ASSETS.md.
+// assets/manifest.ron; see docs/ASSETS.md. Every key works without a file: with no
+// `path` (or a file that fails to load) its `procedural` generator is used.
+// Models face +Z, metres, origin on the floor. Files used here are CC0 Kenney
+// assets already listed in assets/CREDITS.md.
 (
   entries: {
-    "music.businessman": (procedural: "pad_night", volume: 0.7, looped: true),
-    "model.businessman.npc": (procedural: "businessman.npc", note: "placeholder resident"),
+    // ------------------------------------------------------------- music / ambience
+    "music.businessman": (procedural: "pad_night", volume: 0.7, looped: true, note: "StarObservatory music (original: start delay 6 s, duck under dialogue)"),
+    "amb.businessman.night": (procedural: "night", volume: 0.25, looped: true, note: "night air around the observatory"),
+
+    // ------------------------------------------------------------------ building
+    "model.businessman.observatory": (procedural: "businessman.observatory", note: "plinth (floor 0.36 m up), round wall r 3.25-3.5 m, south doorway 1.7 x 2.25 m, cornice"),
+    "model.businessman.dome": (procedural: "businessman.dome", note: "glass dome over the room; part 'glass' is transparent"),
+    "model.businessman.door_leaf": (procedural: "businessman.door_leaf", note: "one door leaf, hinge at origin, extends 0.85 m along +X, 2.25 m high"),
+
+    // ------------------------------------------------------------------- interior
+    "model.businessman.telescope": (procedural: "businessman.telescope", note: "brass telescope on a tripod; eyepiece at (0, 1.085, -0.451), tube 30° up toward +Z"),
+    "model.businessman.rug": (procedural: "businessman.rug", note: "star rug under the telescope, r 1.35"),
+    "model.businessman.desk": (procedural: "businessman.desk", note: "writing desk 1.5 x 0.78 m with ledger; named parts 'drawer' (slides +Z) and 'slip' (paper slip)"),
+    "model.businessman.chair": (procedural: "businessman.chair", note: "the merchant's chair, seat 0.47 m, faces +Z"),
+    "model.businessman.merchant": (procedural: "businessman.merchant", note: "the businessman, seated, faces +Z; named parts 'head' (neck pivot at y 0.93), 'arm' (right shoulder), 'body'"),
+    "model.businessman.bookshelf": (procedural: "businessman.bookshelf"),
+    "model.businessman.cabinet": (procedural: "businessman.cabinet", note: "archive cabinet with labelled drawers"),
+    "model.businessman.low_cabinet": (procedural: "businessman.low_cabinet"),
+    "model.businessman.side_desk": (procedural: "businessman.side_desk"),
+    "model.businessman.table": (procedural: "businessman.table"),
+    "model.businessman.stool": (procedural: "businessman.stool"),
+    "model.businessman.armillary": (procedural: "businessman.armillary", note: "armillary sphere, ~0.6 m tall"),
+    "model.businessman.chart_north": (procedural: "businessman.chart_north", note: "wall chart 0.9 x 0.7, faces +Z, centred"),
+    "model.businessman.chart_moon": (procedural: "businessman.chart_moon"),
+    "model.businessman.chart_constellation": (procedural: "businessman.chart_constellation"),
+    "model.businessman.chart_zodiac": (procedural: "businessman.chart_zodiac"),
+    "model.businessman.chart_orbits": (procedural: "businessman.chart_orbits"),
+    "model.businessman.lantern": (procedural: "businessman.lantern", note: "wall lantern on a bracket; named part 'flame'"),
+    "model.businessman.oil_lamp": (procedural: "businessman.oil_lamp"),
+    "model.businessman.candles": (procedural: "businessman.candles"),
+    "model.businessman.sextant": (procedural: "businessman.sextant"),
+    "model.businessman.scrolls": (procedural: "businessman.scrolls"),
+    "model.businessman.boxes": (procedural: "businessman.boxes"),
+
+    // ------------------------------------------------------------------ outside
+    "model.businessman.float_rock": (path: "models/nature/rock_largeB.glb", procedural: "businessman.float_rock", scale: 1.4, note: "one of the 28 floating rocks (Kenney Nature Kit, CC0)"),
+
+    // ------------------------------------------------------------ telescope sky
+    "model.businessman.b612_view": (procedural: "businessman.b612_view", note: "B-612 as seen through the 12° lens: radius 1, faces +Z, should be unlit"),
+    "tex.businessman.glow": (procedural: "glow", note: "white RGBA radial glow (warm star halo); any square PNG with alpha"),
+    "tex.businessman.flare": (procedural: "flare", note: "four-point star flare"),
+    "tex.businessman.dot": (procedural: "dot", note: "small round dot (star core, stars, meteor)"),
+
+    // -------------------------------------------------------------------- sounds
+    "sfx.businessman.latch": (path: "audio/sfx/impactMetal_light_000.ogg", procedural: "click", volume: 0.7),
+    "sfx.businessman.creak": (procedural: "creak", volume: 0.6, note: "door creak"),
+    "sfx.businessman.settle": (path: "audio/sfx/impactPlank_medium_000.ogg", procedural: "click", volume: 0.5),
+    "sfx.businessman.scratch": (procedural: "tick", volume: 0.3, note: "pencil scratch of the write loop"),
+    "sfx.businessman.lens": (path: "audio/sfx/toggle_001.ogg", procedural: "whoosh", volume: 0.5),
+    "sfx.businessman.click": (path: "audio/sfx/click_001.ogg", procedural: "click", volume: 0.5),
+    "sfx.businessman.chime": (procedural: "chime", volume: 0.35, note: "B-612 found"),
   },
 )
