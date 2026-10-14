@@ -1,9 +1,20 @@
 #![enable(implicit_some)]
 // Asset keys of chapter "geo" (edited only by that chapter). Same format as
-// assets/manifest.ron; see docs/ASSETS.md.
+// assets/manifest.ron; see docs/ASSETS.md. Models are procedural until you set
+// `path` to your own .glb (keep the noted size / facing / origin).
 (
   entries: {
-    "music.geo": (procedural: "pad_wonder", volume: 0.7, looped: true),
-    "model.geo.npc": (procedural: "geo.npc", note: "placeholder resident"),
+    "music.geo": (procedural: "pad_wonder", volume: 0.6, looped: true),
+    "model.geo.library": (procedural: "geo.library", note: "map library shell in world coords: floor y=0, hall x±4 z 0.6..12, balcony rail z=15.3 (colliders stay code-defined)"),
+    "model.geo.door": (procedural: "geo.door", note: "front door leaf 1.3 x 2.8 m (fixed open)"),
+    "model.geo.tower": (procedural: "geo.tower", note: "round tower, r 1.9 m, ~12 m tall"),
+    "model.geo.table": (procedural: "geo.table", note: "map table 1.6 x 1.1 m, top 0.8, with map, book, armillary sphere, pencil stand"),
+    "model.geo.geographer": (procedural: "geo.geographer", note: "seated geographer, faces +z; named parts torso/head/arm_l/arm_r/pencil are animated"),
+    "model.geo.cypress": (procedural: "geo.cypress", note: "cypress ~4.8 m"),
+    "model.geo.bed": (procedural: "geo.bed", note: "raised garden bed 2.4 x 1.8 m"),
+    "model.geo.clouds": (procedural: "geo.clouds", note: "sea of clouds, origin at y=-55"),
+    "model.geo.beam": (procedural: "geo.beam", note: "skylight sunbeam (transparent)"),
+    // generated WAV (tests/gen_vbg_sfx.py), CC0 by this project
+    "sfx.geo.pencil": (path: "chapters/geo/pencil.wav", procedural: "tick", volume: 0.7),
   },
 )

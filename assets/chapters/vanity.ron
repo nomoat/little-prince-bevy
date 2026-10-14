@@ -1,9 +1,22 @@
 #![enable(implicit_some)]
 // Asset keys of chapter "vanity" (edited only by that chapter). Same format as
-// assets/manifest.ron; see docs/ASSETS.md.
+// assets/manifest.ron; see docs/ASSETS.md. Every model is procedural until you
+// set `path` to your own .glb (keep the noted size / facing / origin).
 (
   entries: {
     "music.vanity": (procedural: "pad_playful", volume: 0.7, looped: true),
-    "model.vanity.npc": (procedural: "vanity.npc", note: "placeholder resident"),
+    "model.vanity.theatre": (procedural: "vanity.theatre", note: "the old theatre shell, world frame: door plane z=0, hall x±7.4 z 0.6..17.6, stage top y=0.9 (colliders stay code-defined)"),
+    "model.vanity.door_leaf": (procedural: "vanity.door_leaf", note: "one door leaf 1.6 x 3.1 m, centred on its origin in x, bottom at y=0"),
+    "model.vanity.seat_row": (procedural: "vanity.seat_row", note: "half row of six child-size theatre chairs (seat 0.30 m), 1 m apart, facing +z"),
+    "model.vanity.vain": (procedural: "vanity.vain", note: "the conceited man ~1.95 m incl. hat, faces +z; named parts torso/head/arm_l/arm_r/hat are animated"),
+    "model.vanity.mirror": (procedural: "vanity.mirror", note: "standing mirror ~3 m, faces +z"),
+    "model.vanity.footlights": (procedural: "vanity.footlights", note: "row of stage footlights, 13 m"),
+    "model.vanity.poster": (procedural: "vanity.poster", note: "playbill 1.3 x 1.7 m"),
+    "model.vanity.pennant": (procedural: "vanity.pennant", note: "ridge pennant"),
+    // dry hand claps: generated WAVs (scripts in tests/gen_vbg_sfx.py), CC0 by this project
+    "sfx.vanity.clap0": (path: "chapters/vanity/clap_0.wav", procedural: "clap", volume: 1.0),
+    "sfx.vanity.clap1": (path: "chapters/vanity/clap_1.wav", procedural: "clap", volume: 1.0),
+    "sfx.vanity.clap2": (path: "chapters/vanity/clap_2.wav", procedural: "clap", volume: 1.0),
+    "sfx.vanity.clap3": (path: "chapters/vanity/clap_3.wav", procedural: "clap", volume: 1.0),
   },
 )
