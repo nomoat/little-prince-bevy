@@ -57,6 +57,7 @@ pub const STRINGS: StringTable = &[
     ("businessman.l.stumped", "……", "……"),
     ("businessman.mono.after", "大人们真是奇怪得很。", "Grown-ups really are very odd."),
     // telescope
+    ("businessman.scope.lens", "换镜", "Lens"),
     ("businessman.scope.help", "拖动 / WASD 瞄准 · 滚轮或 C 换镜头 · E 离开", "Drag / WASD to aim · wheel or C to change lens · E to leave"),
     ("businessman.scope.warm", "那边有一颗暖黄色的星……换个更强的镜头看看。", "A warm yellow star over there… try a stronger lens."),
     ("businessman.scope.found", "三座火山，一朵玫瑰……是 B612！", "Three volcanoes and a rose… it's B-612!"),

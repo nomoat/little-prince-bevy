@@ -24,6 +24,9 @@ pub struct LaunchParams {
     pub quality: Option<String>,
     /// `?speed=2`: game-time multiplier (test mode defaults to 1.5).
     pub speed: Option<f32>,
+    /// `?flow=1&test=1`: full-journey test (title → map → every chapter in
+    /// order → ending → title); prints `[flow:ok]` / `[flow:fail] reason`.
+    pub flow: bool,
     /// `?fresh=1`: ignore and do not write the save (tests set this implicitly).
     pub fresh: bool,
     /// Every raw parameter, for chapter-specific flags (`?b612_skip=1`).
@@ -49,6 +52,7 @@ impl LaunchParams {
             touch: raw.get("touch").map(|v| v != "0"),
             quality: raw.get("quality").cloned(),
             speed: raw.get("speed").and_then(|v| v.parse().ok()),
+            flow: flag("flow"),
             fresh: flag("fresh") || test,
             raw,
         }

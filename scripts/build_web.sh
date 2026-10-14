@@ -47,8 +47,17 @@ if [ -n "$OPT" ]; then
 fi
 
 echo "== assets"
-cp web/index.html "$DIST/"
+WASM_SIZE=$(wc -c < "$DIST/little_prince_bg.wasm" | tr -d ' ')
+sed "s/__WASM_SIZE__/$WASM_SIZE/" web/index.html > "$DIST/index.html"
+# Precompressed copies for servers that can send them (scripts/serve.py does).
+if [ -n "$OPT" ]; then
+  if command -v brotli >/dev/null; then
+    brotli -f -q 11 -o "$DIST/little_prince_bg.wasm.br" "$DIST/little_prince_bg.wasm"
+    brotli -f -q 11 -o "$DIST/little_prince.js.br" "$DIST/little_prince.js"
+  fi
+  gzip -9 -k -f "$DIST/little_prince_bg.wasm" "$DIST/little_prince.js"
+fi
 mkdir -p "$DIST/assets"
 rsync -a --exclude '_downloads' --exclude '_full_*' --exclude '.DS_Store' assets/ "$DIST/assets/"
-du -sh "$DIST/little_prince_bg.wasm" "$DIST/assets" | sed 's/^/   /'
+du -sh "$DIST"/little_prince_bg.wasm* "$DIST/assets" | sed 's/^/   /'
 echo "done -> $DIST   (serve with scripts/serve.sh)"

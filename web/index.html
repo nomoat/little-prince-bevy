@@ -52,7 +52,10 @@
   const msg = document.getElementById('msg');
   async function fetchWithProgress(url) {
     const res = await fetch(url);
-    const total = +(res.headers.get('x-raw-length') || res.headers.get('content-length')) || 0;
+    // build_web.sh writes the uncompressed size into WASM_SIZE (hosts that
+    // compress send the compressed content-length, which would be too small).
+    const WASM_SIZE = +'__WASM_SIZE__' || 0;
+    const total = +(res.headers.get('x-raw-length')) || WASM_SIZE || +res.headers.get('content-length') || 0;
     if (!res.body || !total) return res;
     const reader = res.body.getReader();
     const chunks = []; let got = 0;

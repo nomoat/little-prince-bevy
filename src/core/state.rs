@@ -54,6 +54,9 @@ pub enum Flow {
 #[derive(Resource, Default)]
 pub struct Transition {
     pending: Option<Flow>,
+    /// A request made while the new scene was still fading in; it runs as
+    /// soon as the fade ends (so an early click or key press is not lost).
+    queued: Option<Flow>,
     phase: u8,
     frames: u32,
 }
@@ -99,7 +102,8 @@ pub(crate) fn handle_flow(
 ) {
     let quick = params.test;
     if tr.phase == 0 {
-        if let Some(f) = msgs.read().last().cloned() {
+        let incoming = msgs.read().last().cloned();
+        if let Some(f) = incoming.or_else(|| tr.queued.take()) {
             let f = match f {
                 Flow::Depart => {
                     // progress + where to go next
@@ -133,7 +137,13 @@ pub(crate) fn handle_flow(
         }
         return;
     }
-    msgs.clear();
+    if tr.phase == 3 {
+        if let Some(f) = msgs.read().last().cloned() {
+            tr.queued = Some(f);
+        }
+    } else {
+        msgs.clear();
+    }
     match tr.phase {
         1 if fade.done() => {
             match tr.pending.clone() {
@@ -188,7 +198,10 @@ pub(crate) fn enter_chapter(world: &mut World) {
     *world.resource_mut::<InteractFocus>() = InteractFocus::default();
     *world.resource_mut::<DepartHold>() = DepartHold::default();
     *world.resource_mut::<Sky>() = Sky::default();
-    let tuning = world.resource::<CameraTuning>().clone();
+    // Every chapter starts from the default camera tuning (chapters that
+    // change it in `build` do so after this).
+    world.insert_resource(CameraTuning::default());
+    let tuning = CameraTuning::default();
     world.resource_mut::<CameraRig>().reset(&tuning);
     *world.resource_mut::<super::player::PlayerTuning>() = super::player::PlayerTuning::default();
     {
@@ -222,6 +235,7 @@ pub(crate) fn exit_chapter(world: &mut World) {
     world.resource_mut::<StoryRunner>().running = false;
     world.write_message(AudioCmd::Ambience(None));
     world.resource_mut::<CameraRig>().shot = None;
+    world.resource_mut::<super::input::TouchControls>().action2_label = None;
     world.resource_mut::<Time<Virtual>>().unpause();
 }
 

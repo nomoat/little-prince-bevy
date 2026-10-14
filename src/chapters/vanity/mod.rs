@@ -461,6 +461,7 @@ fn clap(
     time: Res<Time>,
     input: Res<InputFrame>,
     lock: Res<crate::core::story::StoryLock>,
+    mut touch: ResMut<crate::core::input::TouchControls>,
     mut st: ResMut<VState>,
     mut ov: ResMut<PrinceOverride>,
     mut hud: ResMut<Hud>,
@@ -473,6 +474,10 @@ fn clap(
     let rng = rng.get_or_insert_with(|| Rng::new(612));
     let Ok(ptf) = player.single() else { return };
     let inside = in_hall(ptf.translation);
+    let label = if inside { Some("vanity.teach.clap") } else { None };
+    if touch.action2_label != label {
+        touch.action2_label = label;
+    }
     if inside && !st.in_hall_once {
         st.in_hall_once = true;
     }

@@ -6,6 +6,8 @@
 //   node tests/run_web.mjs b612 king          # some chapters
 //   LANG_EN=1 node tests/run_web.mjs b612     # also run each with &lang=en
 //   SHOTS=title,map,ending node tests/run_web.mjs   # extra screen captures only
+//   FLOW=1 node tests/run_web.mjs             # full journey (?flow=1&test=1): title → map →
+//                                             # all 8 chapters in order → ending → title; waits for [flow:ok]
 // Env: DIST (default ../dist), PORT (default 8765), TIMEOUT (s, default 300),
 //      HEADED=1, WIDTH/HEIGHT (default 960x540).
 import { chromium } from 'playwright';
@@ -44,19 +46,27 @@ const browser = await chromium.launch({
   args: ['--use-angle=swiftshader', '--enable-unsafe-swiftshader', '--ignore-gpu-blocklist', '--enable-webgl', '--autoplay-policy=no-user-gesture-required'],
 });
 
-async function runPage(name, query, { until, shots = [], timeout = TIMEOUT }) {
+async function runPage(name, query, { until, shots = [], timeout = TIMEOUT, flowMode = false }) {
+  let t0 = Date.now();
   const page = await browser.newPage({ viewport: { width: W, height: H } });
   const log = [];
   let result = null;
   page.on('console', m => {
     const t = m.text();
     log.push(`[${m.type()}] ${t}`);
+    if (flowMode) {
+      if (/^\[(test|flow)/.test(t)) console.log(`   ${((Date.now() - t0) / 1000).toFixed(0)}s ${t}`);
+      const fo = t.match(/\[flow:ok\]/), ff = t.match(/\[flow:fail\] ?(.*)/);
+      if (fo && !result) result = { ok: true, id: 'flow' };
+      if (ff && !result) result = { ok: false, id: 'flow', reason: ff[1] };
+      return;
+    }
     const ok = t.match(/\[test:ok ([\w-]+)\]/), fail = t.match(/\[test:fail ([\w-]+)\] ?(.*)/);
     if (ok && !result) result = { ok: true, id: ok[1] };
     if (fail && !result) result = { ok: false, id: fail[1], reason: fail[2] };
   });
   page.on('pageerror', e => log.push(`[pageerror] ${e.message}`));
-  const t0 = Date.now();
+  t0 = Date.now();
   await page.goto(`http://localhost:${PORT}/?${query}`);
   let shotIdx = 0;
   while (Date.now() - t0 < timeout) {
@@ -81,6 +91,16 @@ for (const s of extra) {
   const q = { title: 'fresh=1', map: 'fresh=1&map=1', mapfree: 'fresh=1&map=1&free=1', ending: 'fresh=1&ending=1', title_en: 'fresh=1&lang=en' }[s] || s;
   const r = await runPage(`screen-${s}`, q, { until: 14, shots: [8] });
   console.log(`screen ${s}: ${r.errors.length ? 'ERRORS ' + r.errors.join(' | ') : 'ok'}`);
+}
+if (process.env.FLOW) {
+  for (const lang of (process.env.LANG_EN ? ['zh', 'en'] : ['zh'])) {
+    const name = `flow-${lang}`;
+    const r = await runPage(name, `flow=1&test=1&lang=${lang}`, { until: 'result', flowMode: true, timeout: Math.max(TIMEOUT, 1500 * 1000), shots: [3, 8, 14] });
+    const ok = r.result && r.result.ok;
+    if (!ok) failed++;
+    console.log(`${ok ? 'PASS' : 'FAIL'} ${name} (${r.secs}s)${r.result && !r.result.ok ? ' — ' + r.result.reason : ''}${!r.result ? ' — no result (timeout)' : ''}${r.errors.length ? ' errors: ' + r.errors.slice(0, 3).join(' | ') : ''}`);
+  }
+  await browser.close(); server.close(); process.exit(failed ? 1 : 0);
 }
 const ids = process.argv.slice(2).length ? process.argv.slice(2) : (extra.length ? [] : ALL);
 const langs = process.env.LANG_EN ? ['zh', 'en'] : ['zh'];

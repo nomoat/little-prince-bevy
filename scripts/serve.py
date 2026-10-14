@@ -14,6 +14,21 @@ class Handler(http.server.SimpleHTTPRequestHandler):
 
     def do_GET(self):
         path = self.translate_path(self.path)
+        enc = self.headers.get('Accept-Encoding', '')
+        # Prefer the precompressed copies from build_web.sh (.br, then .gz).
+        for ext, name in (('.br', 'br'), ('.gz', 'gzip')):
+            if name in enc and path.endswith(('.wasm', '.js')) and os.path.isfile(path + ext):
+                with open(path + ext, 'rb') as f:
+                    body = f.read()
+                self.send_response(200)
+                self.send_header('Content-Type', self.guess_type(path))
+                self.send_header('Content-Encoding', name)
+                self.send_header('Content-Length', str(len(body)))
+                self.send_header('X-Raw-Length', str(os.stat(path).st_size))
+                self.send_header('Cache-Control', 'no-cache')
+                self.end_headers()
+                self.wfile.write(body)
+                return
         if path.endswith(('.wasm', '.js', '.html', '.ron')) and 'gzip' in self.headers.get('Accept-Encoding', '') and os.path.isfile(path):
             st = os.stat(path)
             key = (path, st.st_mtime)

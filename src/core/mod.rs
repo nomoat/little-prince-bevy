@@ -151,7 +151,7 @@ pub fn build_app(app: &mut App) {
     app.add_systems(Last, testing::native_shots);
     app.add_systems(Startup, (models::setup_shared_materials, boot_fonts, start_manifest_loading, setup_camera, sky::setup_sky))
         .add_systems(Update, state::boot.run_if(in_state(AppState::Boot)))
-        .add_systems(Update, (merge_runtime_manifests, state::handle_flow, testing::exit_when_done, save::persist_save, apply_quality, i18n::apply_translations))
+        .add_systems(Update, (merge_runtime_manifests, state::handle_flow, testing::flow_driver, testing::probe, testing::exit_when_done, save::persist_save, apply_quality, i18n::apply_translations))
         .add_systems(OnEnter(AppState::Loading), state::loading_hop)
         .add_systems(OnEnter(AppState::Chapter), (state::enter_chapter, reset_autopilot))
         .add_systems(OnExit(AppState::Chapter), state::exit_chapter)

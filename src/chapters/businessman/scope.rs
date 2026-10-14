@@ -293,9 +293,14 @@ pub fn update(
     mut player: Query<(&mut Player, &Transform)>,
     mut its: Query<&mut Interactable>,
     i18n: Res<I18n>,
+    mut touch: ResMut<crate::core::input::TouchControls>,
 ) {
     let dt = time.delta_secs();
     let s = &mut *scope;
+    let label = if matches!(s.state, ScopeState::Viewing) { Some("businessman.scope.lens") } else { None };
+    if touch.action2_label != label {
+        touch.action2_label = label;
+    }
     s.t += dt;
     s.cooldown = (s.cooldown - dt).max(0.0);
     // fade toward its target (0.3 s)

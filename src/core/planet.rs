@@ -133,13 +133,22 @@ pub struct Terrain {
 impl Terrain {
     pub fn new(params: PlanetParams) -> Self {
         let mut t = Terrain { params, flat_heights: Vec::new() };
-        let mut hs = Vec::new();
-        for m in &t.params.mods {
-            if let TerrainMod::Flatten { center, height, .. } = m {
-                hs.push(height.unwrap_or_else(|| t.base_height(center.x, center.y, hs.len())));
-            }
+        // Each auto-height flatten samples the terrain with the earlier
+        // flattens applied, so heights must be stored as they are found.
+        let flats: Vec<(Vec2, Option<f32>)> = t
+            .params
+            .mods
+            .iter()
+            .filter_map(|m| match m {
+                TerrainMod::Flatten { center, height, .. } => Some((*center, *height)),
+                _ => None,
+            })
+            .collect();
+        for (center, height) in flats {
+            let n = t.flat_heights.len();
+            let h = height.unwrap_or_else(|| t.base_height(center.x, center.y, n));
+            t.flat_heights.push(h);
         }
-        t.flat_heights = hs;
         t
     }
 

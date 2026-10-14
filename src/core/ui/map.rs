@@ -292,7 +292,10 @@ fn map_update(
         match a {
             UiAction::MapSelect(id) => {
                 if ms.selected.as_deref() == Some(id.as_str()) {
-                    flow.write(Flow::Enter(id.clone()));
+                    // A second click starts the planet, but only if it is open.
+                    if selectable_ids.contains(&id.as_str()) {
+                        flow.write(Flow::Enter(id.clone()));
+                    }
                 } else {
                     ms.selected = Some(id.clone());
                     ms.dirty = true;

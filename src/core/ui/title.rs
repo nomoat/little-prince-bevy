@@ -76,9 +76,13 @@ fn title_actions(mut msgs: MessageReader<UiActionMsg>, mut flow: MessageWriter<F
     for UiActionMsg(a) in msgs.read() {
         match a {
             UiAction::TitleBegin => {
-                if !save.has_started() {
-                    save.reveal("b612");
+                // A new journey: progress starts over, settings and language stay.
+                if save.has_started() {
+                    let settings = save.settings.clone();
+                    let lang = save.lang;
+                    *save = SaveData { settings, lang, ..default() };
                 }
+                save.reveal("b612");
                 flow.write(Flow::ToMap);
             }
             UiAction::TitleContinue => {
@@ -88,6 +92,7 @@ fn title_actions(mut msgs: MessageReader<UiActionMsg>, mut flow: MessageWriter<F
         }
     }
     if keys.just_pressed(KeyCode::Enter) && !menu.open {
+        // Enter = Continue when there is progress, else Begin.
         save.reveal("b612");
         flow.write(Flow::ToMap);
     }

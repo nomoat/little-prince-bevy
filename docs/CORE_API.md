@@ -86,7 +86,8 @@ fn build(&self, cx: &mut ChapterCx) {
   just boxes.
 - **Raw world**: `cx.world` (`&mut World`), `cx.spawn(bundle)` (scoped), `cx.empty(pos, yaw)`.
 - **Player tuning** (`PlayerTuning` resource: jog 2.4, run 3.5, walk 1.0, jump …) and
-  **camera tuning** (`CameraTuning`) can be changed per chapter in `build`.
+  **camera tuning** (`CameraTuning`) can be changed per chapter in `build`; the core resets it
+  to `CameraTuning::default()` before every chapter's `build`.
 
 ## 4. Models (always via the manifest)
 
@@ -170,6 +171,9 @@ fn my_mechanic(mut msgs: MessageReader<Interacted>, mut runner: ResMut<StoryRunn
                input: Res<InputFrame>, mut audio: MessageWriter<AudioCmd>, mut hud: ResMut<Hud>) {
     for m in msgs.read() { if m.id == "cushion" { runner.set_flag("bowed"); } }
     if input.action2 { audio.write(AudioCmd::sfx("sfx.clap")); }    // C/F key or touch button
+    // The touch button for action2 is hidden until a chapter names it:
+    //   touch_controls.action2_label = Some("vanity.teach.clap");   // i18n key; None hides it
+    // (cleared by the core when the chapter ends).
     // hud.toast("…", 2.0); hud.monologue("king.m1", 3.0); hud.teach(vec!["C"], "vanity.t.clap", 5.0)
 }
 ```
@@ -214,6 +218,9 @@ Each wait times out after 60 s → `[test:fail <id>] stuck at pc N: <wait>`; suc
 ```
 node tests/run_web.mjs king            # web (after scripts/build_web.sh)
 cargo r -- --chapter king --test       # native, exits with the result
+FLOW=1 node tests/run_web.mjs          # whole journey: ?flow=1&test=1 → [flow:ok]
+cargo r -- --flow --test               # same, native
+node tests/ui_web.mjs                  # real input: touch (phone emulation), keyboard, save, language, free travel
 ```
 
 ## 10. Conventions

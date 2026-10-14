@@ -101,6 +101,29 @@ pub fn console_log(msg: &str) {
     println!("{msg}");
 }
 
+/// Factor from CSS px to the window's logical px: 1.0 normally. Some
+/// browsers (seen in headless Chrome with an emulated pixel ratio) size the
+/// canvas in CSS px while reporting a device pixel ratio, which halves the
+/// window's logical size while pointer positions stay in CSS px.
+pub fn css_to_logical(window_logical_width: f32) -> f32 {
+    #[cfg(target_arch = "wasm32")]
+    {
+        let css = web_sys::window().and_then(|w| w.inner_width().ok()).and_then(|v| v.as_f64()).unwrap_or(0.0) as f32;
+        if css > 1.0 && window_logical_width > 1.0 {
+            let k = window_logical_width / css;
+            if (k - 1.0).abs() > 0.05 {
+                return k;
+            }
+        }
+        1.0
+    }
+    #[cfg(not(target_arch = "wasm32"))]
+    {
+        let _ = window_logical_width;
+        1.0
+    }
+}
+
 /// True on phones/tablets (coarse pointer or touch points).
 pub fn is_touch_device() -> bool {
     #[cfg(target_arch = "wasm32")]

@@ -76,6 +76,10 @@ pub struct TouchControls {
     pub look_start_time: f32,
     pub button_touch: [Option<u64>; 5],
     pub pinch_last: Option<f32>,
+    /// i18n key for the secondary-action button (C on keyboard). Chapters
+    /// set it while the action means something (clap, change lens); the
+    /// touch button is hidden while it is `None`. Cleared when a chapter ends.
+    pub action2_label: Option<&'static str>,
     /// Held state of buttons: interact, jump, action2, menu, tasks.
     pub held: [bool; 5],
     pub pressed: [bool; 5],
@@ -208,6 +212,10 @@ pub(crate) fn gather_input(
     // ---------------------------------------------------------------- touch
     let screen = window.single().map(|w| Vec2::new(w.width(), w.height())).unwrap_or(Vec2::new(1280.0, 720.0));
     touch.screen = screen;
+    // Touch positions arrive in CSS px; map them into the window's logical
+    // px in case the two disagree (seen with emulated pixel ratios).
+    let k = platform::css_to_logical(screen.x);
+    let tp = |p: Vec2| p * k;
     if touches.iter().next().is_some() || touches.iter_just_pressed().next().is_some() {
         ms.any_touch_seen = true;
     }
@@ -220,11 +228,13 @@ pub(crate) fn gather_input(
     touch.pressed = [false; 5];
     let buttons = TouchControls::buttons(screen);
     for t in touches.iter_just_pressed() {
-        let p = t.position();
+        let p = tp(t.position());
         let mut hit = false;
         if touch.enabled {
             for (i, (c, r)) in buttons.iter().enumerate() {
-                if p.distance(*c) < r + 10.0 && touch.button_touch[i].is_none() {
+                // the secondary-action button is hidden while it has no meaning
+                let hidden = i == BTN_ACTION2 && touch.action2_label.is_none();
+                if !hidden && p.distance(*c) < r + 10.0 && touch.button_touch[i].is_none() {
                     touch.button_touch[i] = Some(t.id());
                     touch.pressed[i] = true;
                     hit = true;
@@ -254,9 +264,9 @@ pub(crate) fn gather_input(
         if touch.look_touch == Some(id) {
             touch.look_touch = None;
             // quick tap without movement = advance / tap
-            if t.position().distance(touch.look_start) < 12.0 && time.elapsed_secs() - touch.look_start_time < 0.35 {
+            if tp(t.position()).distance(touch.look_start) < 12.0 && time.elapsed_secs() - touch.look_start_time < 0.35 {
                 f.advance = true;
-                f.tap = Some(t.position());
+                f.tap = Some(tp(t.position()));
             }
         }
         for i in 0..5 {
@@ -270,12 +280,12 @@ pub(crate) fn gather_input(
     }
     if let Some(id) = touch.joy_touch {
         if let Some(t) = touches.get_pressed(id) {
-            touch.joy_pos = t.position();
-            let mut d = t.position() - touch.joy_origin;
+            touch.joy_pos = tp(t.position());
+            let mut d = tp(t.position()) - touch.joy_origin;
             // drag the base along when pulled past the rim
             if d.length() > JOY_RADIUS * 1.4 {
                 let n = d.normalize();
-                touch.joy_origin = t.position() - n * JOY_RADIUS * 1.4;
+                touch.joy_origin = tp(t.position()) - n * JOY_RADIUS * 1.4;
                 d = n * JOY_RADIUS * 1.4;
             }
             let v = Vec2::new(d.x, -d.y) / JOY_RADIUS;
@@ -285,7 +295,7 @@ pub(crate) fn gather_input(
             }
         }
     }
-    let pinch: Vec<Vec2> = touches.iter().filter(|t| Some(t.id()) != touch.joy_touch && !touch.button_touch.contains(&Some(t.id()))).map(|t| t.position()).collect();
+    let pinch: Vec<Vec2> = touches.iter().filter(|t| Some(t.id()) != touch.joy_touch && !touch.button_touch.contains(&Some(t.id()))).map(|t| tp(t.position())).collect();
     if pinch.len() >= 2 {
         let d = pinch[0].distance(pinch[1]);
         if let Some(last) = touch.pinch_last {
@@ -296,8 +306,8 @@ pub(crate) fn gather_input(
         touch.pinch_last = None;
         if let Some(id) = touch.look_touch {
             if let Some(t) = touches.get_pressed(id) {
-                let d = t.position() - touch.look_last;
-                touch.look_last = t.position();
+                let d = tp(t.position()) - touch.look_last;
+                touch.look_last = tp(t.position());
                 f.look += Vec2::new(d.x, d.y * inv) * 0.28 * s.look;
             }
         }

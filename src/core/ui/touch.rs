@@ -88,6 +88,9 @@ fn update(
         n.top = px((c.y - r) / s);
         n.width = px(r * 2.0 / s);
         n.height = px(r * 2.0 / s);
+        if b.0 == 2 {
+            n.display = if touch.action2_label.is_some() { Display::Flex } else { Display::None };
+        }
         let active = b.0 == 0 && focus.entity.is_some();
         bg.0 = if touch.held[b.0] {
             Color::srgba(0.95, 0.76, 0.35, 0.6)
@@ -101,6 +104,7 @@ fn update(
         let s = match l.0 {
             0 => focus.prompt.as_ref().map(|k| i18n.t(k).to_string()).unwrap_or_else(|| i18n.t("core.teach.interact").to_string()),
             1 => i18n.t("core.teach.jump").to_string(),
+            2 => touch.action2_label.map(|k| i18n.t(k).to_string()).unwrap_or_default(),
             4 => i18n.t("core.tab_hint").to_string(),
             _ => continue,
         };
