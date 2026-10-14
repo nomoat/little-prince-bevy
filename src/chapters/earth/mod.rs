@@ -1,29 +1,29 @@
-//! Chapter 8 — The Earth (STUB). Registered so the flow works end to
-//! end; the chapter agent replaces it with the full chapter following the
-//! original's design. See chapters/b612 for a complete API example.
+//! Chapter 8 — The Earth (original scenes Desert_Valley → Desert_Dunes).
+//! Follows docs/original/earth.md: the valley (snake on its rock, the little
+//! flower and the echo, the rose garden, the fox under the apple tree, the
+//! station) and — after the railway page — the dunes (the sleeping aviator
+//! and the sheep drawings, "eight days later", the well, the sacred way and
+//! the doorway snake, the farewell, the walk toward the star and the end card).
 
+mod actors;
+mod fx;
+mod models;
+mod overlay;
+mod script;
+mod state;
+pub mod strings;
+mod world;
+
+use crate::core::camera::CameraTuning;
 use crate::core::prelude::*;
+use crate::core::state::AppState;
+use state::{EarthState, HisStar, Scene};
+
+pub use strings::FOX;
 
 pub struct Earth;
 
 const ID: &str = "earth";
-
-/// Earth-only cast member.
-pub const FOX: Speaker = Speaker::new("earth.fox", Color::srgb(0.85, 0.5, 0.22));
-
-pub const STRINGS: StringTable = &[
-    ("earth.title", "地球", "The Earth"),
-    ("earth.subtitle", "沙漠、狐狸与水井", "The desert, the fox and the well"),
-    ("earth.line", "一颗非常大的星球。小王子落在了沙漠里。", "A very large planet. The little prince lands in the desert."),
-    ("earth.visited", "沙漠之所以美丽，是因为某处藏着一口井。", "The desert is beautiful because somewhere it hides a well."),
-    ("earth.loading", "一望无际的沙丘……", "Dunes as far as the eye can see…"),
-    ("earth.ev.meet", "沙漠", "The desert"),
-    ("earth.st.meet", "去找那只狐狸", "Find the fox"),
-    ("earth.verb.talk", "靠近", "Approach"),
-    ("earth.l.npc", "来驯服我吧。", "Please — tame me."),
-    ("earth.l.prince", "驯服是什么意思？", "What does tame mean?"),
-    ("earth.fox", "狐狸", "The Fox"),
-];
 
 impl Chapter for Earth {
     fn info(&self) -> ChapterInfo {
@@ -43,53 +43,90 @@ impl Chapter for Earth {
     }
 
     fn strings(&self) -> StringTable {
-        STRINGS
+        strings::STRINGS
     }
 
     fn setup_app(&self, app: &mut App) {
-        app.register_model("earth.npc", npc);
+        models::register(app);
+        app.init_resource::<EarthState>()
+            .init_resource::<fx::PrinceLook>()
+            .add_systems(
+                Update,
+                (
+                    use_flags,
+                    actors::snake_update,
+                    actors::fox_update,
+                    actors::pilot_update,
+                    fx::guide_signs,
+                    fx::footprints,
+                    fx::stardust_trail,
+                    fx::dusk_ramp,
+                    fx::train_arrival,
+                    fx::ending_walk,
+                    overlay::update,
+                )
+                    .in_set(CoreSet::Gameplay)
+                    .run_if(in_chapter(ID)),
+            )
+            .add_systems(
+                Update,
+                (fx::prince_look.after(crate::core::player::animate_prince), fx::star_billboard).in_set(CoreSet::Presentation).run_if(in_chapter(ID)),
+            )
+            .add_systems(OnExit(AppState::Chapter), restore_camera);
     }
 
     fn build(&self, cx: &mut ChapterCx) {
-        let mut p = PlanetParams::sized(30.0);
-        p.ground = hex(0xe2c08d);
-        p.ground2 = hex(0xd4b07c);
-        p.mods = vec![TerrainMod::Flatten { center: Vec2::new(0.0, 5.0), radius: 2.0, blend: 1.5, height: None }];
-        cx.planet(p);
-        cx.sky(9.0, 0.5, Some(16.5), SkyPalette::default());
-        let npc_p = cx.ground(0.0, 5.0);
-        let npc = cx.model("model.earth.npc", npc_p, 180.0, 1.0);
-        cx.collider(npc, Collider::cylinder(0.35, 1.5));
-        cx.interactable(npc, Interactable::new("npc", "earth.verb.talk").radius(2.2).focus(Vec3::Y * 1.0).prompt_height(0.8));
-        cx.anchor("npc", npc_p, 180.0);
-        cx.scatter("model.rock", 6, 4.0, 29.0, 8, (0.5, 1.1), &[(Vec2::new(0.0, 5.0), 2.0)]);
-        let start = cx.ground(0.0, -2.0);
-        cx.player(start, 0.0);
+        cx.world.insert_resource(EarthState::default());
+        cx.world.insert_resource(fx::PrinceLook::default());
+        // Valley camera (original): distance 3.6 (1.8–5.5), pitch 10°, FOV 50.
+        let saved = cx.world.resource::<CameraTuning>().clone();
+        let mut t = saved.clone();
+        t.default_distance = 3.6;
+        t.min_distance = 1.8;
+        t.max_distance = 5.5;
+        t.default_pitch = 10.0;
+        t.fov = 50.0;
+        cx.world.insert_resource(t.clone());
+        cx.world.resource_mut::<CameraRig>().reset(&t);
+        cx.world.resource_mut::<EarthState>().saved_camera = Some(saved);
+
+        let dunes = cx.world.resource::<crate::core::params::LaunchParams>().get("earth") == Some("dunes");
+        if dunes {
+            world::build_dunes(cx);
+            let p = cx.ground(world::D_STEPOFF.x, world::D_STEPOFF.y);
+            cx.player(p, world::yaw_to(world::D_STEPOFF, world::D_PLANE));
+        } else {
+            world::build_valley(cx);
+            let star = cx.model("model.earth.star", Vec3::new(0.0, -50.0, 0.0), 0.0, 0.001);
+            cx.world.entity_mut(star).insert(HisStar);
+            world::spawn_valley_player(cx);
+            world::mark_valley(cx.world);
+            cx.world.resource_mut::<EarthState>().scene = Scene::Valley;
+        }
+        overlay::spawn(cx.world);
     }
 
     fn story(&self) -> Story {
-        Story {
-            events: vec![event("earth.ev.meet", &["earth.st.meet"])],
-            hidden: None,
-            script: vec![
-                card(),
-                start_event(0),
-                target(Pos::anchor("npc"), "earth.ev.meet"),
-                wait_use("npc"),
-                face(Pos::anchor("npc")),
-                say(FOX, "earth.l.npc"),
-                say(speakers::PRINCE, "earth.l.prince"),
-                complete_event(0),
-                departure(),
-            ],
+        script::story()
+    }
+}
+
+/// Valley interactables set `u_<id>` flags (the script dispatches optional talks).
+fn use_flags(mut msgs: MessageReader<Interacted>, mut runner: ResMut<StoryRunner>) {
+    for m in msgs.read() {
+        if matches!(m.id.as_str(), "flower" | "echo" | "roses" | "fox" | "train") {
+            runner.set_flag(&format!("u_{}", m.id));
         }
     }
 }
 
-fn npc(p: &mut ModelParts) {
-    let mut m = MeshBuilder::new();
-    m.lathe(Vec3::ZERO, &[(0.36, 0.0), (0.33, 0.55), (0.24, 1.05), (0.13, 1.3), (0.0, 1.34)], 10, hex(0xd9823a));
-    m.sphere(Vec3::Y * 1.5, 0.21, 4, 8, hex(0xf2d2b6));
-    m.ellipsoid(Vec3::new(0.0, 1.56, -0.03), Vec3::new(0.22, 0.14, 0.22), 3, 8, hex(0x8a8a8a));
-    p.add(&m);
+fn restore_camera(st: Option<ResMut<EarthState>>, mut tuning: ResMut<CameraTuning>, mut look: Option<ResMut<fx::PrinceLook>>) {
+    if let Some(mut st) = st {
+        if let Some(t) = st.saved_camera.take() {
+            *tuning = t;
+        }
+    }
+    if let Some(l) = look.as_deref_mut() {
+        *l = fx::PrinceLook::default();
+    }
 }
