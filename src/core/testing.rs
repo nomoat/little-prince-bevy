@@ -469,6 +469,7 @@ pub(crate) fn probe(
     player: Query<(&Transform, &Player)>,
     window: Query<&Window, With<bevy::window::PrimaryWindow>>,
     ui_scale: Res<UiScale>,
+    extra: (Option<Res<StoryRunner>>, Res<InteractFocus>, Res<super::input::InputGate>),
 ) {
     // `?probe=1` → every second; `?probe=0.25` → every 0.25 s.
     let Some(every) = params.get("probe").map(|v| v.parse::<f32>().unwrap_or(1.0).clamp(0.05, 10.0)) else { return };
@@ -497,5 +498,21 @@ pub(crate) fn probe(
         window.single().map(|w| w.scale_factor()).unwrap_or(0.0),
         ui_scale.0,
     );
+    // Story state (for player-like bots): wait kind, target marker, interaction focus, objective.
+    let (runner, focus, gate) = extra;
+    let drive = player.single().map(|(_, p)| match p.drive { super::player::Drive::Player => "player", super::player::Drive::WalkTo { .. } => "walk", super::player::Drive::External => "ext" }).unwrap_or("");
+    let esc = |s: &str| s.replace('\\', "\\\\").replace('"', "\\\"");
+    let (wait, target, tlabel) = runner
+        .map(|r| (r.waiting.as_ref().map(|w| w.describe()).unwrap_or_default(), r.target_world, r.target_label.unwrap_or("")))
+        .unwrap_or_default();
+    let tgt = target.map(|t| format!("[{:.2},{:.2},{:.2}]", t.x, t.y, t.z)).unwrap_or_else(|| "null".into());
+    let obj = hud.objective.as_ref().map(|o| format!("{}|{}", o.0.unwrap_or(""), o.1.unwrap_or(""))).unwrap_or_default();
+    let msg = format!(
+        "{},\"story\":{{\"wait\":\"{}\",\"target\":{},\"tlabel\":\"{}\",\"focus\":\"{}\",\"hold\":{:.2},\"objective\":\"{}\",\"choice\":{},\"card\":{},\"narr\":{},\"locked\":{},\"drive\":\"{}\",\"teach\":\"{}\"}}",
+        &msg[..msg.len() - 1],
+        esc(&wait), tgt, tlabel,
+        esc(focus.id.as_deref().unwrap_or("")), focus.hold_seconds, esc(&obj),
+        hud.choice.as_ref().map(|c| c.0.len()).unwrap_or(0), hud.card.is_some(), hud.narration.is_some(), gate.movement_locked, drive, esc(&hud.teach.as_ref().map(|t| format!("{}|{}", t.v.0.join(" "), t.v.1)).unwrap_or_default()),
+    ) + "}";
     platform::console_log(&msg);
 }

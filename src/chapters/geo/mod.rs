@@ -153,6 +153,8 @@ impl Chapter for Geo {
             TerrainMod::Paint { center: Vec2::new(0.0, -10.0), radius: 1.3, blend: 0.6, color: hex(0xd8c8a0) },
         ];
         cx.planet(p);
+        // footsteps: stone floor in the hall and on the balcony
+        cx.step_zone(Vec3::new(0.0, 1.5, 8.5), Vec3::new(3.5, 3.0, 7.2), "sfx.step_stone");
         let pal = SkyPalette {
             day_zenith: hex(0x5a8fd0),
             day_horizon: hex(0xf2dcb8),

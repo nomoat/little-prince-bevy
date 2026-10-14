@@ -100,9 +100,20 @@ fn enter_map(mut ms: ResMut<MapState>, mut save: ResMut<SaveData>, reg: Res<Chap
     }
 }
 
+/// Short, wide screens (phones in landscape): the planet panel goes to the
+/// right side instead of covering the lower half of the journey.
+fn side_panel(window: &Window, ui_scale: f32) -> bool {
+    let (w, h) = (window.width() / ui_scale, window.height() / ui_scale);
+    w / h > 1.9 && h < 560.0
+}
+const SIDE_W: f32 = 330.0;
+
 fn stage_scale(window: &Window, ui_scale: f32) -> (f32, Vec2) {
-    let w = window.width() / ui_scale;
+    let mut w = window.width() / ui_scale;
     let h = window.height() / ui_scale;
+    if side_panel(window, ui_scale) {
+        w -= SIDE_W + 24.0;
+    }
     let k = (w / STAGE.x).min(h / STAGE.y);
     let off = Vec2::new((w - STAGE.x * k) * 0.5, (h - STAGE.y * k) * 0.5);
     (k, off)
@@ -131,6 +142,7 @@ fn build_map(
         commands.entity(e).despawn();
     }
     let (k, off) = stage_scale(win, scale.0);
+    let side = side_panel(win, scale.0);
     let f = &*font;
     let infos = reg.infos();
     let stage = |p: Vec2| off + p * k;
@@ -242,7 +254,20 @@ fn build_map(
             });
             // bottom panel (selected planet)
             root.spawn((
-                Node {
+                if side {
+                    Node {
+                        position_type: PositionType::Absolute,
+                        top: px(78),
+                        right: px(14),
+                        width: px(SIDE_W),
+                        flex_direction: FlexDirection::Column,
+                        align_items: AlignItems::Center,
+                        row_gap: px(6),
+                        padding: UiRect::axes(px(18), px(14)),
+                        border_radius: BorderRadius::all(px(20)),
+                        ..default()
+                    }
+                } else { Node {
                     position_type: PositionType::Absolute,
                     bottom: px(20),
                     left: percent(50),
@@ -254,7 +279,7 @@ fn build_map(
                     padding: UiRect::axes(px(28), px(16)),
                     border_radius: BorderRadius::all(px(20)),
                     ..default()
-                },
+                } },
                 BackgroundColor(Color::srgba(0.07, 0.08, 0.2, 0.82)),
             ))
             .with_children(|p| {

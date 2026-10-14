@@ -52,9 +52,8 @@ fn brook_points() -> Vec<Vec2> {
     ]
 }
 
-pub fn build(cx: &mut ChapterCx) {
-    super::director::reset(cx.world);
-    // ---------------------------------------------------------- terrain
+/// The B612 dome (sphere cap + pads, knoll, pit, spring basin).
+pub fn planet_params() -> PlanetParams {
     let mut p = PlanetParams::default();
     p.walk_radius = 22.0;
     p.soft_radius = 21.9;
@@ -97,7 +96,7 @@ pub fn build(cx: &mut ChapterCx) {
         TerrainMod::Flatten {
             center: SHED,
             radius: 2.0,
-            blend: 1.4,
+            blend: 2.6,
             height: None,
         },
         TerrainMod::Paint {
@@ -109,14 +108,14 @@ pub fn build(cx: &mut ChapterCx) {
         TerrainMod::Flatten {
             center: CHAIR,
             radius: 1.3,
-            blend: 1.2,
+            blend: 3.6,
             height: None,
         },
         // spring: level pad + pool
         TerrainMod::Flatten {
             center: POND,
-            radius: 3.0,
-            blend: 1.6,
+            radius: 2.9,
+            blend: 4.6,
             height: None,
         },
         TerrainMod::Mound {
@@ -176,7 +175,14 @@ pub fn build(cx: &mut ChapterCx) {
         }
     }
     p.mods = mods;
-    cx.planet(resolve_flattens(p));
+    resolve_flattens(p)
+}
+
+pub fn build(cx: &mut ChapterCx) {
+    super::director::reset(cx.world);
+    // ---------------------------------------------------------- terrain
+    cx.planet(planet_params());
+
     let cap = Sky::default().hour_for_elevation(22.0, true);
     // Morning: the sun has just risen in the east. The free day creeps toward
     // the afternoon and rests above 22° — it never sets by itself (DayHold).
@@ -587,4 +593,28 @@ fn spawn_brook(cx: &mut ChapterCx, pts: &[Vec2]) {
         Transform::IDENTITY,
         bevy::light::NotShadowCaster,
     ));
+}
+
+#[cfg(test)]
+mod tests {
+    /// Walkable ground must stay under the slope limit (35°) or the prince gets stuck.
+    #[test]
+    fn walkable_slopes() {
+        let t = crate::core::planet::Terrain::new(super::planet_params());
+        let mut worst = (0.0f32, 0.0f32, 0.0f32);
+        let mut x = -21.0;
+        while x <= 21.0 {
+            let mut z = -21.0;
+            while z <= 21.0 {
+                if (x * x + z * z as f32).sqrt() < 20.5 {
+                    let s = t.slope_deg(x, z);
+                    if s > worst.0 { worst = (s, x, z); }
+                }
+                z += 0.25;
+            }
+            x += 0.25;
+        }
+        println!("worst slope {:.1}° at ({:.2}, {:.2})", worst.0, worst.1, worst.2);
+        assert!(worst.0 < 35.0, "slope {:.1}° at ({:.2}, {:.2})", worst.0, worst.1, worst.2);
+    }
 }

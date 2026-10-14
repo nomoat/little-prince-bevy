@@ -171,6 +171,12 @@ pub fn spawn_player(world: &mut World, pos: Vec3, yaw_deg: f32) -> Entity {
         .spawn((PlayerVisual, Transform::from_rotation(Quat::from_rotation_y(yaw)), Visibility::default()))
         .id();
     world.entity_mut(player).add_child(visual);
+    // a soft moonlit fill that keeps the prince readable on night planets
+    // (CharacterFillLight in the original); its strength follows the night
+    let fill = world
+        .spawn((PrinceFill, PointLight { color: Color::srgb(0.78, 0.84, 1.0), intensity: 0.0, range: 3.2, shadow_maps_enabled: false, ..default() }, Transform::from_xyz(0.0, 1.9, 0.0)))
+        .id();
+    world.entity_mut(player).add_child(fill);
     if gltf_path.is_some() {
         // A replacement model from the manifest (glTF). Animation: see docs/ASSETS.md.
         let child = world.spawn((Transform::default(), Visibility::default(), super::models::PendingModel("model.prince".into()))).id();
@@ -539,9 +545,22 @@ pub(crate) fn animate_prince(
         set(rig.head, head_rot, None);
         // scarf flutter
         for (i, e) in rig.scarf.iter().enumerate() {
-            let fl = (t * (3.0 + moving * 4.0) + i as f32 * 0.9).sin() * (0.15 + moving * 0.25);
-            let lift = if i == 0 { 0.25 + moving * 0.5 } else { -0.15 + moving * 0.12 };
+            // at rest the tail hangs down his back and stirs a little; it lifts and
+            // streams behind him as he walks / runs
+            let fl = (t * (2.2 + moving * 4.8) + i as f32 * 0.9).sin() * (0.08 + moving * 0.3);
+            let (rest, fly) = if i == 0 { (-0.55, 0.45) } else { (-0.22, -0.06) };
+            let lift = rest + (fly - rest) * moving.clamp(0.0, 1.0) + (t * 1.3 + i as f32).sin() * 0.04;
             set(*e, Quat::from_rotation_x(lift) * Quat::from_rotation_y(fl), None);
         }
+    }
+}
+
+/// The prince's night fill light (see `spawn_player`).
+#[derive(Component)]
+pub struct PrinceFill;
+
+pub(crate) fn prince_fill(sky: Res<super::sky::Sky>, mut q: Query<&mut PointLight, With<PrinceFill>>) {
+    for mut l in &mut q {
+        l.intensity = 5500.0 * sky.night.clamp(0.0, 1.0);
     }
 }

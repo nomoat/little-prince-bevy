@@ -149,7 +149,50 @@ impl Terrain {
             let h = height.unwrap_or_else(|| t.base_height(center.x, center.y, n));
             t.flat_heights.push(h);
         }
+        t.soften_pads();
         t
+    }
+
+    /// Widens each flatten's blend ring where the pad meets the dome too
+    /// steeply: a smoothstep ring of width `b` over a height step `dh` peaks at
+    /// a gradient of 1.5·dh/b, so `b >= 2.8·dh` keeps it under ~28° and the
+    /// prince can always walk off a pad (B612's spring basin, the theatre's
+    /// forecourt … used to trap him behind a 40–60° bank).
+    fn soften_pads(&mut self) {
+        let n = self.flat_heights.len();
+        for _ in 0..3 {
+            let mut changed = false;
+            let mut fi = 0;
+            for mi in 0..self.params.mods.len() {
+                let TerrainMod::Flatten { center, radius, blend, .. } = self.params.mods[mi].clone() else { continue };
+                let h = self.flat_heights[fi];
+                let ring = radius + blend.max(0.01);
+                let mut dh: f32 = 0.0;
+                for k in 0..24 {
+                    let a = k as f32 / 24.0 * std::f32::consts::TAU;
+                    let q = center + Vec2::new(a.cos(), a.sin()) * ring;
+                    // only where the ring is on the walkable part of the planet
+                    if self.radial(q.x, q.y) > self.params.walk_radius {
+                        continue;
+                    }
+                    dh = dh.max((self.base_height(q.x, q.y, fi) - h).abs());
+                }
+                let need = (dh * 2.8).min(radius * 3.0 + 6.0);
+                if blend < need - 0.05 {
+                    if let TerrainMod::Flatten { blend: b, .. } = &mut self.params.mods[mi] {
+                        *b = need;
+                    }
+                    changed = true;
+                }
+                fi += 1;
+                if fi >= n {
+                    break;
+                }
+            }
+            if !changed {
+                break;
+            }
+        }
     }
 
     /// Distance from the planet centre in XZ.

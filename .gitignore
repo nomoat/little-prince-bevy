@@ -9,3 +9,5 @@ assets/_downloads/
 save.ron
 assets/fonts/_full_*
 tests/node_modules/
+dist-dev/
+dist-dev2/

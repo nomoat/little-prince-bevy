@@ -34,11 +34,26 @@ pub enum Pos {
     Player(Vec3),
     /// The focus point of an interactable by id.
     Interactable(String),
+    /// A place behind walls: resolves to `door` until the player is at the
+    /// door (1.3 m) or inside the XZ box `area` (min, max), then to `inside` —
+    /// so the objective marker leads round to the entrance instead of into the wall.
+    Enter { door: Box<Pos>, area: (Vec2, Vec2), inside: Box<Pos> },
+    /// The reverse of [`Pos::Enter`]: while the player is inside `area` (and
+    /// not yet at the door) the marker points at the way out, then at `outside`.
+    Leave { door: Box<Pos>, area: (Vec2, Vec2), outside: Box<Pos> },
 }
 
 impl Pos {
     pub fn anchor(name: &str) -> Pos {
         Pos::Anchor(name.to_string(), Vec3::ZERO)
+    }
+    /// See [`Pos::Leave`].
+    pub fn leave(door: Pos, min: Vec2, max: Vec2, outside: Pos) -> Pos {
+        Pos::Leave { door: Box::new(door), area: (min, max), outside: Box::new(outside) }
+    }
+    /// See [`Pos::Enter`].
+    pub fn enter(door: Pos, min: Vec2, max: Vec2, inside: Pos) -> Pos {
+        Pos::Enter { door: Box::new(door), area: (min, max), inside: Box::new(inside) }
     }
     pub fn resolve(&self, world: &World) -> Option<Vec3> {
         match self {
@@ -50,6 +65,28 @@ impl Pos {
                     best = world.get::<Transform>(e).map(|t| t.translation + *off);
                 }
                 best
+            }
+            Pos::Enter { door, area, inside } => {
+                let p = Pos::Player(Vec3::ZERO).resolve(world)?;
+                let q = Vec2::new(p.x, p.z);
+                let d = door.resolve(world)?;
+                let at_door = Vec2::new(d.x, d.z).distance(q) < 1.3;
+                if at_door || (q.cmpge(area.0).all() && q.cmple(area.1).all()) {
+                    inside.resolve(world)
+                } else {
+                    Some(d)
+                }
+            }
+            Pos::Leave { door, area, outside } => {
+                let p = Pos::Player(Vec3::ZERO).resolve(world)?;
+                let q = Vec2::new(p.x, p.z);
+                let d = door.resolve(world)?;
+                let at_door = Vec2::new(d.x, d.z).distance(q) < 1.3;
+                if !at_door && q.cmpge(area.0).all() && q.cmple(area.1).all() {
+                    Some(d)
+                } else {
+                    outside.resolve(world)
+                }
             }
             Pos::Interactable(id) => {
                 for e in world.iter_entities() {
@@ -310,6 +347,9 @@ pub struct StoryRunner {
     /// Closest distance to the target so far (stall detection, original's `_best`).
     pub stall_best: f32,
     pub stall_time: f32,
+    /// Scripted-walk progress watchdog (best distance, seconds without progress).
+    pub walk_best: f32,
+    pub walk_stall: f32,
 }
 
 impl StoryRunner {
@@ -401,7 +441,51 @@ pub(crate) fn run_story(world: &mut World) {
             Waiting::Until(f, _) => f(world),
             Waiting::Walk => {
                 let mut q = world.query::<&Player>();
-                q.iter(world).next().map(|p| p.is_arrived()).unwrap_or(true)
+                let arrived = q.iter(world).next().map(|p| p.is_arrived()).unwrap_or(true);
+                // Never soft-lock on a scripted walk: if something (a prop, the
+                // can he just set down …) blocks the path for 2.5 s, place him at the goal.
+                let left = {
+                    let mut q = world.query::<(&Player, &Transform)>();
+                    q.iter(world).next().and_then(|(p, t)| match p.drive {
+                        Drive::WalkTo { target, .. } => Some(target.distance(Vec2::new(t.translation.x, t.translation.z))),
+                        _ => None,
+                    })
+                };
+                let dt = world.resource::<Time>().delta_secs();
+                let stuck = {
+                    let mut r = world.resource_mut::<StoryRunner>();
+                    if r.wait_time <= dt * 1.5 {
+                        r.walk_best = f32::MAX;
+                        r.walk_stall = 0.0;
+                    }
+                    match left {
+                        Some(d) if d < r.walk_best - 0.05 => {
+                            r.walk_best = d;
+                            r.walk_stall = 0.0;
+                        }
+                        Some(_) => r.walk_stall += dt,
+                        None => {}
+                    }
+                    r.walk_stall > 2.5
+                };
+                if !arrived && stuck {
+                    let ground = world.get_resource::<super::planet::Terrain>().cloned();
+                    let mut q = world.query::<(&mut Player, &mut Transform)>();
+                    if let Some((mut pl, mut tf)) = q.iter_mut(world).next() {
+                        if let Drive::WalkTo { target, .. } = pl.drive {
+                            warn!("story: scripted walk blocked, placing the prince at {target}");
+                            tf.translation.x = target.x;
+                            tf.translation.z = target.y;
+                            if let Some(t) = ground {
+                                tf.translation.y = tf.translation.y.max(t.height(target.x, target.y));
+                            }
+                        }
+                        pl.drive = Drive::Player;
+                    }
+                    true
+                } else {
+                    arrived
+                }
             }
             Waiting::Sunset => world.resource::<Sky>().sunset_done(),
             Waiting::Departure => false,

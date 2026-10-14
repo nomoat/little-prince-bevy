@@ -131,6 +131,8 @@ impl Chapter for Vanity {
             TerrainMod::Paint { center: Vec2::new(0.0, -2.0), radius: 2.2, blend: 1.0, color: hex(0xc4ae86) },
         ];
         cx.planet(p);
+        // footsteps: the old theatre's wooden floor
+        cx.step_zone(Vec3::new(0.0, 2.0, (HALL_Z.0 + HALL_Z.1) * 0.5), Vec3::new(HALL_X, 3.0, (HALL_Z.1 - HALL_Z.0) * 0.5), "sfx.step_wood");
         let mut pal = SkyPalette::default();
         pal.day_horizon = hex(0xe9d9e6);
         pal.golden_horizon = hex(0xf5c7a0);

@@ -178,12 +178,50 @@ pub(crate) fn update_tracks(
     }
 }
 
+/// Per-surface footstep zones (boxes: centre, half extents, sfx key), set by
+/// chapters with [`super::chapter::ChapterCx::step_zone`]. Outside every zone
+/// the default `sfx.step` plays.
+#[derive(Resource, Default, Clone)]
+pub struct StepZones(pub Vec<(Vec3, Vec3, String)>);
+
 /// Footsteps from the player's stride.
-pub(crate) fn footsteps(q: Query<&Player>, mut out: MessageWriter<AudioCmd>) {
-    for p in &q {
+pub(crate) fn footsteps(q: Query<(&Player, &Transform)>, zones: Option<Res<StepZones>>, mut out: MessageWriter<AudioCmd>) {
+    for (p, tf) in &q {
         if p.footstep && p.grounded {
             let v = (p.planar_speed / 3.5).clamp(0.25, 0.8);
-            out.write(AudioCmd::Sfx("sfx.step".into(), v));
+            let pos = tf.translation;
+            let key = zones
+                .as_ref()
+                .and_then(|z| z.0.iter().find(|(c, h, _)| (pos - *c).abs().cmple(*h).all()).map(|z| z.2.clone()))
+                .unwrap_or_else(|| "sfx.step".into());
+            out.write(AudioCmd::Sfx(key, v));
         }
+    }
+}
+
+/// Small UI sounds so every player action is heard: a soft click when an
+/// interaction fires, a tick when a dialogue line is advanced by hand, and a
+/// low chime when the objective changes.
+pub(crate) fn feedback(
+    mut used: MessageReader<super::interact::Interacted>,
+    input: Res<super::input::InputFrame>,
+    hud: Res<super::ui::hud::Hud>,
+    mut last_obj: Local<Option<(Option<&'static str>, Option<&'static str>)>>,
+    mut out: MessageWriter<AudioCmd>,
+) {
+    if used.read().count() > 0 {
+        out.write(AudioCmd::Sfx("sfx.select".into(), 0.35));
+    }
+    if input.advance && hud.dialogue.is_some() {
+        out.write(AudioCmd::Sfx("sfx.tick".into(), 0.22));
+    }
+    let obj = hud.objective.as_ref().map(|o| (o.0, o.1));
+    if obj != *last_obj {
+        if let Some((_, Some(_))) = obj {
+            if last_obj.is_some() {
+                out.write(AudioCmd::Sfx("sfx.chime_low".into(), 0.3));
+            }
+        }
+        *last_obj = obj;
     }
 }

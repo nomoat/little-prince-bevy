@@ -153,7 +153,13 @@ fn pointer_over_ui(q: Query<&Hovered, With<Button>>, mut over: ResMut<PointerOve
 /// Scales the whole UI to the window (1280×720 reference), phone friendly.
 fn ui_scale(window: Query<&Window, With<PrimaryWindow>>, mut scale: ResMut<UiScale>) {
     if let Ok(w) = window.single() {
-        let s = (w.width() / 1280.0).min(w.height() / 720.0).clamp(0.55, 1.6);
+        let mut s = (w.width() / 1280.0).min(w.height() / 720.0).clamp(0.55, 1.6);
+        // Phones in landscape (~ 340–430 px tall): the pure fit gives ~0.5 and
+        // 9–13 px text. Text is read at arm's length there, so keep a floor;
+        // the HUD is anchored to the edges and still fits.
+        if w.height() < 520.0 && super::platform::is_touch_device() {
+            s = s.max(0.74);
+        }
         if (scale.0 - s).abs() > 0.01 {
             scale.0 = s;
         }

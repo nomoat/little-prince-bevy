@@ -64,6 +64,9 @@ pub fn build(cx: &mut ChapterCx) {
         },
     ];
     cx.planet(resolve_flattens(p));
+    // footsteps: carpet down the centre of the hall, stone elsewhere indoors
+    cx.step_zone(Vec3::new(0.0, 2.0, (Z0 + Z1) * 0.5), Vec3::new(0.75, 3.0, (Z1 - Z0) * 0.5), "sfx.step_carpet");
+    cx.step_zone(Vec3::new(0.0, 2.0, (Z0 + Z1) * 0.5), Vec3::new(HX, 3.0, (Z1 - Z0) * 0.5), "sfx.step_stone");
     // Late afternoon; the clock does not run here (no sunset mechanic on this planet).
     cx.sky(16.2, 0.0, None, SkyPalette::default());
     let fy = cx.ground(0.0, 3.2).y + 0.14; // floor top

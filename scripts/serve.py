@@ -50,5 +50,13 @@ class Handler(http.server.SimpleHTTPRequestHandler):
 
 if __name__ == '__main__':
     os.chdir(ROOT)
-    print(f'serving {os.path.abspath(ROOT)} on http://localhost:{PORT}/  (debug: ?chapter=b612&test=1&lang=en&free=1&map=1)')
+    print(f'serving {os.path.abspath(ROOT)} on http://localhost:{PORT}/  (debug: ?chapter=b612&test=1&lang=en&free=1&map=1)', flush=True)
+    try:  # the address a phone on the same Wi-Fi should open
+        import socket
+        s = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
+        s.connect(('10.255.255.255', 1))
+        print(f'phone on the same Wi-Fi: http://{s.getsockname()[0]}:{PORT}/', flush=True)
+        s.close()
+    except Exception:
+        pass
     http.server.ThreadingHTTPServer(('0.0.0.0', PORT), Handler).serve_forever()

@@ -266,7 +266,8 @@ fn spawn_hud(mut commands: Commands, font: Res<UiFont>) {
         .spawn((HudRoot, Name::new("HUD"), Node { width: percent(100), height: percent(100), position_type: PositionType::Absolute, ..default() }, Pickable::IGNORE, GlobalZIndex(10)))
         .with_children(|root| {
             // Objective (top-left)
-            root.spawn((ObjBox, Node { left: px(34), top: px(26), flex_direction: FlexDirection::Column, row_gap: px(4), max_width: px(520), ..abs_node() }, Pickable::IGNORE))
+            // (a soft dark backdrop keeps it readable over white walls and bright sky)
+            root.spawn((ObjBox, Node { left: px(22), top: px(18), flex_direction: FlexDirection::Column, row_gap: px(4), max_width: px(560), padding: UiRect::axes(px(14), px(9)), border_radius: BorderRadius::all(px(12)), ..abs_node() }, BackgroundColor(Color::srgba(0.03, 0.04, 0.12, 0.38)), Pickable::IGNORE))
                 .with_children(|b| {
                     b.spawn((HudSlot::ObjEvent, text_bundle(f, 17.0, theme::SOFT_GOLD)));
                     b.spawn((HudSlot::ObjStep, text_bundle(f, 24.0, theme::WHITE)));
@@ -772,11 +773,12 @@ fn draw_prompt(
     }
 }
 
-fn draw_fade(fade: Res<Fade>, mut q: Query<&mut BackgroundColor, With<FadeBox>>, mut t1: Query<(&mut Text, &mut TextColor), (With<FadeTitle>, Without<FadeSub>)>, mut t2: Query<(&mut Text, &mut TextColor), (With<FadeSub>, Without<FadeTitle>)>) {
+fn draw_fade(fade: Res<Fade>, hud: Res<Hud>, mut q: Query<&mut BackgroundColor, With<FadeBox>>, mut t1: Query<(&mut Text, &mut TextColor), (With<FadeTitle>, Without<FadeSub>)>, mut t2: Query<(&mut Text, &mut TextColor), (With<FadeSub>, Without<FadeTitle>)>) {
     if let Ok(mut bg) = q.single_mut() {
         bg.0 = theme::NIGHT.with_alpha(fade.alpha);
     }
-    let ta = ((fade.alpha - 0.6) / 0.4).clamp(0.0, 1.0);
+    // the loading title gives way to the chapter card (they share the centre)
+    let ta = if hud.card.is_some() { 0.0 } else { ((fade.alpha - 0.6) / 0.4).clamp(0.0, 1.0) };
     let show = ta > 0.02;
     if let Ok((mut t, mut c)) = t1.single_mut() {
         set_text(&mut t, if show { fade.text.as_deref().unwrap_or("") } else { "" });

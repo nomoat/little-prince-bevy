@@ -26,7 +26,7 @@ export PATH="$HOME/.cargo/bin:$PATH"   # 用 rustup 的 cargo（Homebrew 的 rus
 scripts/build_web.sh                   # 网页版 → dist/（默认 WebGL2，适合手机；wasm-opt -Oz）
 scripts/build_web.sh --webgpu          # 改用 WebGPU 渲染
 scripts/build_web.sh --fast            # 跳过 wasm-opt，用于快速迭代
-scripts/serve.sh 8080                  # 打开 http://localhost:8080/ （手机用电脑的局域网 IP）
+scripts/serve.sh 8080                  # 打开 http://localhost:8080/ ；启动时会打印手机可用的局域网地址
 
 cargo r                                # 原生桌面版
 cargo r -- --chapter king --test       # 原生：直接进章节并自动通关，结束后退出
@@ -114,7 +114,14 @@ LANG_EN=1 node run_web.mjs b612 king              # 同时跑英文
 FLOW=1 LANG_EN=1 node run_web.mjs                 # 完整流程：标题 → 旅程图 → 8 章 → 结局 → 标题
 node ui_web.mjs                                   # 真实输入测试
 SHOTS=title,map,ending node run_web.mjs           # 只截界面
+node play_web.mjs earth desk zh                   # 「玩家机器人」：只用真实键鼠输入、跟着目标标记玩一章（非测试模式，真实时长）
+node play_web.mjs bar phone en                    # 同上，手机横屏触屏（750×342）
+./play_all.sh phone zh "king bar" 600 2           # 批量跑；截图和时间线在 tests/out/play-<章>-<设备>-<语言>/
 ```
+
+`play_web.mjs` 不走自动通关，而是像玩家一样：对话时点屏幕，看到互动提示就按 E/互动键，
+有目标标记就朝标记走，被挡住就绕开、跳，教学卡提示 C 就鼓掌。它会记录每一步卡了多久，
+用来发现「玩家会卡住」的地方（例如路被挡、标记指向墙里、斜坡太陡）。
 
 `node ui_web.mjs` 用真实输入测试以下几项：
 

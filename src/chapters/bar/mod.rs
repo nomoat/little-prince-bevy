@@ -123,6 +123,8 @@ impl Chapter for Bar {
             TerrainMod::Paint { center: Vec2::new(T.x + 1.2, T.z - 9.0), radius: 1.0, blend: 1.0, color: hex(0x6b5e4a) },
         ];
         cx.planet(p);
+        // footsteps: the tavern's boards (hall, stairs, upstairs)
+        cx.step_zone(T + Vec3::new(0.0, 3.0, 3.4), Vec3::new(4.0, 6.0, 3.0), "sfx.step_wood");
         let pal = SkyPalette {
             night_zenith: hex(0x0a1030),
             night_horizon: hex(0x22305a),
@@ -155,6 +157,8 @@ impl Chapter for Bar {
         let seat = cx.empty(l(CHAIR.x, HIGH_SEAT, CHAIR.y), 0.0);
         cx.interactable(seat, Interactable::new("guest_chair", "bar.verb.sit").radius(1.4).prompt_height(0.7).any_facing());
         cx.anchor("guest_chair", l(CHAIR.x, 0.0, CHAIR.y), 0.0);
+        // just outside the front door: the marker leads here before the chair
+        cx.anchor("front_door_out", l(0.0, 0.0, -1.1), 0.0);
         let dc = cx.model("model.bar.chair", l(DRINKER.x, 0.0, DRINKER.y + 0.05), 180.0, 1.0);
         cx.collider(dc, Collider::cuboid(Vec3::new(0.6, 0.6, 0.6)).not_walkable().no_camera());
         let dr = cx.model("model.bar.drinker", l(DRINKER.x, 0.0, DRINKER.y), 180.0, 1.0);
@@ -209,7 +213,10 @@ impl Chapter for Bar {
                 run(|w: &mut World| end_shot_to(w, Some(-8.0), Some(14.0), 1.6)),
                 narrate(&["bar.n1"]),
                 start_event(0),
-                target(Pos::anchor("guest_chair"), "bar.target.drinker"),
+                target(
+                    Pos::enter(Pos::anchor("front_door_out"), Vec2::new(T.x - 4.0, T.z + 0.3), Vec2::new(T.x + 4.0, T.z + 6.4), Pos::anchor("guest_chair")),
+                    "bar.target.drinker",
+                ),
                 // sitting on the guest chair starts the scene (no talk prompt)
                 wait_flag(
                     "b_seated",

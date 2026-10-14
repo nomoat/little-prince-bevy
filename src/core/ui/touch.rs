@@ -54,6 +54,7 @@ fn update(
     scale: Res<UiScale>,
     focus: Res<InteractFocus>,
     i18n: Res<I18n>,
+    hud: Res<super::hud::Hud>,
     mut root: Query<&mut Node, (With<TouchRoot>, Without<JoyBase>, Without<JoyKnob>, Without<TouchBtn>)>,
     mut base: Query<&mut Node, (With<JoyBase>, Without<TouchRoot>, Without<JoyKnob>, Without<TouchBtn>)>,
     mut knob: Query<&mut Node, (With<JoyKnob>, Without<TouchRoot>, Without<JoyBase>, Without<TouchBtn>)>,
@@ -68,14 +69,19 @@ fn update(
         return;
     }
     let s = scale.0.max(0.01);
+    // while a line is on screen the stick and jump would sit on top of the
+    // dialogue box: hide them (a tap anywhere / the interact button advances)
+    let talking = hud.dialogue.is_some() || hud.choice.is_some() || hud.card.is_some();
     let joy_on = touch.joy_touch.is_some();
     let origin = if joy_on { touch.joy_origin } else { Vec2::new(130.0 * s, touch.screen.y - 130.0 * s) };
     let kpos = if joy_on { touch.joy_pos } else { origin };
     if let Ok(mut n) = base.single_mut() {
+        n.display = if talking { Display::None } else { Display::Flex };
         n.left = px(origin.x / s - JOY_RADIUS);
         n.top = px(origin.y / s - JOY_RADIUS);
     }
     if let Ok(mut n) = knob.single_mut() {
+        n.display = if talking { Display::None } else { Display::Flex };
         let d = (kpos - origin).clamp_length_max(JOY_RADIUS * s * 1.4);
         let p = origin + d;
         n.left = px(p.x / s - 26.0);
@@ -89,7 +95,10 @@ fn update(
         n.width = px(r * 2.0 / s);
         n.height = px(r * 2.0 / s);
         if b.0 == 2 {
-            n.display = if touch.action2_label.is_some() { Display::Flex } else { Display::None };
+            n.display = if touch.action2_label.is_some() && !talking { Display::Flex } else { Display::None };
+        }
+        if b.0 == 1 {
+            n.display = if talking { Display::None } else { Display::Flex };
         }
         let active = b.0 == 0 && focus.entity.is_some();
         bg.0 = if touch.held[b.0] {
@@ -105,7 +114,7 @@ fn update(
             0 => focus.prompt.as_ref().map(|k| i18n.t(k).to_string()).unwrap_or_else(|| i18n.t("core.teach.interact").to_string()),
             1 => i18n.t("core.teach.jump").to_string(),
             2 => touch.action2_label.map(|k| i18n.t(k).to_string()).unwrap_or_default(),
-            4 => i18n.t("core.tab_hint").to_string(),
+            4 => i18n.t("core.tasks_short").to_string(),
             _ => continue,
         };
         if t.0 != s {

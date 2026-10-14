@@ -201,6 +201,7 @@ pub(crate) fn enter_chapter(world: &mut World) {
     // Every chapter starts from the default camera tuning (chapters that
     // change it in `build` do so after this).
     world.insert_resource(CameraTuning::default());
+    world.insert_resource(super::audio::StepZones::default());
     let tuning = CameraTuning::default();
     world.resource_mut::<CameraRig>().reset(&tuning);
     *world.resource_mut::<super::player::PlayerTuning>() = super::player::PlayerTuning::default();
@@ -273,7 +274,10 @@ pub(crate) fn departure(
         hold.progress = 0.0;
         return;
     }
-    let holding = input.interact_held && focus.entity.is_none() && hud.dialogue.is_none();
+    // not while the prince is busy (sitting, looking through a telescope …):
+    // E belongs to that activity then
+    let free = player.single().map(|(p, _)| matches!(p.drive, Drive::Player)).unwrap_or(true);
+    let holding = input.interact_held && focus.entity.is_none() && hud.dialogue.is_none() && free;
     if holding {
         hold.progress = (hold.progress + dt / DEPART_HOLD_SECONDS).min(1.0);
     } else {

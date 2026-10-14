@@ -440,13 +440,16 @@ pub(crate) fn apply_sky(
         let col = mix_color(p.sun_day, p.sun_dusk, sky.dusk);
         let moon = hex(0x8fa4d8);
         l.color = mix_color(moon, col, sun_up);
-        l.illuminance = (600.0 + 9400.0 * sun_up * (0.5 + 0.5 * (1.0 - sky.dusk))) * sky.sun_intensity_scale;
+        // a moon bright enough to read the prince by at night (was 600 lx: he
+        // vanished against the bar's dark hill)
+        l.illuminance = (600.0 + 900.0 * night * (1.0 - sun_up) + 9400.0 * sun_up * (0.5 + 0.5 * (1.0 - sky.dusk))) * sky.sun_intensity_scale;
         let dir = if sun_up > 0.02 { sun_dir } else { Vec3::new(-sun_dir.x, 0.6, -sun_dir.z).normalize() };
         let dir = Vec3::new(dir.x, dir.y.max(0.12), dir.z).normalize();
         *lt = Transform::from_translation(dir * 50.0).looking_at(Vec3::ZERO, Vec3::Y);
     }
-    ambient.color = mix_color(h, z, 0.5);
-    ambient.brightness = 220.0 + 380.0 * (1.0 - night);
+    // night ambient keeps a cool moon tint instead of the near-black sky colour
+    ambient.color = mix_color(mix_color(h, z, 0.5), hex(0x7080b8), night * 0.65);
+    ambient.brightness = 220.0 + 380.0 * (1.0 - night) + 120.0 * night;
     clear.0 = h;
     for mut f in &mut fog {
         f.color = mix_color(h, z, 0.15).with_alpha(1.0);

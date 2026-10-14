@@ -28,10 +28,10 @@ pub const V_BRIDGE: Vec2 = Vec2::new(3.3, 11.2);
 pub const V_BOARD: Vec2 = Vec2::new(10.2, 31.9);
 pub const V_RAIL_Z: f32 = 33.3;
 /// Garden walls: x ∈ [GX0, GX1], z ∈ [GZ0, GZ1].
-const GX0: f32 = -9.0;
-const GX1: f32 = 2.0;
-const GZ0: f32 = 1.0;
-const GZ1: f32 = 10.0;
+pub const GX0: f32 = -9.0;
+pub const GX1: f32 = 2.0;
+pub const GZ0: f32 = 1.0;
+pub const GZ1: f32 = 10.0;
 /// The stream runs along x + z = STREAM_C.
 const STREAM_C: f32 = 14.5;
 
@@ -347,8 +347,14 @@ pub fn build_valley(cx: &mut ChapterCx) {
     wall_run(cx, "model.earth.hedge", Vec2::new(GX1, 8.0), Vec2::new(GX1, GZ1), 1.0, 0.6);
     let gp = cx.ground(GX0, 4.6);
     cx.model("model.earth.gate", gp, 90.0, 1.0);
+    // just outside the gate: the objective marker leads here first (Pos::enter)
+    let gw = cx.ground(GX0 - 1.2, 4.6);
+    cx.anchor("garden_gate", gw, 90.0);
     let ap = cx.ground(GX1, 7.0);
     cx.model("model.earth.arch", ap, 90.0, 1.0);
+    // just outside the back arch: the way on to the fox (Pos::leave)
+    let aw = cx.ground(GX1 + 1.2, 7.0);
+    cx.anchor("garden_arch", aw, 90.0);
     let fpos = cx.ground(V_FOUNTAIN.x, V_FOUNTAIN.y);
     let f = cx.model("model.earth.fountain", fpos, 0.0, 1.0);
     cx.collider(f, Collider::cylinder(1.05, 0.5));
@@ -597,6 +603,9 @@ pub fn build_dunes(cx: &mut ChapterCx) {
     p.mods = mods;
     resolve_flats(&mut p);
     cx.planet(p);
+    // footsteps: the stone slabs of the sacred way, soft sand everywhere else
+    cx.step_zone(Vec3::new(84.0, 2.0, 53.5), Vec3::new(10.0, 4.0, 4.5), "sfx.step_stone");
+    cx.step_zone(Vec3::new(47.5, 5.0, 57.5), Vec3::new(70.0, 40.0, 40.0), "sfx.step_snow");
     let mut pal = SkyPalette::default();
     pal.day_horizon = hex(0xf0dcbc);
     pal.day_zenith = hex(0x5c8ed0);

@@ -150,6 +150,7 @@ pub const CORE_STRINGS: StringTable = &[
     ("core.continue", "继续", "Continue"),
     ("core.hold", "按住", "Hold"),
     ("core.tab_hint", "查看任务", "Tasks"),
+    ("core.tasks_short", "任务", "Tasks"),
     ("core.events", "本章", "This chapter"),
     // Tutorial
     ("core.teach.move", "移动", "Move"),

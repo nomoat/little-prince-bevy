@@ -167,7 +167,7 @@ pub fn build_app(app: &mut App) {
         .add_systems(Update, camera::update_camera.in_set(CoreSet::Camera))
         .add_systems(
             Update,
-            (sky::tick_sky_clock, sky::apply_sky, player::animate_prince, audio::handle_audio, audio::update_tracks, audio::footsteps).chain().in_set(CoreSet::Presentation),
+            (sky::tick_sky_clock, sky::apply_sky, player::animate_prince, audio::handle_audio, audio::update_tracks, audio::footsteps, audio::feedback, player::prince_fill).chain().in_set(CoreSet::Presentation),
         );
 }
 

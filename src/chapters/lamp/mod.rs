@@ -129,6 +129,8 @@ impl Chapter for Lamp {
             TerrainMod::Paint { center: Vec2::new(0.2, 4.6), radius: 1.2, blend: 1.0, color: hex(0x8e8a78) },
         ];
         cx.planet(p);
+        // footsteps: bare rock all over the little island
+        cx.step_zone(Vec3::new(0.0, 2.0, -1.4), Vec3::new(6.0, 8.0, 9.0), "sfx.step_stone");
         // the sky is driven by the one-minute day clock (day.rs)
         let pal = SkyPalette {
             dusk_horizon: hex(0xff8a4c),

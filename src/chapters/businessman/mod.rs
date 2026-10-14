@@ -136,6 +136,9 @@ impl Chapter for Businessman {
             TerrainMod::Paint { center: Vec2::ZERO, radius: 4.0, blend: 0.6, color: hex(0x6e6a64) },
         ];
         cx.planet(p);
+        // footsteps: star rug in the middle of the round room, boards round it
+        cx.step_zone(Vec3::new(0.0, 1.2, 0.0), Vec3::new(1.4, 1.5, 1.4), "sfx.step_carpet");
+        cx.step_zone(Vec3::new(0.0, 1.2, 0.0), Vec3::new(3.3, 1.5, 3.3), "sfx.step_wood");
         // night: the sun far below the horizon, time frozen
         let pal = SkyPalette {
             night_zenith: hex(0x05081c),

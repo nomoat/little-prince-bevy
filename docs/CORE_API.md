@@ -64,6 +64,7 @@ fn build(&self, cx: &mut ChapterCx) {
     cx.planet(p);                                    // domed terrain + rim + Terrain resource
     cx.sky(10.5, 0.5, Some(16.5), SkyPalette::default()); // hour, sun-hours/min, free-play cap
     cx.ambience("amb.wind");
+    cx.step_zone(center, half_extents, "sfx.step_wood"); // footsteps inside this box (first match wins)
 
     let at = cx.ground(0.0, 5.0);                    // ground point; cx.polar(angle_deg, r) too
     let king = cx.model("model.king.king", at, 180.0, 1.0);   // manifest key, pos, yaw°, scale
@@ -155,7 +156,9 @@ Wave/Reach/Clap/LookUp/Carry/None), shot(from, look, blend) / end_shot, set_hour
 wait_sunset, Cmd::TimeRate(h_per_min, cap), music / ambience / sfx, run, test_only,
 departure, leave, end`.
 
-`Pos`: `Pos::anchor("name")`, `Pos::World(v)`, `Pos::Player(offset)`, `Pos::Interactable(id)`.
+`Pos`: `Pos::anchor("name")`, `Pos::World(v)`, `Pos::Player(offset)`, `Pos::Interactable(id)`,
+`Pos::enter(door, area_min, area_max, inside)` — for a target behind walls: the marker points at `door` until
+the player is at the door (1.3 m) or inside the XZ box, then at `inside` (earth's rose garden, the tavern chair).
 
 Speakers: `speakers::{PRINCE, ROSE, KING, VAIN_MAN, DRINKER, MERCHANT, LAMPLIGHTER,
 GEOGRAPHER, NARRATOR}`; make your own with `pub const FOX: Speaker = Speaker::new("earth.fox",
@@ -229,3 +232,14 @@ node tests/ui_web.mjs                  # real input: touch (phone emulation), ke
 - Keep your interactable ids, anchors, flags and asset keys prefixed or chapter-local.
 - Use your own `CARGO_TARGET_DIR=target-<id>`; `cargo c`, `cargo cw` (wasm check) aliases add
   `--ignore-rust-version` (required with the installed 1.95 toolchain).
+
+## 11. Playtest aids
+
+- **Pads must stay walkable.** `Flatten` rings that meet the dome too steeply are widened automatically
+  (`Terrain::soften_pads`, ring width ≥ 2.8 × the height step, ≈ 28°). `?slopes=1` (and debug builds) log any
+  ground steeper than 36° inside the walkable disc. B612 also has a unit test (`walkable_slopes`).
+- **Strings:** `cargo test strings_complete` checks every key has zh + en and that every `"<id>.l.…"`-style
+  literal used by a chapter exists.
+- **Player bot:** `node tests/play_web.mjs <chapter> desk|phone zh|en` plays with real keyboard / touch input,
+  steering by the objective marker (`?probe=` now includes the story wait, marker, focus, objective, teach card).
+  `tests/play_all.sh` runs several. Screenshots and a timeline land in `tests/out/play-<chapter>-<mode>-<lang>/`.

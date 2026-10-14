@@ -150,7 +150,15 @@ pub fn story() -> Story {
         Cmd::HiddenPending,
         // ================================================= V2 roses (leg)
         start_event(1),
-        target(Pos::anchor("garden"), "earth.tg.garden"),
+        target(
+            Pos::enter(
+                Pos::anchor("garden_gate"),
+                Vec2::new(super::world::GX0, super::world::GZ0),
+                Vec2::new(super::world::GX1, super::world::GZ1),
+                Pos::anchor("garden"),
+            ),
+            "earth.tg.garden",
+        ),
         run(|w: &mut World| set_leg(w, Leg::Roses)),
         enable("roses"),
         test_only(|w: &mut World| {
@@ -238,7 +246,15 @@ pub fn story() -> Story {
         flag("stage_fox"),
         complete_event(1),
         start_event(2),
-        target(Pos::anchor("fox_tree"), "earth.tg.fox"),
+        target(
+            Pos::leave(
+                Pos::anchor("garden_arch"),
+                Vec2::new(super::world::GX0, super::world::GZ0),
+                Vec2::new(super::world::GX1, super::world::GZ1),
+                Pos::anchor("fox_tree"),
+            ),
+            "earth.tg.fox",
+        ),
         run(|w: &mut World| set_leg(w, Leg::Fox)),
         enable("fox"),
         goto("w_dispatch"),

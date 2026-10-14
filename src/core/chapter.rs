@@ -99,6 +99,26 @@ impl<'w> ChapterCx<'w> {
     /// Creates the domed-terrain planet (ground + rim meshes, Terrain resource).
     pub fn planet(&mut self, params: PlanetParams) -> &Terrain {
         let terrain = Terrain::new(params);
+        // Playtest aid: report ground the prince cannot climb (> slope limit) inside the walkable disc.
+        if cfg!(debug_assertions) || self.world.resource::<super::params::LaunchParams>().get("slopes").is_some() {
+            let r = terrain.params.walk_radius * 0.93;
+            let mut steep = Vec::new();
+            let mut x = -r;
+            while x <= r {
+                let mut z = -r;
+                while z <= r {
+                    if x * x + z * z < r * r {
+                        let s = terrain.slope_deg(x, z);
+                        if s > 36.0 { steep.push(format!("{s:.0}°@({x:.1},{z:.1})")); }
+                    }
+                    z += 0.5;
+                }
+                x += 0.5;
+            }
+            if !steep.is_empty() {
+                warn!("terrain: {} steep cells (>36°) inside the walkable disc: {}", steep.len(), steep.iter().take(40).cloned().collect::<Vec<_>>().join(" "));
+            }
+        }
         let (top, rim) = terrain.build_meshes();
         let tex = terrain.params.ground_texture.clone();
         let shared = self.world.resource::<super::models::SharedMaterials>().clone();
@@ -229,6 +249,13 @@ impl<'w> ChapterCx<'w> {
     pub fn music(&mut self, key: &str) {
         self.world.write_message(super::audio::AudioCmd::Music(Some(key.to_string())));
     }
+    /// Footsteps inside this box (centre, half extents) use `key`
+    /// (`sfx.step_wood`, `sfx.step_stone`, `sfx.step_carpet`, `sfx.step_snow`).
+    /// Earlier zones win, so add small rugs before the floor around them.
+    pub fn step_zone(&mut self, center: Vec3, half: Vec3, key: &str) {
+        self.world.get_resource_or_insert_with(super::audio::StepZones::default).0.push((center, half, key.to_string()));
+    }
+
     pub fn ambience(&mut self, key: &str) {
         self.world.write_message(super::audio::AudioCmd::Ambience(Some(key.to_string())));
     }

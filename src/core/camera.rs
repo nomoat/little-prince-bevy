@@ -222,16 +222,17 @@ pub(crate) fn update_camera(
     if let Some(shot) = rig.shot.clone() {
         rig.shot_t = (rig.shot_t + dt / shot.blend.max(0.01)).min(1.0);
         let k = ease(rig.shot_t);
-        desired_pos = rig.shot_from.0.lerp(shot.position, k);
         look = rig.shot_from.1.lerp(shot.look_at, k);
+        desired_pos = orbit_blend(rig.shot_from, (shot.position, shot.look_at), k, look);
         if let Some(f) = shot.fov {
             fov = tu.fov + (f - tu.fov) * k;
         }
     } else if rig.release_t > 0.0 {
         rig.release_t = (rig.release_t - dt / rig.shot_t.max(0.01)).max(0.0);
         let k = ease(rig.release_t);
-        desired_pos = desired_pos.lerp(rig.shot_from.0, k);
+        let to = (desired_pos, look);
         look = look.lerp(rig.shot_from.1, k);
+        desired_pos = orbit_blend(to, rig.shot_from, k, look);
     }
     rig.last_pos = desired_pos;
     rig.last_look = look;
@@ -239,6 +240,26 @@ pub(crate) fn update_camera(
     if let Projection::Perspective(p) = &mut *proj {
         p.fov = fov.to_radians();
     }
+}
+
+/// Blends two camera placements (position, look-at) by orbiting around the
+/// blended look point (yaw / pitch / distance), so a blend from the front of the
+/// prince to behind him swings around him instead of passing through his head.
+fn orbit_blend(a: (Vec3, Vec3), b: (Vec3, Vec3), k: f32, look: Vec3) -> Vec3 {
+    let (oa, ob) = (a.0 - a.1, b.0 - b.1);
+    let (da, db) = (oa.length(), ob.length());
+    if da < 1e-3 || db < 1e-3 {
+        return a.0.lerp(b.0, k);
+    }
+    let sph = |o: Vec3, d: f32| (o.x.atan2(o.z), (o.y / d).clamp(-1.0, 1.0).asin());
+    let (ya, pa) = sph(oa, da);
+    let (yb, pb) = sph(ob, db);
+    let mut dy = (yb - ya).rem_euclid(std::f32::consts::TAU);
+    if dy > std::f32::consts::PI {
+        dy -= std::f32::consts::TAU;
+    }
+    let (y, p, d) = (ya + dy * k, pa + (pb - pa) * k, da + (db - da) * k);
+    look + Vec3::new(y.sin() * p.cos(), p.sin(), y.cos() * p.cos()) * d
 }
 
 fn ease(t: f32) -> f32 {
