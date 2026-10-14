@@ -1,0 +1,14 @@
+# Bevy 0.20's shader crates (wesl / wgsl-*) declare rust-version 1.97 but build
+# fine on the installed 1.95 toolchain, so every cargo command needs
+# --ignore-rust-version. These aliases add it:
+#   cargo c   -> check (native)        cargo cw  -> check (wasm32)
+#   cargo b   -> build (native)        cargo r   -> run (native)
+[alias]
+c = "check --ignore-rust-version"
+cw = "check --ignore-rust-version --target wasm32-unknown-unknown"
+b = "build --ignore-rust-version"
+r = "run --ignore-rust-version"
+
+[target.wasm32-unknown-unknown]
+# getrandom (via bevy deps) needs the wasm_js backend selected on the web.
+rustflags = ['--cfg', 'getrandom_backend="wasm_js"']

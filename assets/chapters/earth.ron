@@ -1,0 +1,9 @@
+#![enable(implicit_some)]
+// Asset keys of chapter "earth" (edited only by that chapter). Same format as
+// assets/manifest.ron; see docs/ASSETS.md.
+(
+  entries: {
+    "music.earth": (procedural: "pad_desert", volume: 0.7, looped: true),
+    "model.earth.npc": (procedural: "earth.npc", note: "placeholder resident"),
+  },
+)

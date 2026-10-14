@@ -1,0 +1,103 @@
+[package]
+name = "little_prince"
+version = "0.1.0"
+edition = "2024"
+description = "小王子：星辰之旅 — a code-driven Bevy rebuild"
+license = "MIT"
+
+[lib]
+path = "src/lib.rs"
+
+[[bin]]
+name = "little_prince"
+path = "src/main.rs"
+
+[features]
+default = ["webgl2"]
+# Rendering backend for wasm builds. Native ignores both.
+webgl2 = ["bevy/webgl2"]
+webgpu = ["bevy/webgpu"]
+# Readable system/component names in ECS errors (dev only).
+dev = ["bevy/debug"]
+
+[dependencies]
+bevy = { version = "0.20", default-features = false, features = [
+    # app / platform
+    "std",
+    "async_executor",
+    "multi_threaded",
+    "bevy_asset",
+    "bevy_log",
+    "bevy_state",
+    # glTF scenes are spawned through reflection: every component type in a
+    # scene must be registered, so keep automatic registration on.
+    "reflect_auto_register",
+    "bevy_winit",
+    "bevy_window",
+    # rendering (3D)
+    "bevy_render",
+    "bevy_core_pipeline",
+    "bevy_pbr",
+    "bevy_light",
+    "bevy_camera",
+    "bevy_color",
+    "bevy_image",
+    "bevy_mesh",
+    "bevy_shader",
+    "bevy_material",
+    "png",
+    "jpeg",
+    # glTF models (+ skeletal animation for replacement characters)
+    "bevy_gltf",
+    "bevy_animation",
+    "gltf_animation",
+    # UI + text
+    "bevy_text",
+    "bevy_ui",
+    "bevy_ui_render",
+    "bevy_ui_widgets",
+    "bevy_input_focus",
+    "bevy_picking",
+    "ui_picking",
+    # audio
+    "bevy_audio",
+    "vorbis",
+    "wav",
+    # input
+    "keyboard",
+    "mouse",
+    "touch",
+    "gestures",
+] }
+serde = { version = "1", features = ["derive"] }
+ron = "0.12"
+
+[target.'cfg(target_arch = "wasm32")'.dependencies]
+wasm-bindgen = "=0.2.129"
+js-sys = "0.3"
+web-sys = { version = "0.3", features = ["Window", "Location", "Storage", "Document", "Element", "HtmlElement", "Navigator", "console", "MediaQueryList", "CssStyleDeclaration"] }
+console_error_panic_hook = "0.1"
+
+[profile.dev]
+opt-level = 1
+
+[profile.dev.package."*"]
+opt-level = 3
+# Silences ICU4X debug-only eprintln spam about CJK word segmentation.
+debug-assertions = false
+
+[profile.release]
+opt-level = "s"
+lto = "fat"
+codegen-units = 1
+strip = true
+panic = "abort"
+
+[profile.web-release]
+inherits = "release"
+opt-level = "z"
+
+# Size analysis build (keeps symbol names for twiggy).
+[profile.web-profile]
+inherits = "web-release"
+strip = false

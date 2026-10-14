@@ -1,0 +1,15 @@
+# Asset credits
+
+All third-party assets are CC0 (public domain) except the UI font (SIL OFL 1.1).
+Everything else (planets, characters, props, sky, music pads, many sound effects) is
+generated procedurally by the game's own code.
+
+| Asset | Files | Source | License |
+|---|---|---|---|
+| Kenney — Nature Kit 2.1 | `models/nature/*.glb` | https://kenney.nl/assets/nature-kit | CC0 1.0 |
+| Kenney — Impact Sounds | `audio/sfx/footstep_*.ogg`, `audio/sfx/impact*.ogg` | https://kenney.nl/assets/impact-sounds | CC0 1.0 |
+| Kenney — Interface Sounds | `audio/sfx/{click,select,confirmation,open,close,back,tick,toggle,drop,glass,pluck,maximize,question}_*.ogg` | https://kenney.nl/assets/interface-sounds | CC0 1.0 |
+| Kenney — Music Jingles | `audio/jingles/*.ogg` | https://kenney.nl/assets/music-jingles | CC0 1.0 |
+| LXGW WenKai 霞鹜文楷 v1.522 (subset) | `fonts/ui.ttf` | https://github.com/lxgw/LxgwWenKai | SIL Open Font License 1.1 |
+
+Downloaded by `scripts/fetch_assets.sh`. Crediting Kenney is optional under CC0 but appreciated.

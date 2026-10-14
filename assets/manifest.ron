@@ -1,0 +1,92 @@
+#![enable(implicit_some)]
+// Core asset manifest. Every model / sound / music / texture / font is looked
+// up by KEY. To replace something, point `path` at your file under assets/
+// (glb/gltf, ogg/wav, png/jpg, ttf). With no `path` (or if the file fails to
+// load) the `procedural` generator is used. See docs/ASSETS.md.
+// Chapter-specific keys live in assets/chapters/<id>.ron.
+(
+  entries: {
+    // ---------------------------------------------------------------- font
+    "font.ui": (path: "fonts/ui.ttf", note: "UI font (CJK). LXGW WenKai, SIL OFL 1.1, subset by scripts/subset_font.sh"),
+
+    // -------------------------------------------------------------- prince
+    // Set `path` to a .glb to replace the procedural prince. Optional clip
+    // names for idle / walk / run / jump in `anims`.
+    "model.prince": (procedural: "prince", note: "player character, ~1.2 m tall, faces +Z"),
+
+    // ----------------------------------------------- shared props (core)
+    "model.rock": (path: "models/nature/rock_smallA.glb", procedural: "rock", scale: 1.6),
+    "model.rock_small": (path: "models/nature/rock_smallB.glb", procedural: "rock_small"),
+    "model.rock_large": (path: "models/nature/rock_largeA.glb", procedural: "rock"),
+    "model.stone_tall": (path: "models/nature/stone_tallA.glb", procedural: "rock"),
+    "model.tree": (path: "models/nature/tree_default.glb", procedural: "tree", scale: 1.6),
+    "model.tree_oak": (path: "models/nature/tree_oak.glb", procedural: "tree", scale: 1.6),
+    "model.tree_pine": (path: "models/nature/tree_pineDefaultA.glb", procedural: "tree", scale: 1.6),
+    "model.palm": (path: "models/nature/tree_palmTall.glb", procedural: "tree", scale: 1.6),
+    "model.bush": (path: "models/nature/plant_bush.glb", procedural: "bush"),
+    "model.grass_tuft": (procedural: "grass_tuft"),
+    "model.grass": (path: "models/nature/grass.glb", procedural: "grass_tuft"),
+    "model.flower": (procedural: "flower"),
+    "model.flower_red": (path: "models/nature/flower_redA.glb", procedural: "flower"),
+    "model.flower_yellow": (path: "models/nature/flower_yellowA.glb", procedural: "flower"),
+    "model.flower_purple": (path: "models/nature/flower_purpleA.glb", procedural: "flower"),
+    "model.mushroom": (path: "models/nature/mushroom_red.glb", procedural: "flower"),
+    "model.cactus": (path: "models/nature/cactus_tall.glb", procedural: "bush"),
+    "model.log": (path: "models/nature/log.glb", procedural: "rock_small"),
+    "model.stump": (path: "models/nature/stump_round.glb", procedural: "rock_small"),
+    "model.fence": (path: "models/nature/fence_simple.glb", procedural: "placeholder"),
+    "model.sign": (path: "models/nature/sign.glb", procedural: "placeholder"),
+    "model.campfire": (path: "models/nature/campfire_stones.glb", procedural: "rock_small"),
+    "model.tent": (path: "models/nature/tent_detailedOpen.glb", procedural: "placeholder"),
+    "model.pot": (path: "models/nature/pot_large.glb", procedural: "placeholder"),
+    "model.statue_column": (path: "models/nature/statue_column.glb", procedural: "placeholder"),
+    "model.chair": (procedural: "chair"),
+    "model.lamp_post": (procedural: "lamp_post"),
+    "model.npc": (procedural: "npc_generic"),
+
+    // --------------------------------------------------------------- sound
+    "sfx.step": (variants: ["audio/sfx/footstep_grass_000.ogg", "audio/sfx/footstep_grass_001.ogg", "audio/sfx/footstep_grass_002.ogg", "audio/sfx/footstep_grass_003.ogg", "audio/sfx/footstep_grass_004.ogg"], procedural: "step", volume: 0.5),
+    "sfx.step_wood": (variants: ["audio/sfx/footstep_wood_000.ogg", "audio/sfx/footstep_wood_001.ogg", "audio/sfx/footstep_wood_002.ogg"], procedural: "step", volume: 0.5),
+    "sfx.step_snow": (variants: ["audio/sfx/footstep_snow_000.ogg", "audio/sfx/footstep_snow_001.ogg"], procedural: "step_soft", volume: 0.5),
+    "sfx.step_stone": (variants: ["audio/sfx/footstep_concrete_000.ogg", "audio/sfx/footstep_concrete_001.ogg"], procedural: "step", volume: 0.5),
+    "sfx.step_carpet": (variants: ["audio/sfx/footstep_carpet_000.ogg", "audio/sfx/footstep_carpet_001.ogg"], procedural: "step_soft", volume: 0.5),
+    "sfx.click": (path: "audio/sfx/click_001.ogg", procedural: "click", volume: 0.6),
+    "sfx.tick": (path: "audio/sfx/tick_001.ogg", procedural: "tick"),
+    "sfx.select": (path: "audio/sfx/select_001.ogg", procedural: "click"),
+    "sfx.open": (path: "audio/sfx/open_001.ogg", procedural: "whoosh"),
+    "sfx.close": (path: "audio/sfx/close_001.ogg", procedural: "whoosh"),
+    "sfx.found": (path: "audio/sfx/confirmation_001.ogg", procedural: "found"),
+    "sfx.banner": (path: "audio/sfx/confirmation_002.ogg", procedural: "banner", volume: 0.7),
+    "sfx.depart": (path: "audio/sfx/maximize_001.ogg", procedural: "depart"),
+    "sfx.chime": (procedural: "chime"),
+    "sfx.chime_low": (procedural: "chime_low"),
+    "sfx.bell": (path: "audio/sfx/impactBell_heavy_000.ogg", procedural: "bell"),
+    "sfx.glass": (path: "audio/sfx/impactGlass_light_000.ogg", procedural: "chime"),
+    "sfx.wood": (path: "audio/sfx/impactWood_light_000.ogg", procedural: "click"),
+    "sfx.plank": (path: "audio/sfx/impactPlank_medium_000.ogg", procedural: "click"),
+    "sfx.soft": (path: "audio/sfx/impactSoft_medium_000.ogg", procedural: "step"),
+    "sfx.metal": (path: "audio/sfx/impactMetal_light_000.ogg", procedural: "tick"),
+    "sfx.tin": (path: "audio/sfx/impactTin_medium_000.ogg", procedural: "tick"),
+    "sfx.drop": (path: "audio/sfx/drop_001.ogg", procedural: "pop"),
+    "sfx.pluck": (path: "audio/sfx/pluck_001.ogg", procedural: "pop"),
+    "sfx.pop": (procedural: "pop"),
+    "sfx.whoosh": (procedural: "whoosh"),
+    "sfx.sparkle": (procedural: "sparkle"),
+    "sfx.water": (procedural: "water"),
+    "sfx.clap": (procedural: "clap"),
+    "sfx.creak": (procedural: "creak"),
+    "sfx.question": (path: "audio/sfx/question_001.ogg", procedural: "chime"),
+    "sfx.jingle": (path: "audio/jingles/jingles_STEEL00.ogg", procedural: "sparkle"),
+
+    // --------------------------------------------------------------- music
+    // Music has no CC0 files yet: synthesized pads. Drop an .ogg in
+    // assets/audio/music/ and set `path` to use your own.
+    "music.title": (procedural: "pad_title", volume: 0.8, looped: true),
+    "music.map": (procedural: "pad_wonder", volume: 0.7, looped: true),
+    "music.ending": (procedural: "pad_ending", volume: 0.8, looped: true),
+
+    // ------------------------------------------------------------ ambience
+    "amb.wind": (procedural: "wind", volume: 0.35, looped: true),
+    "amb.night": (procedural: "night", volume: 0.4, looped: true),
+  },
+)

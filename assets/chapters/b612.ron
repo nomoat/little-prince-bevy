@@ -1,0 +1,12 @@
+#![enable(implicit_some)]
+// Asset keys of chapter "b612" (edited only by that chapter). Same format as
+// assets/manifest.ron; see docs/ASSETS.md.
+(
+  entries: {
+    "music.b612": (procedural: "pad_home", volume: 0.7, looped: true),
+    "model.b612.rose": (procedural: "b612.rose", note: "the rose, ~0.55 m"),
+    "model.b612.volcano": (procedural: "b612.volcano", note: "knee-high volcano, ~0.8 m"),
+    "model.b612.sprout": (procedural: "b612.sprout", note: "baobab sprout, ~0.3 m"),
+    "model.b612.chair": (procedural: "chair", note: "the sunset chair"),
+  },
+)

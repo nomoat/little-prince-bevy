@@ -1,0 +1,11 @@
+target*/
+dist/
+node_modules/
+tests/out/
+.venv/
+assets/_downloads/
+*.wasm
+.DS_Store
+save.ron
+assets/fonts/_full_*
+tests/node_modules/

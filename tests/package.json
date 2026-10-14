@@ -1,0 +1,7 @@
+{
+  "name": "little-prince-bevy-tests",
+  "private": true,
+  "type": "module",
+  "scripts": { "test": "node run_web.mjs" },
+  "dependencies": { "playwright": "1.57.0" }
+}
