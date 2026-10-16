@@ -14,12 +14,16 @@
 //!
 //! Layout and props: world.rs. Mechanics: systems.rs. Lens helper: director.rs.
 
+mod animation;
 pub mod director;
 mod models;
+mod original;
+pub(crate) use original::preload;
 pub mod systems;
 pub mod world;
 
 use crate::core::prelude::*;
+use crate::core::state::AppState;
 use systems::{RosePose, set_rose_pose, tremble};
 
 pub struct B612;
@@ -171,15 +175,20 @@ impl Chapter for B612 {
 
     fn setup_app(&self, app: &mut App) {
         models::register(app);
+        app.add_systems(OnExit(AppState::Chapter), original::cleanup);
+        app.add_systems(PostUpdate, animation::attach_props.before(bevy::transform::TransformSystems::Propagate).run_if(in_chapter(ID)));
         app.add_systems(
             Update,
             (
                 systems::tick,
+                animation::requests,
                 systems::trail,
                 systems::birds,
                 systems::butterflies,
                 systems::wings,
                 systems::particles,
+                original::stream_vegetation,
+                original::review_camera,
             )
                 .chain()
                 .in_set(CoreSet::Gameplay)

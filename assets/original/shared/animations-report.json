@@ -1,0 +1,275 @@
+{
+  "source": "/Users/homo/lp_extract",
+  "avatar_bundle": "shared_assets_assets_shared_core_prefabs_15d551899ed147a48c9bcf270c26d945.bundle",
+  "bones": [
+    "root.x",
+    "spine_01.x",
+    "spine_02.x",
+    "spine_03.x",
+    "neck.x",
+    "head.x",
+    "shoulder.l",
+    "arm_stretch.l",
+    "forearm_stretch.l",
+    "hand.l",
+    "c_index1.l",
+    "c_index2.l",
+    "c_index3.l",
+    "c_middle1.l",
+    "c_middle2.l",
+    "c_middle3.l",
+    "c_pinky1.l",
+    "c_pinky2.l",
+    "c_pinky3.l",
+    "c_ring1.l",
+    "c_ring2.l",
+    "c_ring3.l",
+    "c_thumb1.l",
+    "c_thumb2.l",
+    "c_thumb3.l",
+    "shoulder.r",
+    "arm_stretch.r",
+    "forearm_stretch.r",
+    "hand.r",
+    "c_index1.r",
+    "c_index2.r",
+    "c_index3.r",
+    "c_middle1.r",
+    "c_middle2.r",
+    "c_middle3.r",
+    "c_pinky1.r",
+    "c_pinky2.r",
+    "c_pinky3.r",
+    "c_ring1.r",
+    "c_ring2.r",
+    "c_ring3.r",
+    "c_thumb1.r",
+    "c_thumb2.r",
+    "c_thumb3.r",
+    "thigh_stretch.l",
+    "leg_stretch.l",
+    "foot.l",
+    "toes_01.l",
+    "thigh_stretch.r",
+    "leg_stretch.r",
+    "foot.r",
+    "toes_01.r"
+  ],
+  "clips": [
+    {
+      "name": "CarryCan",
+      "source": "extracted/shared_assets_assets_shared_core_animation_a7ec629ac6fd1a10aa1ac05bb0e17a36/LP_CarryCan_6166030951774020722.json",
+      "frames": 7,
+      "duration": 0.16666698455810547
+    },
+    {
+      "name": "Clap",
+      "source": "extracted/shared_assets_assets_shared_core_animation_a7ec629ac6fd1a10aa1ac05bb0e17a36/LP_Clap_5521542796093741834.json",
+      "frames": 63,
+      "duration": 2.0333335399627686
+    },
+    {
+      "name": "DomeHold",
+      "source": "extracted/shared_assets_assets_shared_core_animation_a7ec629ac6fd1a10aa1ac05bb0e17a36/LP_DomeHold_5135904836545858588.json",
+      "frames": 182,
+      "duration": 6.000000953674316
+    },
+    {
+      "name": "DomeLift",
+      "source": "extracted/shared_assets_assets_shared_core_animation_a7ec629ac6fd1a10aa1ac05bb0e17a36/LP_DomeLift_5135956885545205808.json",
+      "frames": 107,
+      "duration": 3.500000238418579
+    },
+    {
+      "name": "DomePlace",
+      "source": "extracted/shared_assets_assets_shared_core_animation_a7ec629ac6fd1a10aa1ac05bb0e17a36/LP_DomePlace_5135862429636364279.json",
+      "frames": 102,
+      "duration": 3.333333969116211
+    },
+    {
+      "name": "FillCan",
+      "source": "extracted/shared_assets_assets_shared_core_animation_a7ec629ac6fd1a10aa1ac05bb0e17a36/LP_FillCan_-6357702806437356519.json",
+      "frames": 192,
+      "duration": 6.333333492279053
+    },
+    {
+      "name": "Idle",
+      "source": "extracted/shared_assets_assets_shared_core_animation_a7ec629ac6fd1a10aa1ac05bb0e17a36/LP_Idle_-4126310896824498115.json",
+      "frames": 252,
+      "duration": 8.333333969116211
+    },
+    {
+      "name": "Jump",
+      "source": "extracted/shared_assets_assets_shared_core_animation_a7ec629ac6fd1a10aa1ac05bb0e17a36/LP_Jump_4702320326764159646.json",
+      "frames": 31,
+      "duration": 1.0
+    },
+    {
+      "name": "LookBehind",
+      "source": "extracted/shared_assets_assets_shared_core_animation_a7ec629ac6fd1a10aa1ac05bb0e17a36/LP_LookBehind_-8061811046952560488.json",
+      "frames": 82,
+      "duration": 2.6666667461395264
+    },
+    {
+      "name": "PickUpCan",
+      "source": "extracted/shared_assets_assets_shared_core_animation_a7ec629ac6fd1a10aa1ac05bb0e17a36/LP_PickUpCan_6166155693371186330.json",
+      "frames": 92,
+      "duration": 3.000000238418579
+    },
+    {
+      "name": "PushBarBack",
+      "source": "extracted/shared_assets_assets_shared_core_animation_a7ec629ac6fd1a10aa1ac05bb0e17a36/LP_PushBarBack_2278929012567731502.json",
+      "frames": 72,
+      "duration": 2.3333334922790527
+    },
+    {
+      "name": "PushBarFront",
+      "source": "extracted/shared_assets_assets_shared_core_animation_a7ec629ac6fd1a10aa1ac05bb0e17a36/LP_PushBarFront_8584810350699063804.json",
+      "frames": 76,
+      "duration": 2.4666666984558105
+    },
+    {
+      "name": "PushDoor",
+      "source": "extracted/shared_assets_assets_shared_core_animation_a7ec629ac6fd1a10aa1ac05bb0e17a36/LP_PushDoor_8685036018734509664.json",
+      "frames": 61,
+      "duration": 1.9666668176651
+    },
+    {
+      "name": "PushDoubleDoor",
+      "source": "extracted/shared_assets_assets_shared_core_animation_a7ec629ac6fd1a10aa1ac05bb0e17a36/LP_PushDoubleDoor_2730558301774755116.json",
+      "frames": 55,
+      "duration": 1.7666667699813843
+    },
+    {
+      "name": "Run",
+      "source": "extracted/shared_assets_assets_shared_core_animation_a7ec629ac6fd1a10aa1ac05bb0e17a36/LP_Run_-3270005928549778813.json",
+      "frames": 23,
+      "duration": 0.7000000476837158
+    },
+    {
+      "name": "Shrug",
+      "source": "extracted/shared_assets_assets_shared_core_animation_a7ec629ac6fd1a10aa1ac05bb0e17a36/LP_Shrug_6136708503332180696.json",
+      "frames": 48,
+      "duration": 1.533333420753479
+    },
+    {
+      "name": "SitDown",
+      "source": "extracted/shared_assets_assets_shared_core_animation_a7ec629ac6fd1a10aa1ac05bb0e17a36/LP_SitDown_-5872262220247272035.json",
+      "frames": 82,
+      "duration": 2.6666667461395264
+    },
+    {
+      "name": "SitHighAsk",
+      "source": "extracted/shared_assets_assets_shared_core_animation_a7ec629ac6fd1a10aa1ac05bb0e17a36/LP_SitHighAsk_-7384742051166799814.json",
+      "frames": 61,
+      "duration": 2.0
+    },
+    {
+      "name": "SitHighDown",
+      "source": "extracted/shared_assets_assets_shared_core_animation_a7ec629ac6fd1a10aa1ac05bb0e17a36/LP_SitHighDown_5514771801275713171.json",
+      "frames": 107,
+      "duration": 3.500000238418579
+    },
+    {
+      "name": "SitHighIdle",
+      "source": "extracted/shared_assets_assets_shared_core_animation_a7ec629ac6fd1a10aa1ac05bb0e17a36/LP_SitHighIdle_-1237837911984048286.json",
+      "frames": 152,
+      "duration": 5.000000476837158
+    },
+    {
+      "name": "SitHighSadIdle",
+      "source": "extracted/shared_assets_assets_shared_core_animation_a7ec629ac6fd1a10aa1ac05bb0e17a36/LP_SitHighSadIdle_-3615796555388852435.json",
+      "frames": 121,
+      "duration": 4.0
+    },
+    {
+      "name": "SitHighSadIn",
+      "source": "extracted/shared_assets_assets_shared_core_animation_a7ec629ac6fd1a10aa1ac05bb0e17a36/LP_SitHighSadIn_-8400605987765182771.json",
+      "frames": 61,
+      "duration": 2.0
+    },
+    {
+      "name": "SitHighUp",
+      "source": "extracted/shared_assets_assets_shared_core_animation_a7ec629ac6fd1a10aa1ac05bb0e17a36/LP_SitHighUp_-548724455467865024.json",
+      "frames": 101,
+      "duration": 3.3000001907348633
+    },
+    {
+      "name": "SitIdle30",
+      "source": "extracted/shared_assets_assets_shared_core_animation_a7ec629ac6fd1a10aa1ac05bb0e17a36/LP_SitIdle30_4352141506880986284.json",
+      "frames": 91,
+      "duration": 2.9666669368743896
+    },
+    {
+      "name": "SitIdle",
+      "source": "extracted/shared_assets_assets_shared_core_animation_a7ec629ac6fd1a10aa1ac05bb0e17a36/LP_SitIdle_-7023817397675028130.json",
+      "frames": 91,
+      "duration": 2.9666669368743896
+    },
+    {
+      "name": "SitStoolDown",
+      "source": "extracted/shared_assets_assets_shared_core_animation_a7ec629ac6fd1a10aa1ac05bb0e17a36/LP_SitStoolDown_-3386522054653425614.json",
+      "frames": 105,
+      "duration": 3.433333396911621
+    },
+    {
+      "name": "SitStoolIdle",
+      "source": "extracted/shared_assets_assets_shared_core_animation_a7ec629ac6fd1a10aa1ac05bb0e17a36/LP_SitStoolIdle_2754725828253708836.json",
+      "frames": 152,
+      "duration": 5.000000476837158
+    },
+    {
+      "name": "SitStoolUp",
+      "source": "extracted/shared_assets_assets_shared_core_animation_a7ec629ac6fd1a10aa1ac05bb0e17a36/LP_SitStoolUp_7365563852251760932.json",
+      "frames": 105,
+      "duration": 3.433333396911621
+    },
+    {
+      "name": "Sleep",
+      "source": "extracted/shared_assets_assets_shared_core_animation_a7ec629ac6fd1a10aa1ac05bb0e17a36/LP_Sleep_909083289607823687.json",
+      "frames": 98,
+      "duration": 3.200000286102295
+    },
+    {
+      "name": "StandUp",
+      "source": "extracted/shared_assets_assets_shared_core_animation_a7ec629ac6fd1a10aa1ac05bb0e17a36/LP_StandUp_-7127856975568874191.json",
+      "frames": 89,
+      "duration": 2.9000000953674316
+    },
+    {
+      "name": "TelescopeHold",
+      "source": "extracted/shared_assets_assets_shared_core_animation_a7ec629ac6fd1a10aa1ac05bb0e17a36/LP_TelescopeHold_-2981369427059332721.json",
+      "frames": 92,
+      "duration": 3.000000476837158
+    },
+    {
+      "name": "TelescopeLook",
+      "source": "extracted/shared_assets_assets_shared_core_animation_a7ec629ac6fd1a10aa1ac05bb0e17a36/LP_TelescopeLook_-2981380291132027218.json",
+      "frames": 50,
+      "duration": 1.6000001430511475
+    },
+    {
+      "name": "WakeUp",
+      "source": "extracted/shared_assets_assets_shared_core_animation_a7ec629ac6fd1a10aa1ac05bb0e17a36/LP_WakeUp_-3479199315322483577.json",
+      "frames": 119,
+      "duration": 3.9000000953674316
+    },
+    {
+      "name": "Walk",
+      "source": "extracted/shared_assets_assets_shared_core_animation_a7ec629ac6fd1a10aa1ac05bb0e17a36/LP_Walk_365009872384327604.json",
+      "frames": 33,
+      "duration": 1.033333420753479
+    },
+    {
+      "name": "WaterRose",
+      "source": "extracted/shared_assets_assets_shared_core_animation_a7ec629ac6fd1a10aa1ac05bb0e17a36/LP_WaterRose_4441720692395603983.json",
+      "frames": 135,
+      "duration": 4.433333396911621
+    }
+  ],
+  "notes": [
+    "Original muscle curves resampled at 30 Hz with source Avatar axes and asymmetric limits.",
+    "Horizontal root motion removed; gameplay controller owns movement.",
+    "Unity humanoid IK/stretch solver is not reproduced."
+  ]
+}

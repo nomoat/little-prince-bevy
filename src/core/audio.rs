@@ -5,15 +5,22 @@
 //! From any system: `audio.write(AudioCmd::sfx("sfx.chime"))`, or story
 //! commands `Cmd::Music("music.b612")` / `Cmd::Sfx(..)`.
 
+#[cfg(not(target_arch = "wasm32"))]
 use super::manifest::Manifest;
 use super::meshkit::Rng;
 use super::player::Player;
+#[cfg(not(target_arch = "wasm32"))]
 use super::save::SaveData;
+#[cfg(not(target_arch = "wasm32"))]
 use super::synth;
+#[cfg(not(target_arch = "wasm32"))]
 use bevy::audio::{AudioSinkPlayback, PlaybackMode, Volume};
 use bevy::prelude::*;
 use std::collections::HashMap;
+#[cfg(not(target_arch = "wasm32"))]
 use std::sync::Arc;
+#[cfg(target_arch = "wasm32")]
+pub(crate) use super::web_audio::{handle_audio, update_tracks};
 
 #[derive(Message, Clone, Debug)]
 pub enum AudioCmd {
@@ -56,11 +63,15 @@ pub struct Track {
 pub struct AudioState {
     pub music: Option<String>,
     pub ambience: Option<String>,
+    #[cfg(not(target_arch = "wasm32"))]
     synth_cache: HashMap<String, Handle<AudioSource>>,
-    rng: Option<Rng>,
-    warned: std::collections::HashSet<String>,
+    pub(super) rng: Option<Rng>,
+    #[cfg(target_arch = "wasm32")]
+    pub(super) web_synths: HashMap<String, Vec<u8>>,
+    pub(super) warned: std::collections::HashSet<String>,
 }
 
+#[cfg(not(target_arch = "wasm32"))]
 fn resolve(
     key: &str,
     manifest: &Manifest,
@@ -100,6 +111,7 @@ fn resolve(
     }
 }
 
+#[cfg(not(target_arch = "wasm32"))]
 fn bus_volume(save: &SaveData, bus: Bus) -> f32 {
     let s = &save.settings;
     s.master
@@ -110,6 +122,7 @@ fn bus_volume(save: &SaveData, bus: Bus) -> f32 {
         }
 }
 
+#[cfg(not(target_arch = "wasm32"))]
 #[allow(clippy::too_many_arguments)]
 pub(crate) fn handle_audio(
     mut commands: Commands,
@@ -158,6 +171,7 @@ pub(crate) fn handle_audio(
     }
 }
 
+#[cfg(not(target_arch = "wasm32"))]
 pub(crate) fn update_tracks(
     mut commands: Commands,
     time: Res<Time<Real>>,

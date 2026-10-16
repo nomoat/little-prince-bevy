@@ -128,11 +128,14 @@ pub struct Terrain {
     pub params: PlanetParams,
     /// Resolved flatten heights (Flatten.height None → sampled).
     flat_heights: Vec<f32>,
+    /// Original B-612 grid, Z-major in Unity space. Rendering and collision
+    /// use the same imported heights; only the handedness changes.
+    baked_heights: Option<Vec<f32>>,
 }
 
 impl Terrain {
     pub fn new(params: PlanetParams) -> Self {
-        let mut t = Terrain { params, flat_heights: Vec::new() };
+        let mut t = Terrain { params, flat_heights: Vec::new(), baked_heights: None };
         // Each auto-height flatten samples the terrain with the earlier
         // flattens applied, so heights must be stored as they are found.
         let flats: Vec<(Vec2, Option<f32>)> = t
@@ -151,6 +154,12 @@ impl Terrain {
         }
         t.soften_pads();
         t
+    }
+
+    pub fn from_b612_heightmap(params: PlanetParams, bytes: &[u8]) -> Self {
+        assert_eq!(bytes.len(), 513 * 513 * 4, "B-612 heightmap dimensions");
+        let heights = bytes.chunks_exact(4).map(|b| f32::from_le_bytes(b.try_into().unwrap())).collect();
+        Self { params, flat_heights: Vec::new(), baked_heights: Some(heights) }
     }
 
     /// Widens each flatten's blend ring where the pad meets the dome too
@@ -248,6 +257,17 @@ impl Terrain {
 
     /// Ground height at world (x, z).
     pub fn height(&self, x: f32, z: f32) -> f32 {
+        if let Some(h) = &self.baked_heights {
+            let gx = ((-x + 32.0) * 8.0).clamp(0.0, 512.0);
+            let gz = ((z + 32.0) * 8.0).clamp(0.0, 512.0);
+            let ix = (gx as usize).min(511);
+            let iz = (gz as usize).min(511);
+            let fx = gx - ix as f32;
+            let fz = gz - iz as f32;
+            let a = h[iz * 513 + ix] * (1.0-fx) + h[iz * 513 + ix+1] * fx;
+            let b = h[(iz+1) * 513 + ix] * (1.0-fx) + h[(iz+1) * 513 + ix+1] * fx;
+            return a * (1.0-fz) + b * fz;
+        }
         self.base_height(x, z, usize::MAX)
     }
 

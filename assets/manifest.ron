@@ -12,24 +12,24 @@
     // -------------------------------------------------------------- prince
     // Set `path` to a .glb to replace the procedural prince. Optional clip
     // names for idle / walk / run / jump in `anims`.
-    "model.prince": (procedural: "prince", note: "player character, ~1.2 m tall, faces +Z"),
+    "model.prince": (path: "original/shared/prince.glb", procedural: "prince", note: "player character, ~1.2 m tall, faces +Z"),
 
     // ----------------------------------------------- shared props (core)
-    "model.rock": (path: "models/nature/rock_smallA.glb", procedural: "rock", scale: 1.6),
-    "model.rock_small": (path: "models/nature/rock_smallB.glb", procedural: "rock_small"),
-    "model.rock_large": (path: "models/nature/rock_largeA.glb", procedural: "rock"),
-    "model.stone_tall": (path: "models/nature/stone_tallA.glb", procedural: "rock"),
-    "model.tree": (path: "models/nature/tree_default.glb", procedural: "tree", scale: 1.6),
-    "model.tree_oak": (path: "models/nature/tree_oak.glb", procedural: "tree", scale: 1.6),
-    "model.tree_pine": (path: "models/nature/tree_pineDefaultA.glb", procedural: "tree", scale: 1.6),
+    "model.rock": (path: "original/b612/rock.glb", procedural: "rock", ),
+    "model.rock_small": (path: "original/b612/rock_small.glb", procedural: "rock_small"),
+    "model.rock_large": (path: "original/b612/rock_large.glb", procedural: "rock"),
+    "model.stone_tall": (path: "original/b612/stone_tall.glb", procedural: "rock"),
+    "model.tree": (path: "original/bar/tree.glb", procedural: "tree", ),
+    "model.tree_oak": (path: "original/bar/tree_oak.glb", procedural: "tree", ),
+    "model.tree_pine": (path: "original/geo/tree_pine.glb", procedural: "tree", ),
     "model.palm": (path: "models/nature/tree_palmTall.glb", procedural: "tree", scale: 1.6),
-    "model.bush": (path: "models/nature/plant_bush.glb", procedural: "bush"),
-    "model.grass_tuft": (procedural: "grass_tuft"),
-    "model.grass": (path: "models/nature/grass.glb", procedural: "grass_tuft"),
-    "model.flower": (procedural: "flower"),
-    "model.flower_red": (path: "models/nature/flower_redA.glb", procedural: "flower"),
-    "model.flower_yellow": (path: "models/nature/flower_yellowA.glb", procedural: "flower"),
-    "model.flower_purple": (path: "models/nature/flower_purpleA.glb", procedural: "flower"),
+    "model.bush": (path: "original/b612/bush.glb", procedural: "bush"),
+    "model.grass_tuft": (path: "original/b612/grass_tuft.glb", procedural: "grass_tuft"),
+    "model.grass": (path: "original/b612/grass.glb", procedural: "grass_tuft"),
+    "model.flower": (path: "original/b612/flower.glb", procedural: "flower"),
+    "model.flower_red": (path: "original/b612/flower_red.glb", procedural: "flower"),
+    "model.flower_yellow": (path: "original/b612/flower_yellow.glb", procedural: "flower"),
+    "model.flower_purple": (path: "original/b612/flower_purple.glb", procedural: "flower"),
     "model.mushroom": (path: "models/nature/mushroom_red.glb", procedural: "flower"),
     "model.cactus": (path: "models/nature/cactus_tall.glb", procedural: "bush"),
     "model.log": (path: "models/nature/log.glb", procedural: "rock_small"),
@@ -38,17 +38,17 @@
     "model.sign": (path: "models/nature/sign.glb", procedural: "placeholder"),
     "model.campfire": (path: "models/nature/campfire_stones.glb", procedural: "rock_small"),
     "model.tent": (path: "models/nature/tent_detailedOpen.glb", procedural: "placeholder"),
-    "model.pot": (path: "models/nature/pot_large.glb", procedural: "placeholder"),
+    "model.pot": (path: "original/b612/pot.glb", procedural: "placeholder"),
     "model.statue_column": (path: "models/nature/statue_column.glb", procedural: "placeholder"),
-    "model.chair": (procedural: "chair"),
+    "model.chair": (path: "original/b612/chair.glb", procedural: "chair"),
     "model.lamp_post": (procedural: "lamp_post"),
     "model.npc": (procedural: "npc_generic"),
 
     // --------------------------------------------------------------- sound
-    "sfx.step": (variants: ["audio/sfx/footstep_grass_000.ogg", "audio/sfx/footstep_grass_001.ogg", "audio/sfx/footstep_grass_002.ogg", "audio/sfx/footstep_grass_003.ogg", "audio/sfx/footstep_grass_004.ogg"], procedural: "step", volume: 0.5),
+    "sfx.step": (variants: ["original/audio/b612_Footstep_Grass_0.ogg", "original/audio/b612_Footstep_Grass_1.ogg", "original/audio/b612_Footstep_Grass_2.ogg", "original/audio/b612_Footstep_Grass_3.ogg", "original/audio/b612_Footstep_Grass_4.ogg", "original/audio/b612_Footstep_Grass_5.ogg", "original/audio/b612_Footstep_Grass_6.ogg", "original/audio/b612_Footstep_Grass_7.ogg", "original/audio/b612_Footstep_Grass_8.ogg", "original/audio/b612_Footstep_Grass_9.ogg", "original/audio/b612_Footstep_Grass_10.ogg", "original/audio/b612_Footstep_Grass_11.ogg", "original/audio/b612_Footstep_Grass_12.ogg", "original/audio/b612_Footstep_Grass_13.ogg"], procedural: "step", volume: 0.5),
     "sfx.step_wood": (variants: ["audio/sfx/footstep_wood_000.ogg", "audio/sfx/footstep_wood_001.ogg", "audio/sfx/footstep_wood_002.ogg"], procedural: "step", volume: 0.5),
     "sfx.step_snow": (variants: ["audio/sfx/footstep_snow_000.ogg", "audio/sfx/footstep_snow_001.ogg"], procedural: "step_soft", volume: 0.5),
-    "sfx.step_stone": (variants: ["audio/sfx/footstep_concrete_000.ogg", "audio/sfx/footstep_concrete_001.ogg"], procedural: "step", volume: 0.5),
+    "sfx.step_stone": (variants: ["original/audio/b612_Footstep_Gravel_0.ogg", "original/audio/b612_Footstep_Gravel_1.ogg", "original/audio/b612_Footstep_Gravel_2.ogg", "original/audio/b612_Footstep_Gravel_3.ogg", "original/audio/b612_Footstep_Gravel_4.ogg", "original/audio/b612_Footstep_Gravel_5.ogg", "original/audio/b612_Footstep_Gravel_6.ogg", "original/audio/b612_Footstep_Gravel_7.ogg", "original/audio/b612_Footstep_Gravel_8.ogg", "original/audio/b612_Footstep_Gravel_9.ogg", "original/audio/b612_Footstep_Gravel_10.ogg", "original/audio/b612_Footstep_Gravel_11.ogg"], procedural: "step", volume: 0.5),
     "sfx.step_carpet": (variants: ["audio/sfx/footstep_carpet_000.ogg", "audio/sfx/footstep_carpet_001.ogg"], procedural: "step_soft", volume: 0.5),
     "sfx.click": (path: "audio/sfx/click_001.ogg", procedural: "click", volume: 0.6),
     "sfx.tick": (path: "audio/sfx/tick_001.ogg", procedural: "tick"),
@@ -79,14 +79,13 @@
     "sfx.jingle": (path: "audio/jingles/jingles_STEEL00.ogg", procedural: "sparkle"),
 
     // --------------------------------------------------------------- music
-    // Music has no CC0 files yet: synthesized pads. Drop an .ogg in
-    // assets/audio/music/ and set `path` to use your own.
-    "music.title": (procedural: "pad_title", volume: 0.8, looped: true),
-    "music.map": (procedural: "pad_wonder", volume: 0.7, looped: true),
-    "music.ending": (procedural: "pad_ending", volume: 0.8, looped: true),
+    // Original chapter music. Synthesized pads remain as load-failure fallbacks.
+    "music.title": (path: "original/audio/b612_B612_Music.ogg", procedural: "pad_title", volume: 0.8, looped: true),
+    "music.map": (path: "original/audio/b612_B612_Music.ogg", procedural: "pad_wonder", volume: 0.7, looped: true),
+    "music.ending": (path: "original/audio/earth_DesertDunes_Music.ogg", procedural: "pad_ending", volume: 0.8, looped: true),
 
     // ------------------------------------------------------------ ambience
-    "amb.wind": (procedural: "wind", volume: 0.35, looped: true),
-    "amb.night": (procedural: "night", volume: 0.4, looped: true),
+    "amb.wind": (path: "original/audio/b612_Amb_Meadow_Day_Loop.ogg", procedural: "wind", volume: 0.35, looped: true),
+    "amb.night": (path: "original/audio/b612_Amb_Meadow_Dusk_Loop.ogg", procedural: "night", volume: 0.4, looped: true),
   },
 )

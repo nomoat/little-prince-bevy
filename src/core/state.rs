@@ -179,8 +179,11 @@ pub(crate) fn handle_flow(
     }
 }
 
-pub(crate) fn loading_hop(mut next: ResMut<NextState<AppState>>) {
-    next.set(AppState::Chapter);
+pub(crate) fn loading_hop(world:&mut World) {
+    if world.resource::<ActiveChapter>().id.as_deref()==Some("b612") && !crate::chapters::b612::preload(world) {
+        return;
+    }
+    world.resource_mut::<NextState<AppState>>().set(AppState::Chapter);
 }
 
 /// OnEnter(Chapter): reset core state, build the chapter, start its story.

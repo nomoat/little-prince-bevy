@@ -1,15 +1,16 @@
 # 小王子：星辰之旅（Bevy 重制版）
 
 这是按原版《小王子：星辰之旅》（Unity 6 网页游戏）的设计重做的新游戏。它用 **Rust + Bevy 0.20** 写成，
-全部由代码生成，不需要任何编辑器。重做的内容是原版的章节结构、玩法机制、世界模型和流程；
-美术、音频、文字和代码都是我们自己的。
+场景和玩法由代码组织，不需要编辑器。角色、主要道具、建筑和音乐已接入用户提供的原版素材，
+来源是 `~/lp_extract`。转换结果保存在 `assets/original/`，运行游戏不需要原始目录。
 
 - **流程：** 标题 → 旅程图（8 颗星球，按原版规则逐个解锁，可开自由旅行）→ 章节 → 结局。
 - **8 章：** B612 → 国王 → 爱虚荣的人（剧院）→ 酒鬼（酒馆）→ 商人（天文台）→ 点灯人 → 地理学家 → 地球（山谷 + 沙漠）。
 - **语言：** 中文（默认）和 English，可在标题页或设置里切换。
 - **平台：** 网页（WebGL2，手机可玩；可选 WebGPU）和原生桌面。
 - **存档：** 网页存在 localStorage（键 `lp.bevy.save.v1`），原生存在 `~/.little_prince_bevy/`。
-- **素材：** 全部是 CC0 素材或程序生成，都通过清单键引用，以后可以直接换成你的素材（见下文）。
+- **动画与渲染：** 已转换 35 段原版角色动画，接入移动和第一章主要动作；新增围巾跟随、草叶风动与水面动态着色。尚未达到原版全部渲染效果，具体差异见 `docs/ASSETS.md`。
+- **素材：** 优先使用原版模型、贴图和音频；第一章使用原版地形、场景摆放和植被实例；其余章节的地形、部分特效和道具仍由程序生成。每个文件的来源可查 `assets/original/import-report.json`。
 
 ## 构建与运行
 
@@ -52,7 +53,7 @@ cargo r -- --chapter king --test       # 原生：直接进章节并自动通关
 | `little_prince_bg.wasm` | 23.7 MB（未压缩） |
 | 同上，gzip -9 | 7.2 MB |
 | 同上，brotli -q 11 | 4.8 MB |
-| `assets/` | 4.6 MB（字体子集 0.3 MB） |
+| `assets/` | 接入原版场景后约 279 MB；实际大小以构建输出为准 |
 
 Release 配置为 `opt-level="z"`、`lto="fat"`、`codegen-units=1`、`panic="abort"`、`strip`，之后再运行 `wasm-opt -Oz`。
 
@@ -131,7 +132,22 @@ node play_web.mjs bar phone en                    # 同上，手机横屏触屏�
 - **语言：** 中文和英文之间切换。
 - **自由旅行：** 可以进入未解锁的星球。
 
-## 换成你自己的素材
+## 原版素材导入与替换
+
+```bash
+~/lp_extract/venv/bin/python scripts/import_original_assets.py
+scripts/build_web.sh --fast
+scripts/serve.sh 8080
+```
+
+导入脚本使用本地 UnityPy、NumPy、Pillow 和 ffmpeg。它读取原始 bundle 中的模型、材质引用、
+骨骼和蒙皮权重，生成 glTF 2.0 GLB，并把音频转成 Bevy 支持的 Ogg Vorbis。
+贴图最长边限制为 1024 像素。映射表在 `scripts/original_asset_map.py`。
+`--source <目录>` 可指定来源；`--skip-audio` 可只重新转换模型。
+
+主角的真实骨骼由现有移动和互动状态驱动，支持站立、行走、跳跃、坐下、挥手等姿势。
+Unity 的 Humanoid 动画控制器尚未移植；NPC 使用导入的模型和基础姿势。
+碰撞和地形高度仍由现有 Bevy 玩法定义，原版建筑的细节与简化碰撞体并非逐面一致。
 
 所有模型、贴图、音效、音乐和字体都通过**清单键**引用，代码里没有写死的文件路径。
 
@@ -141,7 +157,7 @@ node play_web.mjs bar phone en                    # 同上，手机横屏触屏�
 - **兜底：** 每个键都有程序生成的兜底。文件缺失或加载失败时，会自动改用程序生成的版本。
 - **碰撞体：** 碰撞体写在代码里，所以换模型不会改变碰撞。
 
-详细说明见 [docs/ASSETS.md](docs/ASSETS.md)，来源和许可证见 [assets/CREDITS.md](assets/CREDITS.md)。
+详细说明见 [docs/ASSETS.md](docs/ASSETS.md)，来源和许可证记录见 [assets/CREDITS.md](assets/CREDITS.md)。
 
 ## 与原版的对应关系
 

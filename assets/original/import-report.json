@@ -1,0 +1,3327 @@
+{
+  "source": "/Users/homo/lp_extract",
+  "models": {
+    "model.prince": {
+      "path": "original/shared/prince.glb",
+      "bundle": "shared_assets_assets_shared_core_prefabs_15d551899ed147a48c9bcf270c26d945.bundle",
+      "meshes": [
+        "little_prince_body",
+        "little_prince_scarf"
+      ],
+      "source_bounds": [
+        [
+          -0.4508787373392738,
+          -7.093405340441743e-07,
+          -0.13845723496369133
+        ],
+        [
+          0.45087874234447906,
+          1.199414061450988,
+          0.1286160800889303
+        ]
+      ],
+      "size": [
+        0.9021974732780672,
+        1.2,
+        0.2672036278589836
+      ],
+      "skins": 2
+    },
+    "model.b612.rose": {
+      "path": "original/b612/b612_rose.glb",
+      "bundle": "b612_scenes_all_f593f551f550041f5a2feb47872f92c6.bundle",
+      "meshes": [
+        "Rose_Stem",
+        "Rose_Head_VC"
+      ],
+      "source_bounds": [
+        [
+          -0.16532686352729797,
+          -0.03500000014901161,
+          -0.09720703214406967
+        ],
+        [
+          0.16006046533584595,
+          0.4608788933157921,
+          0.12696954283869477
+        ]
+      ],
+      "size": [
+        0.3609006820683154,
+        0.55,
+        0.24864360606078462
+      ],
+      "skins": 0
+    },
+    "model.b612.cloche": {
+      "path": "original/b612/b612_cloche.glb",
+      "bundle": "b612_scenes_all_f593f551f550041f5a2feb47872f92c6.bundle",
+      "meshes": [
+        "Cloche_Base",
+        "Cloche_Glass"
+      ],
+      "source_bounds": [
+        [
+          -0.25999999046325684,
+          0.0,
+          -0.25999999046325684
+        ],
+        [
+          0.25999999046325684,
+          0.6745999734848738,
+          0.25999999046325684
+        ]
+      ],
+      "size": [
+        0.46,
+        0.65,
+        0.46
+      ],
+      "skins": 0
+    },
+    "model.b612.boulder": {
+      "path": "original/b612/b612_boulder.glb",
+      "bundle": "b612_scenes_all_f593f551f550041f5a2feb47872f92c6.bundle",
+      "meshes": [
+        "Planet_ClocheBoulder_LOD0"
+      ],
+      "source_bounds": [
+        [
+          -0.8098374605178833,
+          -0.022449364885687828,
+          -0.8976101875305176
+        ],
+        [
+          0.4572072923183441,
+          0.268932044506073,
+          0.8968571424484253
+        ]
+      ],
+      "size": [
+        1.12,
+        0.555,
+        1.12
+      ],
+      "skins": 0
+    },
+    "model.b612.screen": {
+      "path": "original/b612/b612_screen.glb",
+      "bundle": "b612_scenes_all_f593f551f550041f5a2feb47872f92c6.bundle",
+      "meshes": [
+        "WindScreen"
+      ],
+      "source_bounds": [
+        [
+          -0.4751907289028168,
+          -0.03999999910593033,
+          -0.06620056182146072
+        ],
+        [
+          0.4750306308269501,
+          0.8997070789337158,
+          0.06657368689775467
+        ]
+      ],
+      "size": [
+        0.7583916695445576,
+        0.75,
+        0.10596992282653664
+      ],
+      "skins": 0
+    },
+    "model.b612.can": {
+      "path": "original/b612/b612_can.glb",
+      "bundle": "b612_scenes_all_f593f551f550041f5a2feb47872f92c6.bundle",
+      "meshes": [
+        "WateringCan"
+      ],
+      "source_bounds": [
+        [
+          -0.09400930255651474,
+          -1.1957465176237747e-05,
+          -0.16200779378414154
+        ],
+        [
+          0.08585236221551895,
+          0.22551947832107544,
+          0.159452885389328
+        ]
+      ],
+      "size": [
+        0.2392504585602403,
+        0.3,
+        0.42760426463759377
+      ],
+      "skins": 0
+    },
+    "model.b612.shed": {
+      "path": "original/b612/b612_shed.glb",
+      "bundle": "b612_scenes_all_f593f551f550041f5a2feb47872f92c6.bundle",
+      "meshes": [
+        "ToolShed"
+      ],
+      "source_bounds": [
+        [
+          -1.3738899230957031,
+          -0.0765160396695137,
+          -0.8630874752998352
+        ],
+        [
+          1.1976518630981445,
+          2.1687276363372803,
+          1.0044395923614502
+        ]
+      ],
+      "size": [
+        2.4,
+        1.8,
+        1.8
+      ],
+      "skins": 0
+    },
+    "model.b612.volcano": {
+      "path": "original/b612/b612_volcano.glb",
+      "bundle": "b612_scenes_all_f593f551f550041f5a2feb47872f92c6.bundle",
+      "meshes": [
+        "VolcanoA_LOD0"
+      ],
+      "source_bounds": [
+        [
+          -5.456698417663574,
+          -0.3509052097797394,
+          -5.457943916320801
+        ],
+        [
+          5.45749568939209,
+          4.0,
+          5.452817916870117
+        ]
+      ],
+      "size": [
+        2.2576393239436645,
+        0.9000000000000001,
+        2.256929346058757
+      ],
+      "skins": 0
+    },
+    "model.b612.crater": {
+      "path": "original/b612/b612_crater.glb",
+      "bundle": "b612_scenes_all_f593f551f550041f5a2feb47872f92c6.bundle",
+      "meshes": [
+        "VolcanoB_LOD0"
+      ],
+      "source_bounds": [
+        [
+          -4.277341842651367,
+          -0.359576016664505,
+          -4.279595375061035
+        ],
+        [
+          4.274665832519531,
+          3.200000047683716,
+          4.276034832000732
+        ]
+      ],
+      "size": [
+        1.2012677241014122,
+        0.5,
+        1.2017765672649494
+      ],
+      "skins": 0
+    },
+    "model.b612.sprout": {
+      "path": "original/b612/b612_sprout.glb",
+      "bundle": "b612_scenes_all_f593f551f550041f5a2feb47872f92c6.bundle",
+      "meshes": [
+        "BaobabSeedling"
+      ],
+      "source_bounds": [
+        [
+          -0.16163142025470734,
+          -0.3017377257347107,
+          -0.09082794189453125
+        ],
+        [
+          0.15270200371742249,
+          0.42000001668930054,
+          0.10518170893192291
+        ]
+      ],
+      "size": [
+        0.13065691545370084,
+        0.3,
+        0.08147404769278414
+      ],
+      "skins": 0
+    },
+    "model.b612.pad": {
+      "path": "original/b612/b612_pad.glb",
+      "bundle": "b612_scenes_all_f593f551f550041f5a2feb47872f92c6.bundle",
+      "meshes": [
+        "SleepingPad",
+        "Blanket"
+      ],
+      "source_bounds": [
+        [
+          -0.3896350860595703,
+          -7.159692904679105e-05,
+          -0.6500000357627869
+        ],
+        [
+          0.4083537459373474,
+          0.19966071844100952,
+          0.6764377951622009
+        ]
+      ],
+      "size": [
+        0.7979888319969177,
+        0.1997323153700563,
+        1.3264378309249878
+      ],
+      "skins": 0
+    },
+    "model.b612.stone": {
+      "path": "original/b612/b612_stone.glb",
+      "bundle": "b612_scenes_all_f593f551f550041f5a2feb47872f92c6.bundle",
+      "meshes": [
+        "FlatStone_01"
+      ],
+      "source_bounds": [
+        [
+          -0.37325870990753174,
+          -0.03815314173698425,
+          -0.2672306001186371
+        ],
+        [
+          0.37325870990753174,
+          0.11441277712583542,
+          0.2672306001186371
+        ]
+      ],
+      "size": [
+        0.8807546047524127,
+        0.18,
+        0.63056688387405
+      ],
+      "skins": 0
+    },
+    "model.b612.slab": {
+      "path": "original/b612/b612_slab.glb",
+      "bundle": "b612_scenes_all_f593f551f550041f5a2feb47872f92c6.bundle",
+      "meshes": [
+        "Planet_FetchLedge"
+      ],
+      "source_bounds": [
+        [
+          -0.20945978164672852,
+          -0.04198555275797844,
+          -0.14993922412395477
+        ],
+        [
+          0.20945975184440613,
+          0.12503692507743835,
+          0.2826431393623352
+        ]
+      ],
+      "size": [
+        0.3009795128801306,
+        0.12,
+        0.31079579402184754
+      ],
+      "skins": 0
+    },
+    "model.b612.chair": {
+      "path": "original/b612/b612_chair.glb",
+      "bundle": "b612_scenes_all_f593f551f550041f5a2feb47872f92c6.bundle",
+      "meshes": [
+        "SunsetChair"
+      ],
+      "source_bounds": [
+        [
+          -0.17766864597797394,
+          0.0,
+          -0.1457819938659668
+        ],
+        [
+          0.17766861617565155,
+          0.6600364446640015,
+          0.14373467862606049
+        ]
+      ],
+      "size": [
+        0.5275928620696444,
+        0.98,
+        0.4298646557109746
+      ],
+      "skins": 0
+    },
+    "model.rock": {
+      "path": "original/b612/rock.glb",
+      "bundle": "b612_scenes_all_f593f551f550041f5a2feb47872f92c6.bundle",
+      "meshes": [
+        "Rock_01_LOD0"
+      ],
+      "source_bounds": [
+        [
+          -1.24055016040802,
+          -0.0497109591960907,
+          -0.9626116752624512
+        ],
+        [
+          1.2408360242843628,
+          1.190497875213623,
+          0.9626116752624512
+        ]
+      ],
+      "size": [
+        1.4005466507674018,
+        0.7,
+        1.0866366276199428
+      ],
+      "skins": 0
+    },
+    "model.rock_small": {
+      "path": "original/b612/rock_small.glb",
+      "bundle": "b612_scenes_all_f593f551f550041f5a2feb47872f92c6.bundle",
+      "meshes": [
+        "Pebble_05"
+      ],
+      "source_bounds": [
+        [
+          -0.04019057750701904,
+          -0.0042711831629276276,
+          -0.0417180135846138
+        ],
+        [
+          0.04019057750701904,
+          0.030815385282039642,
+          0.0417180135846138
+        ]
+      ],
+      "size": [
+        0.549825134185679,
+        0.24,
+        0.5707211451020913
+      ],
+      "skins": 0
+    },
+    "model.rock_large": {
+      "path": "original/b612/rock_large.glb",
+      "bundle": "b612_scenes_all_f593f551f550041f5a2feb47872f92c6.bundle",
+      "meshes": [
+        "Rock_03_LOD0"
+      ],
+      "source_bounds": [
+        [
+          -0.7375751733779907,
+          -0.03880125284194946,
+          -0.8314155340194702
+        ],
+        [
+          0.7375830411911011,
+          0.9410355687141418,
+          0.8307282328605652
+        ]
+      ],
+      "size": [
+        1.8066169984014777,
+        1.2,
+        2.0356170296687117
+      ],
+      "skins": 0
+    },
+    "model.stone_tall": {
+      "path": "original/b612/stone_tall.glb",
+      "bundle": "b612_scenes_all_f593f551f550041f5a2feb47872f92c6.bundle",
+      "meshes": [
+        "Rock_05_LOD0"
+      ],
+      "source_bounds": [
+        [
+          -0.35591888427734375,
+          -0.021893443539738655,
+          -0.3690240681171417
+        ],
+        [
+          0.35677093267440796,
+          0.5230458378791809,
+          0.3694998621940613
+        ]
+      ],
+      "size": [
+        1.9617501653469758,
+        1.5,
+        2.0328611521311846
+      ],
+      "skins": 0
+    },
+    "model.bush": {
+      "path": "original/b612/bush.glb",
+      "bundle": "b612_scenes_all_f593f551f550041f5a2feb47872f92c6.bundle",
+      "meshes": [
+        "Shrub_Round_LOD0"
+      ],
+      "source_bounds": [
+        [
+          -0.9355935454368591,
+          -0.06993422657251358,
+          -0.7480637431144714
+        ],
+        [
+          0.7516391277313232,
+          1.091450810432434,
+          0.7768701314926147
+        ]
+      ],
+      "size": [
+        0.871665788386248,
+        0.6,
+        0.7878182477051785
+      ],
+      "skins": 0
+    },
+    "model.grass_tuft": {
+      "path": "original/b612/grass_tuft.glb",
+      "bundle": "b612_scenes_all_f593f551f550041f5a2feb47872f92c6.bundle",
+      "meshes": [
+        "Grass_Short_A_LOD0"
+      ],
+      "source_bounds": [
+        [
+          -0.11538897454738617,
+          -0.019999999552965164,
+          -0.11644802987575531
+        ],
+        [
+          0.13583481311798096,
+          0.0972490906715393,
+          0.12184226512908936
+        ]
+      ],
+      "size": [
+        0.6856480668548168,
+        0.32,
+        0.6503495613956911
+      ],
+      "skins": 0
+    },
+    "model.grass": {
+      "path": "original/b612/grass.glb",
+      "bundle": "b612_scenes_all_f593f551f550041f5a2feb47872f92c6.bundle",
+      "meshes": [
+        "Grass_Meadow_A_LOD0"
+      ],
+      "source_bounds": [
+        [
+          -0.28439798951148987,
+          -0.019999999552965164,
+          -0.31456422805786133
+        ],
+        [
+          0.2721771001815796,
+          0.3626469671726227,
+          0.3363187313079834
+        ]
+      ],
+      "size": [
+        0.5818157603138276,
+        0.4,
+        0.6804004902332025
+      ],
+      "skins": 0
+    },
+    "model.flower": {
+      "path": "original/b612/flower.glb",
+      "bundle": "b612_scenes_all_f593f551f550041f5a2feb47872f92c6.bundle",
+      "meshes": [
+        "Flower_Buttercup_A"
+      ],
+      "source_bounds": [
+        [
+          -0.08758728206157684,
+          -0.020311009138822556,
+          -0.0888751819729805
+        ],
+        [
+          0.06879770010709763,
+          0.28377625346183777,
+          0.08139725029468536
+        ]
+      ],
+      "size": [
+        0.17999683147174741,
+        0.35,
+        0.19598108379812695
+      ],
+      "skins": 0
+    },
+    "model.flower_red": {
+      "path": "original/b612/flower_red.glb",
+      "bundle": "b612_scenes_all_f593f551f550041f5a2feb47872f92c6.bundle",
+      "meshes": [
+        "Flower_Campion_A"
+      ],
+      "source_bounds": [
+        [
+          -0.18925999104976654,
+          -0.022698450833559036,
+          -0.14608676731586456
+        ],
+        [
+          0.16081500053405762,
+          0.1847277730703354,
+          0.14921069145202637
+        ]
+      ],
+      "size": [
+        0.5906979587648851,
+        0.35,
+        0.498269257491031
+      ],
+      "skins": 0
+    },
+    "model.flower_yellow": {
+      "path": "original/b612/flower_yellow.glb",
+      "bundle": "b612_scenes_all_f593f551f550041f5a2feb47872f92c6.bundle",
+      "meshes": [
+        "Flower_Buttercup_A"
+      ],
+      "source_bounds": [
+        [
+          -0.08758728206157684,
+          -0.020311009138822556,
+          -0.0888751819729805
+        ],
+        [
+          0.06879770010709763,
+          0.28377625346183777,
+          0.08139725029468536
+        ]
+      ],
+      "size": [
+        0.17999683147174741,
+        0.35,
+        0.19598108379812695
+      ],
+      "skins": 0
+    },
+    "model.flower_purple": {
+      "path": "original/b612/flower_purple.glb",
+      "bundle": "b612_scenes_all_f593f551f550041f5a2feb47872f92c6.bundle",
+      "meshes": [
+        "Flower_Lavender_A"
+      ],
+      "source_bounds": [
+        [
+          -0.1812632530927658,
+          -0.019999999552965164,
+          -0.20997054874897003
+        ],
+        [
+          0.18643061816692352,
+          0.3177144527435303,
+          0.15526233613491058
+        ]
+      ],
+      "size": [
+        0.38107002547793173,
+        0.35,
+        0.378519512091028
+      ],
+      "skins": 0
+    },
+    "model.pot": {
+      "path": "original/b612/pot.glb",
+      "bundle": "b612_scenes_all_f593f551f550041f5a2feb47872f92c6.bundle",
+      "meshes": [
+        "Pot_M"
+      ],
+      "source_bounds": [
+        [
+          -0.11699999868869781,
+          0.0,
+          -0.11699999868869781
+        ],
+        [
+          0.11699999868869781,
+          0.2651614844799042,
+          0.11699999868869781
+        ]
+      ],
+      "size": [
+        0.44124054788041783,
+        0.5,
+        0.44124054788041783
+      ],
+      "skins": 0
+    },
+    "model.chair": {
+      "path": "original/b612/chair.glb",
+      "bundle": "b612_scenes_all_f593f551f550041f5a2feb47872f92c6.bundle",
+      "meshes": [
+        "SunsetChair"
+      ],
+      "source_bounds": [
+        [
+          -0.17766864597797394,
+          0.0,
+          -0.1457819938659668
+        ],
+        [
+          0.17766861617565155,
+          0.6600364446640015,
+          0.14373467862606049
+        ]
+      ],
+      "size": [
+        0.5275928620696444,
+        0.98,
+        0.4298646557109746
+      ],
+      "skins": 0
+    },
+    "model.king.king": {
+      "path": "original/king/king_king.glb",
+      "bundle": "king_scenes_all_5bb118ea0cc898dfffe446eaaf2f3b36.bundle",
+      "meshes": [
+        "king_body",
+        "king_robe",
+        "king_crown",
+        "king_scepter",
+        "king_skirt",
+        "king_skirt_trim"
+      ],
+      "source_bounds": [
+        [
+          -0.9421642971026654,
+          0.013495314579032525,
+          -0.40212154172998366
+        ],
+        [
+          0.9407236642807446,
+          1.8006929777733744,
+          0.7517816549456598
+        ]
+      ],
+      "size": [
+        1.7383444485540338,
+        1.65,
+        1.0653216002486317
+      ],
+      "skins": 6
+    },
+    "model.king.throne": {
+      "path": "original/king/king_throne.glb",
+      "bundle": "king_scenes_all_5bb118ea0cc898dfffe446eaaf2f3b36.bundle",
+      "meshes": [
+        "RC_P2_02_Throne_Mesh"
+      ],
+      "source_bounds": [
+        [
+          -0.5914264917373657,
+          0.0,
+          -0.4108695983886719
+        ],
+        [
+          0.5914264917373657,
+          2.0999999046325684,
+          0.4108695983886719
+        ]
+      ],
+      "size": [
+        1.1828530371917108,
+        2.1,
+        0.8217392340950392
+      ],
+      "skins": 0
+    },
+    "model.king.candelabrum": {
+      "path": "original/king/king_candelabrum.glb",
+      "bundle": "king_scenes_all_5bb118ea0cc898dfffe446eaaf2f3b36.bundle",
+      "meshes": [
+        "RC_Candelabrum_T3_Mesh"
+      ],
+      "source_bounds": [
+        [
+          -0.34760624170303345,
+          0.0,
+          -0.21673181653022766
+        ],
+        [
+          0.34760624170303345,
+          1.8600878715515137,
+          0.21673181653022766
+        ]
+      ],
+      "size": [
+        0.6353792419518945,
+        1.7,
+        0.3961577232306396
+      ],
+      "skins": 0
+    },
+    "model.king.door": {
+      "path": "original/king/king_door.glb",
+      "bundle": "king_scenes_all_5bb118ea0cc898dfffe446eaaf2f3b36.bundle",
+      "meshes": [
+        "RoyalCourt_DoorLeaf"
+      ],
+      "source_bounds": [
+        [
+          -1.6399999856948853,
+          0.029999971389770508,
+          -0.281000018119812
+        ],
+        [
+          0.042999982833862305,
+          4.300000190734863,
+          0.281000018119812
+        ]
+      ],
+      "size": [
+        1.4,
+        2.4,
+        0.14
+      ],
+      "skins": 0
+    },
+    "model.king.banner": {
+      "path": "original/king/king_banner.glb",
+      "bundle": "king_scenes_all_5bb118ea0cc898dfffe446eaaf2f3b36.bundle",
+      "meshes": [
+        "RC_RoyalBanner_Mesh"
+      ],
+      "source_bounds": [
+        [
+          -0.6019999980926514,
+          -0.00033185468055307865,
+          -0.0949999988079071
+        ],
+        [
+          0.6019999980926514,
+          2.88700008392334,
+          0.0707663893699646
+        ]
+      ],
+      "size": [
+        0.8339879319642555,
+        2.0,
+        0.1148232289897534
+      ],
+      "skins": 0
+    },
+    "model.vanity.vain": {
+      "path": "original/theater/vanity_vain.glb",
+      "bundle": "theater_scenes_all_e2f618313ea2960aa084f1d092ed065b.bundle",
+      "meshes": [
+        "performer_body",
+        "performer_hat"
+      ],
+      "source_bounds": [
+        [
+          -0.38164225331113055,
+          0.00014727591786248208,
+          -0.32085730643958293
+        ],
+        [
+          0.33288830913821066,
+          2.0918950872004314,
+          0.15222949872564426
+        ]
+      ],
+      "size": [
+        0.66611022096487,
+        1.95,
+        0.4410279600132791
+      ],
+      "skins": 2
+    },
+    "model.vanity.mirror": {
+      "path": "original/theater/vanity_mirror.glb",
+      "bundle": "theater_scenes_all_e2f618313ea2960aa084f1d092ed065b.bundle",
+      "meshes": [
+        "P02_InnerGoldRebate",
+        "P02_ReflectionSurface",
+        "P02_StandingMirror_OriginalMesh",
+        "P02_WoodBackPanel"
+      ],
+      "source_bounds": [
+        [
+          -0.5306546688079834,
+          0.0,
+          -0.4146312177181244
+        ],
+        [
+          0.5306546688079834,
+          2.5,
+          0.4146312177181244
+        ]
+      ],
+      "size": [
+        1.2735712051391601,
+        3.0,
+        0.9951149225234985
+      ],
+      "skins": 0
+    },
+    "model.bar.drinker": {
+      "path": "original/bar/bar_drinker.glb",
+      "bundle": "bar_scenes_all_b9da43939383a8e5dadfca776345e4dc.bundle",
+      "meshes": [
+        "drinker_body"
+      ],
+      "source_bounds": [
+        [
+          -0.3276223773340162,
+          1.0065779061697698e-07,
+          -0.1337277341716088
+        ],
+        [
+          0.27501646142543124,
+          1.2712770609521713,
+          0.6408019812052482
+        ]
+      ],
+      "size": [
+        0.6636589827505864,
+        1.4,
+        0.8529546553541774
+      ],
+      "skins": 1
+    },
+    "model.bar.table": {
+      "path": "original/bar/bar_table.glb",
+      "bundle": "bar_scenes_all_b9da43939383a8e5dadfca776345e4dc.bundle",
+      "meshes": [
+        "PlankTable_Drinker"
+      ],
+      "source_bounds": [
+        [
+          -0.6000000238418579,
+          0.0,
+          -0.3999999761581421
+        ],
+        [
+          0.6000000238418579,
+          0.75,
+          0.3999999761581421
+        ]
+      ],
+      "size": [
+        1.0,
+        0.75,
+        0.8600000000000001
+      ],
+      "skins": 0
+    },
+    "model.bar.chair": {
+      "path": "original/bar/bar_chair.glb",
+      "bundle": "bar_scenes_all_b9da43939383a8e5dadfca776345e4dc.bundle",
+      "meshes": [
+        "Chair_LOD0"
+      ],
+      "source_bounds": [
+        [
+          -0.25257566571235657,
+          0.0,
+          -0.2683471739292145
+        ],
+        [
+          0.25257566571235657,
+          0.949536144733429,
+          0.2683471739292145
+        ]
+      ],
+      "size": [
+        0.5053981014995506,
+        0.9499999999999998,
+        0.5369565269246749
+      ],
+      "skins": 0
+    },
+    "model.bar.chair_high": {
+      "path": "original/bar/bar_chair_high.glb",
+      "bundle": "bar_scenes_all_b9da43939383a8e5dadfca776345e4dc.bundle",
+      "meshes": [
+        "Chair_LOD0"
+      ],
+      "source_bounds": [
+        [
+          -0.25257566571235657,
+          0.0,
+          -0.2683471739292145
+        ],
+        [
+          0.25257566571235657,
+          0.949536144733429,
+          0.2683471739292145
+        ]
+      ],
+      "size": [
+        0.5053981014995506,
+        0.9499999999999998,
+        0.5369565269246749
+      ],
+      "skins": 0
+    },
+    "model.bar.barrel": {
+      "path": "original/bar/bar_barrel.glb",
+      "bundle": "bar_scenes_all_b9da43939383a8e5dadfca776345e4dc.bundle",
+      "meshes": [
+        "Barrel_LOD0"
+      ],
+      "source_bounds": [
+        [
+          -0.3935302495956421,
+          0.0,
+          -0.40144041180610657
+        ],
+        [
+          0.3935302495956421,
+          0.8995605111122131,
+          0.40144041180610657
+        ]
+      ],
+      "size": [
+        0.7874450251227114,
+        0.9,
+        0.8032730787143836
+      ],
+      "skins": 0
+    },
+    "model.bar.door": {
+      "path": "original/bar/bar_door.glb",
+      "bundle": "bar_scenes_all_b9da43939383a8e5dadfca776345e4dc.bundle",
+      "meshes": [
+        "Bar_DoorFront_Leaf",
+        "Bar_DoorFront_Iron"
+      ],
+      "source_bounds": [
+        [
+          -0.02999994531273842,
+          0.019061362370848656,
+          -0.1099998950958252
+        ],
+        [
+          1.2977886199951172,
+          2.2370998859405518,
+          0.04000009223818779
+        ]
+      ],
+      "size": [
+        1.3,
+        2.2,
+        0.12
+      ],
+      "skins": 0
+    },
+    "model.bar.door_back": {
+      "path": "original/bar/bar_door_back.glb",
+      "bundle": "bar_scenes_all_b9da43939383a8e5dadfca776345e4dc.bundle",
+      "meshes": [
+        "Bar_DoorBack_Leaf",
+        "Bar_DoorBack_Iron"
+      ],
+      "source_bounds": [
+        [
+          0.002999895019456744,
+          0.009999999776482582,
+          -0.09999980032444
+        ],
+        [
+          0.8969998955726624,
+          2.0375051498413086,
+          0.04000014439225197
+        ]
+      ],
+      "size": [
+        1.0,
+        2.2,
+        0.12
+      ],
+      "skins": 0
+    },
+    "model.businessman.merchant": {
+      "path": "original/counting/businessman_merchant.glb",
+      "bundle": "counting_scenes_all_089cbda0302d53359e2fb22541ffb15d.bundle",
+      "meshes": [
+        "merchant_body",
+        "merchant_pen"
+      ],
+      "source_bounds": [
+        [
+          -0.26656369770925015,
+          0.3848044239802303,
+          -0.12194466458775333
+        ],
+        [
+          0.26656347856702883,
+          1.2801172331879787,
+          0.6022918330335834
+        ]
+      ],
+      "size": [
+        0.803877349425895,
+        1.35,
+        1.0920420904666568
+      ],
+      "skins": 2
+    },
+    "model.businessman.telescope": {
+      "path": "original/counting/businessman_telescope.glb",
+      "bundle": "counting_scenes_all_089cbda0302d53359e2fb22541ffb15d.bundle",
+      "meshes": [
+        "Prop_BrassTelescope",
+        "Prop_BrassTelescope_Tube"
+      ],
+      "source_bounds": [
+        [
+          -0.579350471496582,
+          -8.977999499393263e-08,
+          -0.6742362380027771
+        ],
+        [
+          0.579267144203186,
+          1.7260122895240784,
+          0.480817973613739
+        ]
+      ],
+      "size": [
+        1.1075929053738425,
+        1.65,
+        1.1041864311168406
+      ],
+      "skins": 0
+    },
+    "model.businessman.rug": {
+      "path": "original/counting/businessman_rug.glb",
+      "bundle": "counting_scenes_all_089cbda0302d53359e2fb22541ffb15d.bundle",
+      "meshes": [
+        "SO_Int_StarRug"
+      ],
+      "source_bounds": [
+        [
+          -1.600000023841858,
+          0.0,
+          -1.600000023841858
+        ],
+        [
+          1.600000023841858,
+          0.012000000104308128,
+          1.600000023841858
+        ]
+      ],
+      "size": [
+        3.200000047683716,
+        0.012000000104308128,
+        3.200000047683716
+      ],
+      "skins": 0
+    },
+    "model.businessman.desk": {
+      "path": "original/counting/businessman_desk.glb",
+      "bundle": "counting_scenes_all_089cbda0302d53359e2fb22541ffb15d.bundle",
+      "meshes": [
+        "SO_Int_WritingDesk"
+      ],
+      "source_bounds": [
+        [
+          -0.762499988079071,
+          0.0,
+          -0.3499999940395355
+        ],
+        [
+          0.762499988079071,
+          0.7815999984741211,
+          0.3499999940395355
+        ]
+      ],
+      "size": [
+        1.524999976158142,
+        0.7815999984741211,
+        0.699999988079071
+      ],
+      "skins": 0
+    },
+    "model.businessman.chair": {
+      "path": "original/counting/businessman_chair.glb",
+      "bundle": "counting_scenes_all_089cbda0302d53359e2fb22541ffb15d.bundle",
+      "meshes": [
+        "SO_Int_DeskChair"
+      ],
+      "source_bounds": [
+        [
+          -0.23900000751018524,
+          -0.0014634011313319206,
+          -0.2240000069141388
+        ],
+        [
+          0.23900000751018524,
+          0.9626971483230591,
+          0.2934756278991699
+        ]
+      ],
+      "size": [
+        0.4780000150203705,
+        0.964160549454391,
+        0.5174756348133087
+      ],
+      "skins": 0
+    },
+    "model.businessman.bookshelf": {
+      "path": "original/counting/businessman_bookshelf.glb",
+      "bundle": "counting_scenes_all_089cbda0302d53359e2fb22541ffb15d.bundle",
+      "meshes": [
+        "SO_Int_Bookshelf"
+      ],
+      "source_bounds": [
+        [
+          -0.6499999761581421,
+          0.0,
+          -0.25
+        ],
+        [
+          0.6499999761581421,
+          2.200000047683716,
+          0.20999999344348907
+        ]
+      ],
+      "size": [
+        1.2999999523162842,
+        2.200000047683716,
+        0.4599999934434891
+      ],
+      "skins": 0
+    },
+    "model.businessman.cabinet": {
+      "path": "original/counting/businessman_cabinet.glb",
+      "bundle": "counting_scenes_all_089cbda0302d53359e2fb22541ffb15d.bundle",
+      "meshes": [
+        "SO_Int_ArchiveCabinet"
+      ],
+      "source_bounds": [
+        [
+          -0.625,
+          0.0,
+          -0.27000001072883606
+        ],
+        [
+          0.625,
+          2.1500000953674316,
+          0.23499999940395355
+        ]
+      ],
+      "size": [
+        1.25,
+        2.1500000953674316,
+        0.5050000101327896
+      ],
+      "skins": 0
+    },
+    "model.businessman.low_cabinet": {
+      "path": "original/counting/businessman_low_cabinet.glb",
+      "bundle": "counting_scenes_all_089cbda0302d53359e2fb22541ffb15d.bundle",
+      "meshes": [
+        "SO_Int_LowCabinet"
+      ],
+      "source_bounds": [
+        [
+          -0.6499999761581421,
+          0.0,
+          -0.23100000619888306
+        ],
+        [
+          0.6499999761581421,
+          0.800000011920929,
+          0.22499999403953552
+        ]
+      ],
+      "size": [
+        1.2999999523162842,
+        0.800000011920929,
+        0.4560000002384186
+      ],
+      "skins": 0
+    },
+    "model.businessman.side_desk": {
+      "path": "original/counting/businessman_side_desk.glb",
+      "bundle": "counting_scenes_all_089cbda0302d53359e2fb22541ffb15d.bundle",
+      "meshes": [
+        "SO_Int_SideDesk"
+      ],
+      "source_bounds": [
+        [
+          -0.5,
+          0.0,
+          -0.2750000059604645
+        ],
+        [
+          0.5,
+          0.7799999713897705,
+          0.2750000059604645
+        ]
+      ],
+      "size": [
+        1.0,
+        0.7799999713897705,
+        0.550000011920929
+      ],
+      "skins": 0
+    },
+    "model.businessman.table": {
+      "path": "original/counting/businessman_table.glb",
+      "bundle": "counting_scenes_all_089cbda0302d53359e2fb22541ffb15d.bundle",
+      "meshes": [
+        "SO_Int_SmallTable"
+      ],
+      "source_bounds": [
+        [
+          -0.3199999928474426,
+          0.0,
+          -0.22099998593330383
+        ],
+        [
+          0.3199999928474426,
+          0.7400000095367432,
+          0.20999999344348907
+        ]
+      ],
+      "size": [
+        0.6399999856948853,
+        0.7400000095367432,
+        0.4309999793767929
+      ],
+      "skins": 0
+    },
+    "model.businessman.stool": {
+      "path": "original/counting/businessman_stool.glb",
+      "bundle": "counting_scenes_all_089cbda0302d53359e2fb22541ffb15d.bundle",
+      "meshes": [
+        "SO_Int_Stool"
+      ],
+      "source_bounds": [
+        [
+          -0.17100000381469727,
+          -0.0013470191042870283,
+          -0.17100000381469727
+        ],
+        [
+          0.17100000381469727,
+          0.47999998927116394,
+          0.17100000381469727
+        ]
+      ],
+      "size": [
+        0.34200000762939453,
+        0.48134700837545097,
+        0.34200000762939453
+      ],
+      "skins": 0
+    },
+    "model.businessman.armillary": {
+      "path": "original/counting/businessman_armillary.glb",
+      "bundle": "counting_scenes_all_089cbda0302d53359e2fb22541ffb15d.bundle",
+      "meshes": [
+        "SO_Int_Armillary_M"
+      ],
+      "source_bounds": [
+        [
+          -0.12148624658584595,
+          0.0,
+          -0.12148624658584595
+        ],
+        [
+          0.12148624658584595,
+          0.3359440863132477,
+          0.12148624658584595
+        ]
+      ],
+      "size": [
+        0.2429724931716919,
+        0.3359440863132477,
+        0.2429724931716919
+      ],
+      "skins": 0
+    },
+    "model.businessman.chart_north": {
+      "path": "original/counting/businessman_chart_north.glb",
+      "bundle": "counting_scenes_all_089cbda0302d53359e2fb22541ffb15d.bundle",
+      "meshes": [
+        "SO_Int_Chart_North"
+      ],
+      "source_bounds": [
+        [
+          -0.800000011920929,
+          0.0,
+          -0.04800000041723251
+        ],
+        [
+          0.800000011920929,
+          1.2781999111175537,
+          0.0
+        ]
+      ],
+      "size": [
+        1.600000023841858,
+        1.2781999111175537,
+        0.04800000041723251
+      ],
+      "skins": 0
+    },
+    "model.businessman.chart_moon": {
+      "path": "original/counting/businessman_chart_moon.glb",
+      "bundle": "counting_scenes_all_089cbda0302d53359e2fb22541ffb15d.bundle",
+      "meshes": [
+        "SO_Int_Chart_Moon"
+      ],
+      "source_bounds": [
+        [
+          -0.44999998807907104,
+          0.0,
+          -0.03999999910593033
+        ],
+        [
+          0.44999998807907104,
+          1.2281999588012695,
+          0.0
+        ]
+      ],
+      "size": [
+        0.8999999761581421,
+        1.2281999588012695,
+        0.03999999910593033
+      ],
+      "skins": 0
+    },
+    "model.businessman.chart_constellation": {
+      "path": "original/counting/businessman_chart_constellation.glb",
+      "bundle": "counting_scenes_all_089cbda0302d53359e2fb22541ffb15d.bundle",
+      "meshes": [
+        "SO_Int_Chart_Constellation"
+      ],
+      "source_bounds": [
+        [
+          -0.44999998807907104,
+          0.0,
+          -0.03999999910593033
+        ],
+        [
+          0.44999998807907104,
+          1.2281999588012695,
+          0.0
+        ]
+      ],
+      "size": [
+        0.8999999761581421,
+        1.2281999588012695,
+        0.03999999910593033
+      ],
+      "skins": 0
+    },
+    "model.businessman.chart_zodiac": {
+      "path": "original/counting/businessman_chart_zodiac.glb",
+      "bundle": "counting_scenes_all_089cbda0302d53359e2fb22541ffb15d.bundle",
+      "meshes": [
+        "SO_Int_Chart_Zodiac"
+      ],
+      "source_bounds": [
+        [
+          -0.22499999403953552,
+          0.0,
+          -0.03999999910593033
+        ],
+        [
+          0.22499999403953552,
+          0.7282000184059143,
+          0.0
+        ]
+      ],
+      "size": [
+        0.44999998807907104,
+        0.7282000184059143,
+        0.03999999910593033
+      ],
+      "skins": 0
+    },
+    "model.businessman.chart_orbits": {
+      "path": "original/counting/businessman_chart_orbits.glb",
+      "bundle": "counting_scenes_all_089cbda0302d53359e2fb22541ffb15d.bundle",
+      "meshes": [
+        "SO_Int_Chart_Orbits"
+      ],
+      "source_bounds": [
+        [
+          -0.22499999403953552,
+          0.0,
+          -0.03999999910593033
+        ],
+        [
+          0.22499999403953552,
+          0.7282000184059143,
+          0.0
+        ]
+      ],
+      "size": [
+        0.44999998807907104,
+        0.7282000184059143,
+        0.03999999910593033
+      ],
+      "skins": 0
+    },
+    "model.businessman.lantern": {
+      "path": "original/counting/businessman_lantern.glb",
+      "bundle": "counting_scenes_all_089cbda0302d53359e2fb22541ffb15d.bundle",
+      "meshes": [
+        "Prop_Lantern"
+      ],
+      "source_bounds": [
+        [
+          -0.09592936933040619,
+          -0.44225698709487915,
+          -0.3692782521247864
+        ],
+        [
+          0.10805322974920273,
+          0.1077430248260498,
+          0.0
+        ]
+      ],
+      "size": [
+        0.20398259907960892,
+        0.550000011920929,
+        0.3692782521247864
+      ],
+      "skins": 0
+    },
+    "model.businessman.oil_lamp": {
+      "path": "original/counting/businessman_oil_lamp.glb",
+      "bundle": "counting_scenes_all_089cbda0302d53359e2fb22541ffb15d.bundle",
+      "meshes": [
+        "SO_Int_OilLamp"
+      ],
+      "source_bounds": [
+        [
+          -0.09350000321865082,
+          -0.007406102493405342,
+          -0.06199999898672104
+        ],
+        [
+          0.06199999898672104,
+          0.36000001430511475,
+          0.06199999898672104
+        ]
+      ],
+      "size": [
+        0.15550000220537186,
+        0.3674061167985201,
+        0.12399999797344208
+      ],
+      "skins": 0
+    },
+    "model.businessman.candles": {
+      "path": "original/counting/businessman_candles.glb",
+      "bundle": "counting_scenes_all_089cbda0302d53359e2fb22541ffb15d.bundle",
+      "meshes": [
+        "SO_Int_CandleA"
+      ],
+      "source_bounds": [
+        [
+          -0.08720000088214874,
+          -0.005044335499405861,
+          -0.06199999898672104
+        ],
+        [
+          0.06199999898672104,
+          0.14030061662197113,
+          0.06199999898672104
+        ]
+      ],
+      "size": [
+        0.14919999986886978,
+        0.145344952121377,
+        0.12399999797344208
+      ],
+      "skins": 0
+    },
+    "model.businessman.sextant": {
+      "path": "original/counting/businessman_sextant.glb",
+      "bundle": "counting_scenes_all_089cbda0302d53359e2fb22541ffb15d.bundle",
+      "meshes": [
+        "SO_Int_Sextant"
+      ],
+      "source_bounds": [
+        [
+          -0.0858469232916832,
+          0.0,
+          -0.09817278385162354
+        ],
+        [
+          0.0858469232916832,
+          0.06149999797344208,
+          0.09817278385162354
+        ]
+      ],
+      "size": [
+        0.1716938465833664,
+        0.06149999797344208,
+        0.19634556770324707
+      ],
+      "skins": 0
+    },
+    "model.businessman.scrolls": {
+      "path": "original/counting/businessman_scrolls.glb",
+      "bundle": "counting_scenes_all_089cbda0302d53359e2fb22541ffb15d.bundle",
+      "meshes": [
+        "SO_Int_ScrollPair"
+      ],
+      "source_bounds": [
+        [
+          -0.15719670057296753,
+          0.0,
+          -0.030887097120285034
+        ],
+        [
+          0.1730627715587616,
+          0.04536000266671181,
+          0.0425335168838501
+        ]
+      ],
+      "size": [
+        0.3302594721317291,
+        0.04536000266671181,
+        0.07342061400413513
+      ],
+      "skins": 0
+    },
+    "model.businessman.boxes": {
+      "path": "original/counting/businessman_boxes.glb",
+      "bundle": "counting_scenes_all_089cbda0302d53359e2fb22541ffb15d.bundle",
+      "meshes": [
+        "Prop_Crate_A"
+      ],
+      "source_bounds": [
+        [
+          -0.28940001130104065,
+          0.0,
+          -0.2694000005722046
+        ],
+        [
+          0.28940001130104065,
+          0.5039999485015869,
+          0.2694000005722046
+        ]
+      ],
+      "size": [
+        0.5788000226020813,
+        0.5039999485015869,
+        0.5388000011444092
+      ],
+      "skins": 0
+    },
+    "model.businessman.float_rock": {
+      "path": "original/counting/businessman_float_rock.glb",
+      "bundle": "counting_scenes_all_089cbda0302d53359e2fb22541ffb15d.bundle",
+      "meshes": [
+        "Asteroid_A"
+      ],
+      "source_bounds": [
+        [
+          -0.8999999761581421,
+          -0.5872732996940613,
+          -0.7615747451782227
+        ],
+        [
+          0.8999999761581421,
+          0.5872732996940613,
+          0.7615747451782227
+        ]
+      ],
+      "size": [
+        2.1455086878252305,
+        1.4,
+        1.8155169727705116
+      ],
+      "skins": 0
+    },
+    "model.lamp.lamplighter": {
+      "path": "original/lamp/lamp_lamplighter.glb",
+      "bundle": "lamp_scenes_all_8f509513f920bc338bf932325265e981.bundle",
+      "meshes": [
+        "lamplighter_body",
+        "lamplighter_wand"
+      ],
+      "source_bounds": [
+        [
+          -0.3018806099772333,
+          -2.5508960530733107e-07,
+          -0.21468028185153476
+        ],
+        [
+          0.3335093439393988,
+          3.026808102104553,
+          0.3743550491301516
+        ]
+      ],
+      "size": [
+        0.41984154854497396,
+        2.0,
+        0.3892121743232665
+      ],
+      "skins": 2
+    },
+    "model.lamp.street_lamp": {
+      "path": "original/lamp/lamp_street_lamp.glb",
+      "bundle": "lamp_scenes_all_8f509513f920bc338bf932325265e981.bundle",
+      "meshes": [
+        "Brass_CollarLower",
+        "Brass_CollarUpper",
+        "Brass_FootRing",
+        "Brass_SocketCollar",
+        "Column_CastPlinth",
+        "Column_FlutedShaft",
+        "Foundation_Bolt_1",
+        "Foundation_Bolt_2",
+        "Foundation_Bolt_3",
+        "Foundation_Bolt_4",
+        "Foundation_OctagonalStone",
+        "Glass_Pane_1_Door",
+        "Glass_Pane_2",
+        "Glass_Pane_3",
+        "Glass_Pane_4",
+        "Lantern_TripoIronHousing",
+        "Flame_Core",
+        "Flame_Outer"
+      ],
+      "source_bounds": [
+        [
+          -0.36046454310417175,
+          -4.3064290070730124e-08,
+          -0.3604645431270083
+        ],
+        [
+          0.36046454310417175,
+          3.4494626533882484,
+          0.36046452431676834
+        ]
+      ],
+      "size": [
+        0.6687920058504223,
+        3.2,
+        0.6687919884428957
+      ],
+      "skins": 0
+    },
+    "model.lamp.boulder": {
+      "path": "original/lamp/lamp_boulder.glb",
+      "bundle": "lamp_scenes_all_8f509513f920bc338bf932325265e981.bundle",
+      "meshes": [
+        "Lighter_Boulder_01"
+      ],
+      "source_bounds": [
+        [
+          -0.691677451133728,
+          0.0,
+          -0.5413203239440918
+        ],
+        [
+          0.691677451133728,
+          0.8266680240631104,
+          0.5413203239440918
+        ]
+      ],
+      "size": [
+        1.3387283523736213,
+        0.8,
+        1.0477150356603429
+      ],
+      "skins": 0
+    },
+    "model.lamp.stone": {
+      "path": "original/lamp/lamp_stone.glb",
+      "bundle": "lamp_scenes_all_8f509513f920bc338bf932325265e981.bundle",
+      "meshes": [
+        "Rock_01_LOD0"
+      ],
+      "source_bounds": [
+        [
+          -1.24055016040802,
+          -0.0497109591960907,
+          -0.9626116752624512
+        ],
+        [
+          1.2408360242843628,
+          1.190497875213623,
+          0.9626116752624512
+        ]
+      ],
+      "size": [
+        0.30011713945015756,
+        0.15,
+        0.2328507059185592
+      ],
+      "skins": 0
+    },
+    "model.lamp.bush": {
+      "path": "original/b612/lamp_bush.glb",
+      "bundle": "b612_scenes_all_f593f551f550041f5a2feb47872f92c6.bundle",
+      "meshes": [
+        "Shrub_Low_LOD0"
+      ],
+      "source_bounds": [
+        [
+          -0.8871580958366394,
+          -0.07756607234477997,
+          -0.9109423756599426
+        ],
+        [
+          0.9313196539878845,
+          0.5585257411003113,
+          0.822948694229126
+        ]
+      ],
+      "size": [
+        1.1435316169064318,
+        0.4,
+        1.0903401258999172
+      ],
+      "skins": 0
+    },
+    "model.lamp.seat": {
+      "path": "original/lamp/lamp_seat.glb",
+      "bundle": "lamp_scenes_all_8f509513f920bc338bf932325265e981.bundle",
+      "meshes": [
+        "Lighter_Boulder_02"
+      ],
+      "source_bounds": [
+        [
+          -0.49222901463508606,
+          0.0,
+          -0.44464802742004395
+        ],
+        [
+          0.49222901463508606,
+          0.6074408292770386,
+          0.44464802742004395
+        ]
+      ],
+      "size": [
+        0.6806792569172163,
+        0.42,
+        0.614881853558268
+      ],
+      "skins": 0
+    },
+    "model.geo.geographer": {
+      "path": "original/geo/geo_geographer.glb",
+      "bundle": "geo_scenes_all_51dcdcc97916712edd4bd2822a3ae928.bundle",
+      "meshes": [
+        "geographer_body",
+        "geographer_coat_hem"
+      ],
+      "source_bounds": [
+        [
+          -0.3183233840314668,
+          4.205963322158732e-06,
+          -0.16513068230590897
+        ],
+        [
+          0.3022069511506744,
+          1.4344223509643106,
+          0.5804968437020153
+        ]
+      ],
+      "size": [
+        0.618619042433997,
+        1.43,
+        0.7433309219541396
+      ],
+      "skins": 2
+    },
+    "model.geo.table": {
+      "path": "original/geo/geo_table.glb",
+      "bundle": "geo_scenes_all_51dcdcc97916712edd4bd2822a3ae928.bundle",
+      "meshes": [
+        "GEO_Prop_MapTable_TopFix"
+      ],
+      "source_bounds": [
+        [
+          -0.9499999284744263,
+          0.0,
+          -0.5999999642372131
+        ],
+        [
+          0.9499999284744263,
+          0.8166477084159851,
+          0.5999999642372131
+        ]
+      ],
+      "size": [
+        1.6,
+        0.8,
+        1.1
+      ],
+      "skins": 0
+    },
+    "model.geo.door": {
+      "path": "original/geo/geo_door.glb",
+      "bundle": "geo_scenes_all_51dcdcc97916712edd4bd2822a3ae928.bundle",
+      "meshes": [
+        "GEO_DoorLeaf_L"
+      ],
+      "source_bounds": [
+        [
+          -1.2954168319702148,
+          0.03797069191932678,
+          -0.0729999989271164
+        ],
+        [
+          0.03328697755932808,
+          3.2436487674713135,
+          0.13575857877731323
+        ]
+      ],
+      "size": [
+        1.3,
+        2.8,
+        0.14
+      ],
+      "skins": 0
+    },
+    "model.geo.cypress": {
+      "path": "original/geo/geo_cypress.glb",
+      "bundle": "geo_scenes_all_51dcdcc97916712edd4bd2822a3ae928.bundle",
+      "meshes": [
+        "GEO_Veg_Cypress_A"
+      ],
+      "source_bounds": [
+        [
+          -0.8693227171897888,
+          -0.30000001192092896,
+          -0.9929718971252441
+        ],
+        [
+          0.9658105373382568,
+          11.503397941589355,
+          0.8592228889465332
+        ]
+      ],
+      "size": [
+        0.7462799828006277,
+        4.8,
+        0.753218268854565
+      ],
+      "skins": 0
+    },
+    "model.tree": {
+      "path": "original/bar/tree.glb",
+      "bundle": "bar_scenes_all_b9da43939383a8e5dadfca776345e4dc.bundle",
+      "meshes": [
+        "Tree_RoundA_LOD0"
+      ],
+      "source_bounds": [
+        [
+          -2.416085958480835,
+          -0.25720858573913574,
+          -2.7207512855529785
+        ],
+        [
+          3.349658966064453,
+          6.240335941314697,
+          2.772879123687744
+        ]
+      ],
+      "size": [
+        4.081915336243848,
+        4.6,
+        3.8892692119750287
+      ],
+      "skins": 0
+    },
+    "model.tree_oak": {
+      "path": "original/bar/tree_oak.glb",
+      "bundle": "bar_scenes_all_b9da43939383a8e5dadfca776345e4dc.bundle",
+      "meshes": [
+        "Tree_RoundB_LOD0"
+      ],
+      "source_bounds": [
+        [
+          -3.198946475982666,
+          -0.3001787066459656,
+          -2.824230909347534
+        ],
+        [
+          2.7188611030578613,
+          5.695105075836182,
+          2.4589741230010986
+        ]
+      ],
+      "size": [
+        4.540554851319498,
+        4.6,
+        4.053643502216666
+      ],
+      "skins": 0
+    },
+    "model.tree_pine": {
+      "path": "original/geo/tree_pine.glb",
+      "bundle": "geo_scenes_all_51dcdcc97916712edd4bd2822a3ae928.bundle",
+      "meshes": [
+        "GEO_Veg_Pine"
+      ],
+      "source_bounds": [
+        [
+          -3.693969964981079,
+          -0.33097076416015625,
+          -2.9472246170043945
+        ],
+        [
+          2.0479984283447266,
+          6.9908599853515625,
+          2.9452433586120605
+        ]
+      ],
+      "size": [
+        3.607438564604918,
+        4.6,
+        3.701991157012651
+      ],
+      "skins": 0
+    },
+    "model.earth.fox": {
+      "path": "original/earth_scenes_desert_valley/earth_fox.glb",
+      "bundle": "earth_scenes_desert_valley_14cf4e65852fe4c0258c47bdd0d8b076.bundle",
+      "meshes": [
+        "Fox_Body"
+      ],
+      "source_bounds": [
+        [
+          -0.1138425002027396,
+          0.003712804369667949,
+          -0.5121227963469851
+        ],
+        [
+          0.4533188697811009,
+          0.6299357241232887,
+          0.4404596804638591
+        ]
+      ],
+      "size": [
+        0.35,
+        0.42,
+        0.75
+      ],
+      "skins": 1
+    },
+    "model.earth.snake": {
+      "path": "original/earth_scenes_desert_valley/earth_snake.glb",
+      "bundle": "earth_scenes_desert_valley_14cf4e65852fe4c0258c47bdd0d8b076.bundle",
+      "meshes": [
+        "Snake_Body"
+      ],
+      "source_bounds": [
+        [
+          -0.1432233082211554,
+          5.589169858787548e-06,
+          -0.2846086142048231
+        ],
+        [
+          0.19249196752710934,
+          0.24270126330406805,
+          0.42953780656090257
+        ]
+      ],
+      "size": [
+        0.8991298671261053,
+        0.65,
+        1.9126635658162765
+      ],
+      "skins": 1
+    },
+    "model.earth.pilot": {
+      "path": "original/earth_scenes_desert_dunes/earth_pilot.glb",
+      "bundle": "earth_scenes_desert_dunes_1a8d0bd235b925791a5f105f6f53dd05.bundle",
+      "meshes": [
+        "pilot_body"
+      ],
+      "source_bounds": [
+        [
+          -0.39137909628541867,
+          -5.6491488845260494e-08,
+          -0.16575446178004927
+        ],
+        [
+          0.39137923721968937,
+          1.8000002302102733,
+          0.16575471372916187
+        ]
+      ],
+      "size": [
+        0.7610149252497883,
+        1.75,
+        0.32230053596499325
+      ],
+      "skins": 1
+    },
+    "model.earth.wheat": {
+      "path": "original/earth_scenes_desert_valley/earth_wheat.glb",
+      "bundle": "earth_scenes_desert_valley_14cf4e65852fe4c0258c47bdd0d8b076.bundle",
+      "meshes": [
+        "Wheat_A_LOD0"
+      ],
+      "source_bounds": [
+        [
+          -0.3177245259284973,
+          -0.020066654309630394,
+          -0.24830418825149536
+        ],
+        [
+          0.27500486373901367,
+          1.159014105796814,
+          0.38444045186042786
+        ]
+      ],
+      "size": [
+        0.4524341917449326,
+        0.9,
+        0.48297809222950994
+      ],
+      "skins": 0
+    },
+    "model.earth.apple_tree": {
+      "path": "original/earth_scenes_desert_valley/earth_apple_tree.glb",
+      "bundle": "earth_scenes_desert_valley_14cf4e65852fe4c0258c47bdd0d8b076.bundle",
+      "meshes": [
+        "AppleTree_LOD0"
+      ],
+      "source_bounds": [
+        [
+          -5.880484104156494,
+          -0.21072503924369812,
+          -5.681578159332275
+        ],
+        [
+          5.569504737854004,
+          9.080657005310059,
+          5.986506462097168
+        ]
+      ],
+      "size": [
+        5.668688298542341,
+        4.6,
+        5.776663686973947
+      ],
+      "skins": 0
+    },
+    "model.earth.fountain": {
+      "path": "original/earth_scenes_desert_valley/earth_fountain.glb",
+      "bundle": "earth_scenes_desert_valley_14cf4e65852fe4c0258c47bdd0d8b076.bundle",
+      "meshes": [
+        "Garden_Fountain_LOD0"
+      ],
+      "source_bounds": [
+        [
+          -2.091874122619629,
+          -0.2180716097354889,
+          -2.0990068912506104
+        ],
+        [
+          2.0980379581451416,
+          2.2850000858306885,
+          2.0993449687957764
+        ]
+      ],
+      "size": [
+        3.013034648082933,
+        1.8000000000000003,
+        3.019103832091453
+      ],
+      "skins": 0
+    },
+    "model.earth.urn": {
+      "path": "original/earth_scenes_desert_valley/earth_urn.glb",
+      "bundle": "earth_scenes_desert_valley_14cf4e65852fe4c0258c47bdd0d8b076.bundle",
+      "meshes": [
+        "Garden_Urn_LOD0"
+      ],
+      "source_bounds": [
+        [
+          -0.3291642665863037,
+          -0.22119645774364471,
+          -0.32990893721580505
+        ],
+        [
+          0.33000001311302185,
+          1.100000023841858,
+          0.3296900987625122
+        ]
+      ],
+      "size": [
+        0.3492402547392546,
+        0.6999999999999998,
+        0.3494705985219817
+      ],
+      "skins": 0
+    },
+    "model.earth.topiary": {
+      "path": "original/earth_scenes_desert_valley/earth_topiary.glb",
+      "bundle": "earth_scenes_desert_valley_14cf4e65852fe4c0258c47bdd0d8b076.bundle",
+      "meshes": [
+        "Garden_Topiary_Ball_LOD0"
+      ],
+      "source_bounds": [
+        [
+          -0.45148590207099915,
+          -0.05000000074505806,
+          -0.45656588673591614
+        ],
+        [
+          0.45163923501968384,
+          0.8299999833106995,
+          0.46124351024627686
+        ]
+      ],
+      "size": [
+        1.3341621585114691,
+        1.3,
+        1.3558548155624193
+      ],
+      "skins": 0
+    },
+    "model.earth.fence": {
+      "path": "original/earth_scenes_desert_valley/earth_fence.glb",
+      "bundle": "earth_scenes_desert_valley_14cf4e65852fe4c0258c47bdd0d8b076.bundle",
+      "meshes": [
+        "Fence_2m_LOD0"
+      ],
+      "source_bounds": [
+        [
+          -2.05169939994812,
+          -0.30563414096832275,
+          -0.0693337470293045
+        ],
+        [
+          0.07210749387741089,
+          1.0855588912963867,
+          0.06608232110738754
+        ]
+      ],
+      "size": [
+        2.0,
+        0.9999999999999999,
+        0.13541606813669205
+      ],
+      "skins": 0
+    },
+    "model.earth.rose_bed": {
+      "path": "original/earth_scenes_desert_valley/earth_rose_bed.glb",
+      "bundle": "earth_scenes_desert_valley_14cf4e65852fe4c0258c47bdd0d8b076.bundle",
+      "meshes": [
+        "RoseBush_LOD0"
+      ],
+      "source_bounds": [
+        [
+          -0.5412158966064453,
+          0.0,
+          -0.5412480235099792
+        ],
+        [
+          0.5412480235099792,
+          1.0,
+          0.5401105880737305
+        ]
+      ],
+      "size": [
+        1.9,
+        0.7,
+        1.0
+      ],
+      "skins": 0
+    },
+    "model.earth.garden_wall": {
+      "path": "original/earth_scenes_desert_valley/earth_garden_wall.glb",
+      "bundle": "earth_scenes_desert_valley_14cf4e65852fe4c0258c47bdd0d8b076.bundle",
+      "meshes": [
+        "Garden_RoseWallCap_3m_LOD0"
+      ],
+      "source_bounds": [
+        [
+          -1.5099999904632568,
+          0.21699999272823334,
+          -0.4129999876022339
+        ],
+        [
+          1.5099999904632568,
+          1.3619999885559082,
+          0.43799999356269836
+        ]
+      ],
+      "size": [
+        2.0,
+        1.6000000000000003,
+        0.8509999811649323
+      ],
+      "skins": 0
+    },
+    "model.earth.hedge": {
+      "path": "original/earth_scenes_desert_valley/earth_hedge.glb",
+      "bundle": "earth_scenes_desert_valley_14cf4e65852fe4c0258c47bdd0d8b076.bundle",
+      "meshes": [
+        "Garden_Hedge_Box_2m_LOD0"
+      ],
+      "source_bounds": [
+        [
+          -1.0299999713897705,
+          -0.05000000074505806,
+          -0.25999999046325684
+        ],
+        [
+          1.0299999713897705,
+          0.47999998927116394,
+          0.25999999046325684
+        ]
+      ],
+      "size": [
+        2.0,
+        1.1,
+        0.5199999809265137
+      ],
+      "skins": 0
+    },
+    "model.earth.gate": {
+      "path": "original/earth_scenes_desert_valley/earth_gate.glb",
+      "bundle": "earth_scenes_desert_valley_14cf4e65852fe4c0258c47bdd0d8b076.bundle",
+      "meshes": [
+        "Garden_IronGate_Double_Open_LOD0"
+      ],
+      "source_bounds": [
+        [
+          -1.100000023841858,
+          0.03500000014901161,
+          -0.9920592904090881
+        ],
+        [
+          1.100000023841858,
+          1.8932445049285889,
+          0.01785415969789028
+        ]
+      ],
+      "size": [
+        2.8,
+        2.1,
+        1.0099134501069784
+      ],
+      "skins": 0
+    },
+    "model.earth.arch": {
+      "path": "original/earth_scenes_desert_valley/earth_arch.glb",
+      "bundle": "earth_scenes_desert_valley_14cf4e65852fe4c0258c47bdd0d8b076.bundle",
+      "meshes": [
+        "Garden_BackArch_LOD0"
+      ],
+      "source_bounds": [
+        [
+          -1.770892858505249,
+          -0.21536344289779663,
+          -0.38071104884147644
+        ],
+        [
+          1.7724604606628418,
+          3.3853256702423096,
+          1.7035818099975586
+        ]
+      ],
+      "size": [
+        2.4,
+        2.8,
+        2.084292858839035
+      ],
+      "skins": 0
+    },
+    "model.earth.bridge": {
+      "path": "original/earth_scenes_desert_valley/earth_bridge.glb",
+      "bundle": "earth_scenes_desert_valley_14cf4e65852fe4c0258c47bdd0d8b076.bundle",
+      "meshes": [
+        "Footbridge_LOD0"
+      ],
+      "source_bounds": [
+        [
+          -0.8364762663841248,
+          -0.155531108379364,
+          -3.474139928817749
+        ],
+        [
+          0.8430446982383728,
+          1.4503109455108643,
+          3.474139928817749
+        ]
+      ],
+      "size": [
+        1.6,
+        1.6058420538902283,
+        3.4
+      ],
+      "skins": 0
+    },
+    "model.earth.cottage": {
+      "path": "original/earth_scenes_desert_valley/earth_cottage.glb",
+      "bundle": "earth_scenes_desert_valley_14cf4e65852fe4c0258c47bdd0d8b076.bundle",
+      "meshes": [
+        "StoneCottage_LOD0"
+      ],
+      "source_bounds": [
+        [
+          -3.7481689453125,
+          0.0,
+          -2.6751708984375
+        ],
+        [
+          3.7481689453125,
+          5.738525390625,
+          2.6752824783325195
+        ]
+      ],
+      "size": [
+        3.2,
+        5.738525390625,
+        2.8000000000000003
+      ],
+      "skins": 0
+    },
+    "model.earth.plane": {
+      "path": "original/earth_scenes_desert_dunes/earth_plane.glb",
+      "bundle": "earth_scenes_desert_dunes_1a8d0bd235b925791a5f105f6f53dd05.bundle",
+      "meshes": [
+        "PlaneWreck_LOD0_EngineSplit_v1"
+      ],
+      "source_bounds": [
+        [
+          -5.087381839752197,
+          -0.0019068855326622725,
+          -4.983233451843262
+        ],
+        [
+          5.088677406311035,
+          5.207400798797607,
+          4.98204231262207
+        ]
+      ],
+      "size": [
+        9.4,
+        5.20930768433027,
+        6.4
+      ],
+      "skins": 0
+    },
+    "model.earth.loco": {
+      "path": "original/earth_scenes_desert_dunes/earth_loco.glb",
+      "bundle": "earth_scenes_desert_dunes_1a8d0bd235b925791a5f105f6f53dd05.bundle",
+      "meshes": [
+        "SteamLocomotive_LOD0"
+      ],
+      "source_bounds": [
+        [
+          -1.6366833448410034,
+          0.18893036246299744,
+          -6.344249248504639
+        ],
+        [
+          1.6363897323608398,
+          5.882848739624023,
+          6.346062660217285
+        ]
+      ],
+      "size": [
+        3.2730730772018433,
+        5.693918377161026,
+        6.3
+      ],
+      "skins": 0
+    },
+    "model.earth.carriage": {
+      "path": "original/earth_scenes_desert_dunes/earth_carriage.glb",
+      "bundle": "earth_scenes_desert_dunes_1a8d0bd235b925791a5f105f6f53dd05.bundle",
+      "meshes": [
+        "PassengerCarriage_LOD0"
+      ],
+      "source_bounds": [
+        [
+          -1.8066108226776123,
+          0.187049999833107,
+          -6.496826171875
+        ],
+        [
+          1.8066108226776123,
+          6.175839900970459,
+          6.496826171875
+        ]
+      ],
+      "size": [
+        3.6132216453552246,
+        5.988789901137352,
+        6.5
+      ],
+      "skins": 0
+    },
+    "model.earth.cabin": {
+      "path": "original/earth_scenes_desert_dunes/earth_cabin.glb",
+      "bundle": "earth_scenes_desert_dunes_1a8d0bd235b925791a5f105f6f53dd05.bundle",
+      "meshes": [
+        "Station_Cabin_LOD0"
+      ],
+      "source_bounds": [
+        [
+          -1.5500000715255737,
+          -0.1003861129283905,
+          -1.5500000715255737
+        ],
+        [
+          1.5500000715255737,
+          3.8499999046325684,
+          2.6293907165527344
+        ]
+      ],
+      "size": [
+        3.2,
+        3.950386017560959,
+        2.4
+      ],
+      "skins": 0
+    },
+    "model.earth.rail": {
+      "path": "original/earth_scenes_desert_dunes/earth_rail.glb",
+      "bundle": "earth_scenes_desert_dunes_1a8d0bd235b925791a5f105f6f53dd05.bundle",
+      "meshes": [
+        "Station_Track_10m_LOD0"
+      ],
+      "source_bounds": [
+        [
+          -1.7999999523162842,
+          -0.07463130354881287,
+          -5.0
+        ],
+        [
+          1.7999999523162842,
+          0.1899999976158142,
+          5.0
+        ]
+      ],
+      "size": [
+        1.5,
+        0.2646313011646271,
+        2.0
+      ],
+      "skins": 0
+    },
+    "model.earth.bedroll": {
+      "path": "original/earth_scenes_desert_dunes/earth_bedroll.glb",
+      "bundle": "earth_scenes_desert_dunes_1a8d0bd235b925791a5f105f6f53dd05.bundle",
+      "meshes": [
+        "Pilot_Bedroll_Open_LOD0"
+      ],
+      "source_bounds": [
+        [
+          -0.40212282538414,
+          -0.0012657290790230036,
+          -0.9376774430274963
+        ],
+        [
+          0.40209195017814636,
+          0.08891564607620239,
+          0.9500892758369446
+        ]
+      ],
+      "size": [
+        0.8,
+        0.0901813751552254,
+        1.9999999999999998
+      ],
+      "skins": 0
+    },
+    "model.earth.bench": {
+      "path": "original/earth_scenes_desert_dunes/earth_bench.glb",
+      "bundle": "earth_scenes_desert_dunes_1a8d0bd235b925791a5f105f6f53dd05.bundle",
+      "meshes": [
+        "Station_Bench_LOD0"
+      ],
+      "source_bounds": [
+        [
+          -0.8999999761581421,
+          -0.0023100171238183975,
+          -0.23998191952705383
+        ],
+        [
+          0.8999999761581421,
+          0.9008502960205078,
+          0.21986614167690277
+        ]
+      ],
+      "size": [
+        1.6940513629769576,
+        0.85,
+        0.43278125304527354
+      ],
+      "skins": 0
+    },
+    "model.earth.buffer": {
+      "path": "original/earth_scenes_desert_dunes/earth_buffer.glb",
+      "bundle": "earth_scenes_desert_dunes_1a8d0bd235b925791a5f105f6f53dd05.bundle",
+      "meshes": [
+        "Station_BufferStop_LOD0"
+      ],
+      "source_bounds": [
+        [
+          -1.399999976158142,
+          0.0,
+          -1.5283348560333252
+        ],
+        [
+          1.399999976158142,
+          1.2000000476837158,
+          0.20500001311302185
+        ]
+      ],
+      "size": [
+        2.0999998807907154,
+        0.9,
+        1.300001100202358
+      ],
+      "skins": 0
+    },
+    "model.earth.wrench": {
+      "path": "original/earth_scenes_desert_dunes/earth_wrench.glb",
+      "bundle": "earth_scenes_desert_dunes_1a8d0bd235b925791a5f105f6f53dd05.bundle",
+      "meshes": [
+        "Pilot_Wrench_LOD0"
+      ],
+      "source_bounds": [
+        [
+          -0.02798917330801487,
+          -0.125,
+          -0.010526470839977264
+        ],
+        [
+          0.025315305218100548,
+          0.12498412281274796,
+          0.010427658446133137
+        ]
+      ],
+      "size": [
+        0.06396943685024761,
+        0.3,
+        0.02514655216940263
+      ],
+      "skins": 0
+    },
+    "model.earth.signpost": {
+      "path": "original/earth_scenes_desert_dunes/earth_signpost.glb",
+      "bundle": "earth_scenes_desert_dunes_1a8d0bd235b925791a5f105f6f53dd05.bundle",
+      "meshes": [
+        "Signpost_LOD0"
+      ],
+      "source_bounds": [
+        [
+          -0.37976258993148804,
+          -0.30708879232406616,
+          -0.09178520739078522
+        ],
+        [
+          0.3336814045906067,
+          1.9304420948028564,
+          0.12099999934434891
+        ]
+      ],
+      "size": [
+        0.47827987445450515,
+        1.5,
+        0.14264733145763991
+      ],
+      "skins": 0
+    },
+    "model.earth.column": {
+      "path": "original/earth_scenes_desert_dunes/earth_column.glb",
+      "bundle": "earth_scenes_desert_dunes_1a8d0bd235b925791a5f105f6f53dd05.bundle",
+      "meshes": [
+        "Ruin_Column_Tall_LOD0"
+      ],
+      "source_bounds": [
+        [
+          -1.0041639804840088,
+          0.0005178811261430383,
+          -1.0072152614593506
+        ],
+        [
+          1.0056506395339966,
+          7.608046531677246,
+          1.007836103439331
+        ]
+      ],
+      "size": [
+        0.8454002711631872,
+        3.2,
+        0.8476030342927022
+      ],
+      "skins": 0
+    },
+    "model.earth.column_broken": {
+      "path": "original/earth_scenes_desert_dunes/earth_column_broken.glb",
+      "bundle": "earth_scenes_desert_dunes_1a8d0bd235b925791a5f105f6f53dd05.bundle",
+      "meshes": [
+        "Ruin_Column_Short_LOD0"
+      ],
+      "source_bounds": [
+        [
+          -1.009142279624939,
+          -6.825233140261844e-05,
+          -1.0148112773895264
+        ],
+        [
+          1.0031696557998657,
+          3.0525128841400146,
+          1.0186861753463745
+        ]
+      ],
+      "size": [
+        1.186589748750013,
+        1.8,
+        1.1990821050396983
+      ],
+      "skins": 0
+    },
+    "model.earth.block": {
+      "path": "original/earth_scenes_desert_dunes/earth_block.glb",
+      "bundle": "earth_scenes_desert_dunes_1a8d0bd235b925791a5f105f6f53dd05.bundle",
+      "meshes": [
+        "Ruin_Block_A_LOD0"
+      ],
+      "source_bounds": [
+        [
+          -0.8563787341117859,
+          -0.00019184109987691045,
+          -0.5099661946296692
+        ],
+        [
+          0.8566839694976807,
+          0.8688082098960876,
+          0.507947564125061
+        ]
+      ],
+      "size": [
+        1.182782004428735,
+        0.6,
+        0.7028172835581045
+      ],
+      "skins": 0
+    },
+    "model.vanity.theatre": {
+      "path": "original/theater/vanity_theatre.glb",
+      "bundle": "theater_scenes_all_e2f618313ea2960aa084f1d092ed065b.bundle",
+      "meshes": [
+        "VT_AisleRunner",
+        "VT_Bulbs",
+        "VT_CanopySeams",
+        "VT_CrownCap",
+        "VT_CrownJoinery",
+        "VT_EaveValance",
+        "VT_EntranceDrapery",
+        "VT_EntranceFrame",
+        "VT_EntrancePortal",
+        "VT_EntranceSign",
+        "VT_ExteriorDrapery",
+        "VT_ExteriorPennants",
+        "VT_ExteriorPosts",
+        "VT_ExteriorWainscot",
+        "VT_FloorNails",
+        "VT_Floorboards",
+        "VT_Foundation",
+        "VT_Hardware",
+        "VT_InteriorEntrance",
+        "VT_InteriorPosts",
+        "VT_Joinery",
+        "VT_KneeBraces",
+        "VT_PerimeterTimber",
+        "VT_PolygonWindows",
+        "VT_Porch",
+        "VT_PorchRailings",
+        "VT_PostFinials",
+        "VT_Proscenium",
+        "VT_RadialRafters",
+        "VT_RearCurtain",
+        "VT_Rigging",
+        "VT_RoofRingBeams",
+        "VT_Stage",
+        "VT_StageStairs",
+        "VT_StripedCanopy",
+        "VT_TopRails",
+        "VT_Wainscot",
+        "VT_WallCanvas_WindowCut",
+        "VT_WindowGlow"
+      ],
+      "source_bounds": [
+        [
+          -10.538596153259277,
+          -0.321688711643219,
+          -3.2049999237060547
+        ],
+        [
+          10.538596153259277,
+          15.670000076293945,
+          20.035947799682617
+        ]
+      ],
+      "size": [
+        21.077192306518555,
+        15.991688787937164,
+        23.240947723388672
+      ],
+      "skins": 0
+    },
+    "model.bar.tavern": {
+      "path": "original/bar/bar_tavern.glb",
+      "bundle": "bar_scenes_all_b9da43939383a8e5dadfca776345e4dc.bundle",
+      "meshes": [
+        "Bar_Exterior_Stones",
+        "Bar_Exterior_Timber",
+        "Bar_Exterior_Walls",
+        "Bar_Exterior_Windows",
+        "Bar_Interior_BackBar",
+        "Bar_Interior_Bar",
+        "Bar_Interior_Casing",
+        "Bar_Interior_Floor",
+        "Bar_Interior_Iron",
+        "Bar_Interior_Plaster",
+        "Bar_Interior_Timber",
+        "Bar_Interior_WinLatch",
+        "Bar_Interior_WinShutterL_Inside",
+        "Bar_Interior_WinShutterL_Outside",
+        "Bar_Interior_WinShutterR_Inside",
+        "Bar_Interior_WinShutterR_Outside",
+        "Bar_Roof_Chimney",
+        "Bar_Roof_Dormer",
+        "Bar_Roof_Structure",
+        "Bar_Roof_Tiles",
+        "Bar_Roof_Windows",
+        "Bar_Upstairs_Chimney",
+        "Bar_Upstairs_Ember",
+        "Bar_Upstairs_Floor",
+        "Bar_Upstairs_Frame",
+        "Bar_Upstairs_Iron",
+        "Bar_Upstairs_Lining",
+        "Bar_Upstairs_Plaster",
+        "Bar_Upstairs_Railing",
+        "Bar_Upstairs_Stair",
+        "Bar_Upstairs_Walls"
+      ],
+      "source_bounds": [
+        [
+          -9.598218202590942,
+          -0.3511143922805786,
+          -1.1491908133029938
+        ],
+        [
+          4.598173797130585,
+          7.006716251373291,
+          8.872678875923157
+        ]
+      ],
+      "size": [
+        14.196391999721527,
+        7.35783064365387,
+        10.02186968922615
+      ],
+      "skins": 0
+    },
+    "model.businessman.observatory": {
+      "path": "original/counting/businessman_observatory.glb",
+      "bundle": "counting_scenes_all_089cbda0302d53359e2fb22541ffb15d.bundle",
+      "meshes": [
+        "Shell_Exterior",
+        "Shell_Interior",
+        "Shell_Steps"
+      ],
+      "source_bounds": [
+        [
+          -3.8107588291168213,
+          -0.08185151219367981,
+          -5.430221080780029
+        ],
+        [
+          3.8107588291168213,
+          3.245000123977661,
+          3.8107588291168213
+        ]
+      ],
+      "size": [
+        7.621517658233643,
+        3.326851636171341,
+        9.24097990989685
+      ],
+      "skins": 0
+    },
+    "model.businessman.dome": {
+      "path": "original/counting/businessman_dome.glb",
+      "bundle": "counting_scenes_all_089cbda0302d53359e2fb22541ffb15d.bundle",
+      "meshes": [
+        "Dome_Frame",
+        "Dome_Glass"
+      ],
+      "source_bounds": [
+        [
+          -3.623565435409546,
+          3.128964900970459,
+          -3.623565435409546
+        ],
+        [
+          3.623565435409546,
+          5.440000057220459,
+          3.623565435409546
+        ]
+      ],
+      "size": [
+        7.247130870819092,
+        2.31103515625,
+        7.247130870819092
+      ],
+      "skins": 0
+    },
+    "model.lamp.tide_pool": {
+      "path": "original/lamp/lamp_tide_pool.glb",
+      "bundle": "lamp_scenes_all_8f509513f920bc338bf932325265e981.bundle",
+      "meshes": [
+        "Tide pool"
+      ],
+      "source_bounds": [
+        [
+          -0.7409999370574951,
+          0.0,
+          -0.7409999370574951
+        ],
+        [
+          0.7409999370574951,
+          0.0,
+          0.7409999370574951
+        ]
+      ],
+      "size": [
+        1.6,
+        0.0,
+        1.6
+      ],
+      "skins": 0
+    },
+    "model.geo.library": {
+      "path": "original/geo/geo_library.glb",
+      "bundle": "geo_scenes_all_51dcdcc97916712edd4bd2822a3ae928.bundle",
+      "meshes": [
+        "GEO_Shell_BackWall_Inner",
+        "GEO_Shell_BackWall_Outer",
+        "GEO_Shell_Balcony",
+        "GEO_Shell_Floor",
+        "GEO_Shell_FrontWall_Inner",
+        "GEO_Shell_FrontWall_Outer",
+        "GEO_Shell_Plaque",
+        "GEO_Shell_SideWall_L_Inner",
+        "GEO_Shell_SideWall_L_Outer",
+        "GEO_Shell_SideWall_R_Inner",
+        "GEO_Shell_SideWall_R_Outer",
+        "GEO_Shell_Steps",
+        "GEO_Shell_Timber",
+        "GEO_Shell_Tower",
+        "GEO_Roof_Covering",
+        "GEO_Roof_Timbers",
+        "GEO_Skylight_Frame",
+        "GEO_Skylight_Glass"
+      ],
+      "source_bounds": [
+        [
+          -5.929384708404541,
+          -3.7581281661987305,
+          -1.8830162286758423
+        ],
+        [
+          5.793878078460693,
+          10.15999984741211,
+          16.303342819213867
+        ]
+      ],
+      "size": [
+        11.723262786865234,
+        13.91812801361084,
+        18.18635904788971
+      ],
+      "skins": 0
+    }
+  },
+  "audio": {
+    "original/audio/b612_B612_Music.ogg": "extracted/b612_assets_assets_assets_levels_b612_audio_c84a176ecab7eb11be13514bd1f3d614/B612_Music_3732132245042498105_B612_Music.m4a",
+    "original/audio/earth_DesertDunes_Music.ogg": "extracted/earth_assets_assets_assets_levels_desert_audio_cd12770faf786268ba0ce4e1d0665653/DesertDunes_Music_-5953348549294510661_DesertDunes_Music.m4a",
+    "original/audio/king_King_Music.ogg": "extracted/king_assets_assets_assets_levels_king_audio_a07a656e7d74ef0f884769915e80f72b/King_Music_4373140262283939520_King_Music.m4a",
+    "original/audio/theater_Theater_Music.ogg": "extracted/theater_assets_assets_assets_levels_theater_audio_00346a0d53842b99239e62e124892d82/Theater_Music_-3633785804670417068_Theater_Music.m4a",
+    "original/audio/bar_Bar_Music.ogg": "extracted/bar_assets_assets_assets_levels_bar_audio_842b0b1f10ed24fcbac00fab8eea0431/Bar_Music_-1123542079512709875_Bar_Music.m4a",
+    "original/audio/counting_StarObservatory_Music.ogg": "extracted/counting_assets_assets_assets_levels_starobservatory_audio_e2c5110ec99c360d5dca374f335e691c/StarObservatory_Music_5718047388107051373_StarObservatory_Music.m4a",
+    "original/audio/lamp_Lamplighter_Music.ogg": "extracted/lamp_assets_assets_assets_levels_lamplighter_audio_d6c573ee926a8c1027c2ddf41e7a012c/Lamplighter_Music_-5296770085774057012_Lamplighter_Music.m4a",
+    "original/audio/geo_Geography_Music.ogg": "extracted/geo_assets_assets_assets_levels_geography_audio_8fe651e5e159ff0ee0e58ed858434e3e/Geography_Music_1305568529345896082_Geography_Music.m4a",
+    "original/audio/earth_DesertValley_Music.ogg": "extracted/earth_assets_assets_assets_levels_desert_audio_cd12770faf786268ba0ce4e1d0665653/DesertValley_Music_-2683412231073478442_DesertValley_Music.m4a",
+    "original/audio/b612_Footstep_Grass_0.ogg": "extracted/b612_assets_assets_assets_levels_b612_audio_c84a176ecab7eb11be13514bd1f3d614/Footstep_Grass_01_-3752358698298393570_Footstep_Grass_01.m4a",
+    "original/audio/b612_Footstep_Grass_1.ogg": "extracted/b612_assets_assets_assets_levels_b612_audio_c84a176ecab7eb11be13514bd1f3d614/Footstep_Grass_02_1709115515169078818_Footstep_Grass_02.m4a",
+    "original/audio/b612_Footstep_Grass_2.ogg": "extracted/b612_assets_assets_assets_levels_b612_audio_c84a176ecab7eb11be13514bd1f3d614/Footstep_Grass_03_-4119291834479078320_Footstep_Grass_03.m4a",
+    "original/audio/b612_Footstep_Grass_3.ogg": "extracted/b612_assets_assets_assets_levels_b612_audio_c84a176ecab7eb11be13514bd1f3d614/Footstep_Grass_04_-907337493002778701_Footstep_Grass_04.m4a",
+    "original/audio/b612_Footstep_Grass_4.ogg": "extracted/b612_assets_assets_assets_levels_b612_audio_c84a176ecab7eb11be13514bd1f3d614/Footstep_Grass_05_3380622354229502174_Footstep_Grass_05.m4a",
+    "original/audio/b612_Footstep_Grass_5.ogg": "extracted/b612_assets_assets_assets_levels_b612_audio_c84a176ecab7eb11be13514bd1f3d614/Footstep_Grass_06_-6489549992541475633_Footstep_Grass_06.m4a",
+    "original/audio/b612_Footstep_Grass_6.ogg": "extracted/b612_assets_assets_assets_levels_b612_audio_c84a176ecab7eb11be13514bd1f3d614/Footstep_Grass_07_8860075607428524444_Footstep_Grass_07.m4a",
+    "original/audio/b612_Footstep_Grass_7.ogg": "extracted/b612_assets_assets_assets_levels_b612_audio_c84a176ecab7eb11be13514bd1f3d614/Footstep_Grass_08_9041465785932653323_Footstep_Grass_08.m4a",
+    "original/audio/b612_Footstep_Grass_8.ogg": "extracted/b612_assets_assets_assets_levels_b612_audio_c84a176ecab7eb11be13514bd1f3d614/Footstep_Grass_09_1080817002305483075_Footstep_Grass_09.m4a",
+    "original/audio/b612_Footstep_Grass_9.ogg": "extracted/b612_assets_assets_assets_levels_b612_audio_c84a176ecab7eb11be13514bd1f3d614/Footstep_Grass_10_-5533284621942350319_Footstep_Grass_10.m4a",
+    "original/audio/b612_Footstep_Grass_10.ogg": "extracted/b612_assets_assets_assets_levels_b612_audio_c84a176ecab7eb11be13514bd1f3d614/Footstep_Grass_11_9061968037406404969_Footstep_Grass_11.m4a",
+    "original/audio/b612_Footstep_Grass_11.ogg": "extracted/b612_assets_assets_assets_levels_b612_audio_c84a176ecab7eb11be13514bd1f3d614/Footstep_Grass_12_-1716619767409809056_Footstep_Grass_12.m4a",
+    "original/audio/b612_Footstep_Grass_12.ogg": "extracted/b612_assets_assets_assets_levels_b612_audio_c84a176ecab7eb11be13514bd1f3d614/Footstep_Grass_13_885086616920190809_Footstep_Grass_13.m4a",
+    "original/audio/b612_Footstep_Grass_13.ogg": "extracted/b612_assets_assets_assets_levels_b612_audio_c84a176ecab7eb11be13514bd1f3d614/Footstep_Grass_14_3763705591378922699_Footstep_Grass_14.m4a",
+    "original/audio/b612_Footstep_Gravel_0.ogg": "extracted/b612_assets_assets_assets_levels_b612_audio_c84a176ecab7eb11be13514bd1f3d614/Footstep_Gravel_01_156726422357420146_Footstep_Gravel_01.m4a",
+    "original/audio/b612_Footstep_Gravel_1.ogg": "extracted/b612_assets_assets_assets_levels_b612_audio_c84a176ecab7eb11be13514bd1f3d614/Footstep_Gravel_02_2762081553957433696_Footstep_Gravel_02.m4a",
+    "original/audio/b612_Footstep_Gravel_2.ogg": "extracted/b612_assets_assets_assets_levels_b612_audio_c84a176ecab7eb11be13514bd1f3d614/Footstep_Gravel_03_-5089836010103641959_Footstep_Gravel_03.m4a",
+    "original/audio/b612_Footstep_Gravel_3.ogg": "extracted/b612_assets_assets_assets_levels_b612_audio_c84a176ecab7eb11be13514bd1f3d614/Footstep_Gravel_04_-2601098579539340873_Footstep_Gravel_04.m4a",
+    "original/audio/b612_Footstep_Gravel_4.ogg": "extracted/b612_assets_assets_assets_levels_b612_audio_c84a176ecab7eb11be13514bd1f3d614/Footstep_Gravel_05_9222389385619477418_Footstep_Gravel_05.m4a",
+    "original/audio/b612_Footstep_Gravel_5.ogg": "extracted/b612_assets_assets_assets_levels_b612_audio_c84a176ecab7eb11be13514bd1f3d614/Footstep_Gravel_06_4903251069525265168_Footstep_Gravel_06.m4a",
+    "original/audio/b612_Footstep_Gravel_6.ogg": "extracted/b612_assets_assets_assets_levels_b612_audio_c84a176ecab7eb11be13514bd1f3d614/Footstep_Gravel_07_5723878741675429834_Footstep_Gravel_07.m4a",
+    "original/audio/b612_Footstep_Gravel_7.ogg": "extracted/b612_assets_assets_assets_levels_b612_audio_c84a176ecab7eb11be13514bd1f3d614/Footstep_Gravel_08_-6008595638473246273_Footstep_Gravel_08.m4a",
+    "original/audio/b612_Footstep_Gravel_8.ogg": "extracted/b612_assets_assets_assets_levels_b612_audio_c84a176ecab7eb11be13514bd1f3d614/Footstep_Gravel_09_3561449842329024085_Footstep_Gravel_09.m4a",
+    "original/audio/b612_Footstep_Gravel_9.ogg": "extracted/b612_assets_assets_assets_levels_b612_audio_c84a176ecab7eb11be13514bd1f3d614/Footstep_Gravel_10_916020869102213762_Footstep_Gravel_10.m4a",
+    "original/audio/b612_Footstep_Gravel_10.ogg": "extracted/b612_assets_assets_assets_levels_b612_audio_c84a176ecab7eb11be13514bd1f3d614/Footstep_Gravel_11_8339944204449525008_Footstep_Gravel_11.m4a",
+    "original/audio/b612_Footstep_Gravel_11.ogg": "extracted/b612_assets_assets_assets_levels_b612_audio_c84a176ecab7eb11be13514bd1f3d614/Footstep_Gravel_12_4513769303877711029_Footstep_Gravel_12.m4a",
+    "original/audio/b612_Amb_Meadow_Day_Loop.ogg": "extracted/b612_assets_assets_assets_levels_b612_audio_c84a176ecab7eb11be13514bd1f3d614/Amb_Meadow_Day_Loop_-1045815119740888548_Amb_Meadow_Day_Loop.m4a",
+    "original/audio/b612_Amb_Meadow_Dusk_Loop.ogg": "extracted/b612_assets_assets_assets_levels_b612_audio_c84a176ecab7eb11be13514bd1f3d614/Amb_Meadow_Dusk_Loop_7950519292243416254_Amb_Meadow_Dusk_Loop.m4a",
+    "original/audio/lamp_Sea_Waves_Loop.ogg": "extracted/lamp_assets_assets_assets_levels_lamplighter_audio_d6c573ee926a8c1027c2ddf41e7a012c/Sea_Waves_Loop_-8414349522698996401_Sea_Waves_Loop.m4a",
+    "original/audio/lamp_Lamp_Light.ogg": "extracted/lamp_assets_assets_assets_levels_lamplighter_audio_d6c573ee926a8c1027c2ddf41e7a012c/Lamp_Light_-3125003982203750411_Lamp_Light.m4a",
+    "original/audio/lamp_Lamp_PutOut.ogg": "extracted/lamp_assets_assets_assets_levels_lamplighter_audio_d6c573ee926a8c1027c2ddf41e7a012c/Lamp_PutOut_-8700877623762613320_Lamp_PutOut.m4a",
+    "original/audio/king_Door_Creak.ogg": "extracted/king_assets_assets_assets_levels_king_audio_a07a656e7d74ef0f884769915e80f72b/Door_Creak_2858035604472780749_Door_Creak.m4a",
+    "original/audio/king_Door_Latch.ogg": "extracted/king_assets_assets_assets_levels_king_audio_a07a656e7d74ef0f884769915e80f72b/Door_Latch_-4839775908798573017_Door_Latch.m4a",
+    "original/audio/counting_Door_Latch.ogg": "extracted/counting_assets_assets_assets_levels_starobservatory_audio_e2c5110ec99c360d5dca374f335e691c/Door_Latch_-4739037377435358635_Door_Latch.m4a",
+    "original/audio/counting_Door_Creak.ogg": "extracted/counting_assets_assets_assets_levels_starobservatory_audio_e2c5110ec99c360d5dca374f335e691c/Door_Creak_5717559704834857277_Door_Creak.m4a",
+    "original/audio/counting_Door_Settle.ogg": "extracted/counting_assets_assets_assets_levels_starobservatory_audio_e2c5110ec99c360d5dca374f335e691c/Door_Settle_-2029658636139746581_Door_Settle.m4a",
+    "original/audio/counting_Merchant_Writing_Loop.ogg": "extracted/counting_assets_assets_assets_levels_starobservatory_audio_e2c5110ec99c360d5dca374f335e691c/Merchant_Writing_Loop_6785243208371234978_Merchant_Writing_Loop.m4a",
+    "original/audio/geo_Pencil_Writing_Loop.ogg": "extracted/geo_assets_assets_assets_levels_geography_audio_8fe651e5e159ff0ee0e58ed858434e3e/Pencil_Writing_Loop_-7028607574977660849_Pencil_Writing_Loop.m4a",
+    "original/audio/bar_Drink_Swig.ogg": "extracted/bar_assets_assets_assets_levels_bar_audio_842b0b1f10ed24fcbac00fab8eea0431/Drink_Swig_6394295046765143870_Drink_Swig.m4a",
+    "original/audio/bar_Bottle_Set.ogg": "extracted/bar_assets_assets_assets_levels_bar_audio_842b0b1f10ed24fcbac00fab8eea0431/Bottle_Set_-36553573698603506_Bottle_Set.m4a",
+    "original/audio/earth_Train_Arrive.ogg": "extracted/earth_assets_assets_assets_levels_desert_audio_cd12770faf786268ba0ce4e1d0665653/Train_Arrive_-6368801274111593122_Train_Arrive.m4a",
+    "original/audio/earth_Well_Pulley_Loop.ogg": "extracted/earth_assets_assets_assets_levels_desert_audio_cd12770faf786268ba0ce4e1d0665653/Well_Pulley_Loop_-89968278035846840_Well_Pulley_Loop.m4a",
+    "original/audio/theater_Clap_0.ogg": "extracted/theater_assets_assets_assets_levels_theater_audio_00346a0d53842b99239e62e124892d82/Clap_01_2713141423402642387_Clap_01.m4a",
+    "original/audio/theater_Clap_1.ogg": "extracted/theater_assets_assets_assets_levels_theater_audio_00346a0d53842b99239e62e124892d82/Clap_02_4619980686298820430_Clap_02.m4a",
+    "original/audio/theater_Clap_2.ogg": "extracted/theater_assets_assets_assets_levels_theater_audio_00346a0d53842b99239e62e124892d82/Clap_03_-3928079945847169073_Clap_03.m4a",
+    "original/audio/theater_Clap_3.ogg": "extracted/theater_assets_assets_assets_levels_theater_audio_00346a0d53842b99239e62e124892d82/Clap_04_7956820974474161271_Clap_04.m4a",
+    "original/audio/theater_Clap_4.ogg": "extracted/theater_assets_assets_assets_levels_theater_audio_00346a0d53842b99239e62e124892d82/Clap_05_-2497018919584432173_Clap_05.m4a",
+    "original/audio/theater_Clap_5.ogg": "extracted/theater_assets_assets_assets_levels_theater_audio_00346a0d53842b99239e62e124892d82/Clap_06_6016858164711555853_Clap_06.m4a",
+    "original/audio/theater_Clap_6.ogg": "extracted/theater_assets_assets_assets_levels_theater_audio_00346a0d53842b99239e62e124892d82/Clap_07_-6355891474201999784_Clap_07.m4a",
+    "original/audio/theater_Clap_7.ogg": "extracted/theater_assets_assets_assets_levels_theater_audio_00346a0d53842b99239e62e124892d82/Clap_08_8899221749583243153_Clap_08.m4a"
+  },
+  "textures": {
+    "28c70bc18d5a6206.png": "extracted/shared_assets_assets_shared_core_art_character_textures_littleprince_arp_basecolor.jpg_a1ea15c1cb95065f1fee858edcf8be14/LittlePrince_ARP_BaseColor_6650606078330140359.png",
+    "d54a1cd0a26f382a.png": "extracted/shared_assets_assets_shared_core_art_character_scarf_littleprince_scarf_fabric.png_5f02410630342bc7402b881a4f1bb907/LittlePrince_Scarf_Fabric_-5870720334681246223.png",
+    "12bdec39f175b22f.png": "extracted/shared_assets_assets_shared_core_art_character_scarf_littleprince_scarf_fabric_normal.png_728c44afaafb728bba583e2ca3a69171/LittlePrince_Scarf_Fabric_Normal_4103646473048680879.png",
+    "e90d61b29cfc2def.png": "extracted/b612_scenes_all_f593f551f550041f5a2feb47872f92c6/Rose_BaseColor_5147f25e_91.png",
+    "6509cdf53ed7144a.png": "extracted/b612_scenes_all_f593f551f550041f5a2feb47872f92c6/Rose_Normal_f3df7415_102.png",
+    "8399c53b3796007e.png": "extracted/b612_scenes_all_f593f551f550041f5a2feb47872f92c6/ClocheBase_BaseColor_64526b70_81.png",
+    "08d0b46544c44c9c.png": "extracted/b612_scenes_all_f593f551f550041f5a2feb47872f92c6/ClocheBase_Normal_edb03b99_119.png",
+    "7fe8eb838ef4f7fc.png": "extracted/b612_scenes_all_f593f551f550041f5a2feb47872f92c6/Rock_04_BaseColor_b4834277_99.png",
+    "b33724e62f0cdd79.png": "extracted/b612_scenes_all_f593f551f550041f5a2feb47872f92c6/Rock_04_Normal_0be1558b_104.png",
+    "6d49d922fb396f6a.png": "extracted/b612_scenes_all_f593f551f550041f5a2feb47872f92c6/WindScreen_Weathered_BaseColor_2b69ba41_94.png",
+    "36cbb6a26911f4d2.png": "extracted/b612_scenes_all_f593f551f550041f5a2feb47872f92c6/WindScreen_Normal_b48c790c_109.png",
+    "c6497bdd22e01c31.png": "extracted/b612_scenes_all_f593f551f550041f5a2feb47872f92c6/WateringCan_BaseColor_c6ffc4f5_41.png",
+    "742b041e7eb92448.png": "extracted/b612_scenes_all_f593f551f550041f5a2feb47872f92c6/WateringCan_Normal_3b2ccbed_123.png",
+    "ac7df4ecdecb58c4.png": "extracted/b612_scenes_all_f593f551f550041f5a2feb47872f92c6/ToolShed_Wood_BaseColor_d221ed0c_42.png",
+    "7b1d37151cf8439c.png": "extracted/b612_scenes_all_f593f551f550041f5a2feb47872f92c6/ToolShed_Wood_Normal_f5da3bbf_108.png",
+    "262b80cfe9ac2685.png": "extracted/b612_scenes_all_f593f551f550041f5a2feb47872f92c6/VolcanoA_BaseColor_123807e8_115.png",
+    "02c5a0c646df8903.png": "extracted/b612_scenes_all_f593f551f550041f5a2feb47872f92c6/VolcanoA_Normal_d587ac8f_103.png",
+    "25eb0df18e4ffb34.png": "extracted/b612_scenes_all_f593f551f550041f5a2feb47872f92c6/VolcanoB_BaseColor_418d3cef_25.png",
+    "f28fb336a65c1567.png": "extracted/b612_scenes_all_f593f551f550041f5a2feb47872f92c6/VolcanoB_Normal_3443bf53_35.png",
+    "e1b1e4c95f425905.png": "extracted/b612_scenes_all_f593f551f550041f5a2feb47872f92c6/BaobabSeedling_BaseColor_074a5314_53.png",
+    "cdc634b473efae21.png": "extracted/b612_scenes_all_f593f551f550041f5a2feb47872f92c6/BaobabSeedling_Normal_afb47e8f_97.png",
+    "b8901bcf1dc23313.png": "extracted/b612_scenes_all_f593f551f550041f5a2feb47872f92c6/SleepingPad_BaseColor_899462e5_68.png",
+    "fa428d7c9bc7430b.png": "extracted/b612_scenes_all_f593f551f550041f5a2feb47872f92c6/SleepingPad_Normal_14f59a8f_45.png",
+    "00111ea8c07a5be7.png": "extracted/b612_scenes_all_f593f551f550041f5a2feb47872f92c6/Blanket_BaseColor_77905d74_75.png",
+    "b9cc3fd7813c6974.png": "extracted/b612_scenes_all_f593f551f550041f5a2feb47872f92c6/Blanket_Normal_4dd1ec00_37.png",
+    "151403e1c95f431d.png": "extracted/b612_scenes_all_f593f551f550041f5a2feb47872f92c6/FlatStones_BaseColor_d1a94b4b_29.png",
+    "7ba2fcb60bbcd6c4.png": "extracted/b612_scenes_all_f593f551f550041f5a2feb47872f92c6/FlatStones_Normal_3183f7d2_116.png",
+    "fbf6134c772094fe.png": "extracted/b612_scenes_all_f593f551f550041f5a2feb47872f92c6/SunsetChair_BaseColor_c56364b7_48.png",
+    "aa3a1a6af6c650bd.png": "extracted/b612_scenes_all_f593f551f550041f5a2feb47872f92c6/SunsetChair_Normal_61a1ef43_126.png",
+    "4523e83c82fa21c7.png": "extracted/b612_scenes_all_f593f551f550041f5a2feb47872f92c6/Rock_01_BaseColor_267d522b_89.png",
+    "83c71e0dc7f92aa5.png": "extracted/b612_scenes_all_f593f551f550041f5a2feb47872f92c6/Rock_01_Normal_42614653_56.png",
+    "fb98d655ecd2f90c.png": "extracted/b612_scenes_all_f593f551f550041f5a2feb47872f92c6/Pebbles_BaseColor_133.png",
+    "54aa1176efc725a2.png": "extracted/b612_scenes_all_f593f551f550041f5a2feb47872f92c6/Pebbles_Normal_131.png",
+    "81672225d0b5c857.png": "extracted/b612_scenes_all_f593f551f550041f5a2feb47872f92c6/Rock_03_BaseColor_9ca0bb29_65.png",
+    "1d2be566e2aa3a1c.png": "extracted/b612_scenes_all_f593f551f550041f5a2feb47872f92c6/Rock_03_Normal_24868103_83.png",
+    "ab4d431349ac854c.png": "extracted/b612_scenes_all_f593f551f550041f5a2feb47872f92c6/Rock_05_BaseColor_e97a2f2f_114.png",
+    "2ed0e19297ce789d.png": "extracted/b612_scenes_all_f593f551f550041f5a2feb47872f92c6/Rock_05_Normal_8cf89ca0_92.png",
+    "bca96902f13da087.png": "extracted/b612_scenes_all_f593f551f550041f5a2feb47872f92c6/B612_FoliageAtlas_BaseColor_ba34b19e_70.png",
+    "7cbbe361824c8b98.png": "extracted/b612_scenes_all_f593f551f550041f5a2feb47872f92c6/B612_FoliageAtlas_Normal_6ebe4092_64.png",
+    "3b6a1ed50eab54cb.png": "extracted/b612_scenes_all_f593f551f550041f5a2feb47872f92c6/VG_Atlas_BaseColor_28a9da08_49.png",
+    "618e0aebfac8a271.png": "extracted/b612_scenes_all_f593f551f550041f5a2feb47872f92c6/LifeProps_Tools_BaseColor_1a370bfb_67.png",
+    "76eca2abfcc0f430.png": "extracted/b612_scenes_all_f593f551f550041f5a2feb47872f92c6/LifeProps_Tools_Normal_a6878b52_121.png",
+    "c9f42cf3c1d6e251.png": "extracted/king_scenes_all_5bb118ea0cc898dfffe446eaaf2f3b36/King_Body_BaseColor_c6d5e7db_99.png",
+    "b2f635fc259aa6cc.png": "extracted/king_scenes_all_5bb118ea0cc898dfffe446eaaf2f3b36/King_Robe_BaseColor_2078ea63_118.png",
+    "6d1f40da093bea56.png": "extracted/king_scenes_all_5bb118ea0cc898dfffe446eaaf2f3b36/King_Crown_BaseColor_c7a2bf4b_75.png",
+    "25a0f70c1a94540e.png": "extracted/king_scenes_all_5bb118ea0cc898dfffe446eaaf2f3b36/King_Scepter_BaseColor_8fac49ce_87.png",
+    "de2fdb58b861ae61.png": "extracted/king_scenes_all_5bb118ea0cc898dfffe446eaaf2f3b36/P2_02_BaseColor_47082eba_105.png",
+    "39ea089d3070a681.png": "extracted/king_scenes_all_5bb118ea0cc898dfffe446eaaf2f3b36/RC_Gold_BaseColor_2a828595_97.png",
+    "a49dc954fb955d52.png": "extracted/king_scenes_all_5bb118ea0cc898dfffe446eaaf2f3b36/RC_Gold_Normal_9faf1951_96.png",
+    "a8dc3e219507e3af.png": "extracted/king_scenes_all_5bb118ea0cc898dfffe446eaaf2f3b36/T3_BaseColor_333576e6_98.png",
+    "47c46b42cbae64c7.png": "extracted/king_scenes_all_5bb118ea0cc898dfffe446eaaf2f3b36/RC_CandleWax_BaseColor_121.png",
+    "8b02c55e46b49b2f.png": "extracted/king_scenes_all_5bb118ea0cc898dfffe446eaaf2f3b36/CourtDoor_Walnut_BaseColor_d56eda7b_77.png",
+    "f646cc7514f7eb5f.png": "extracted/king_scenes_all_5bb118ea0cc898dfffe446eaaf2f3b36/CourtDoor_Walnut_Normal_108fa382_88.png",
+    "eb9f6ca4d28af00b.png": "extracted/king_scenes_all_5bb118ea0cc898dfffe446eaaf2f3b36/RC_PurpleVelvet_Albedo_dbe71095_71.png",
+    "ae651be70dcd19bc.png": "extracted/king_scenes_all_5bb118ea0cc898dfffe446eaaf2f3b36/RC_PurpleVelvet_Normal_26ba4b5f_117.png",
+    "2139f5e9188debf1.png": "extracted/theater_scenes_all_e2f618313ea2960aa084f1d092ed065b/Performer_Body_BaseColor_0a27a1ca_215.png",
+    "4088a66224358768.png": "extracted/theater_scenes_all_e2f618313ea2960aa084f1d092ed065b/P02_StandingMirror_AntiqueGold_278.png",
+    "c5a07c69ed8a0084.png": "extracted/theater_scenes_all_e2f618313ea2960aa084f1d092ed065b/P02_StandingMirror_Original_BaseColor_5e7af3b4_184.png",
+    "e3eb155295e1a2b9.png": "extracted/theater_scenes_all_e2f618313ea2960aa084f1d092ed065b/P02_StandingMirror_Original_Normal_b7937362_208.png",
+    "014d6b52affa184f.png": "extracted/theater_scenes_all_e2f618313ea2960aa084f1d092ed065b/P02_StandingMirror_WoodBacking_268.png",
+    "d6dc328b8f0aba69.png": "extracted/bar_scenes_all_b9da43939383a8e5dadfca776345e4dc/Drinker_BaseColor_ccc8b18b_113.png",
+    "2c6034ff792ddb8b.png": "extracted/bar_scenes_all_b9da43939383a8e5dadfca776345e4dc/PlankTable_BaseColor_35b5660a_148.png",
+    "666027661312bdbb.png": "extracted/bar_scenes_all_b9da43939383a8e5dadfca776345e4dc/Chair_BaseColor_5702a0b0_139.png",
+    "440150c928cec63a.png": "extracted/bar_scenes_all_b9da43939383a8e5dadfca776345e4dc/Barrel_BaseColor_4184c484_106.png",
+    "f55d9b03f1e34029.png": "extracted/bar_scenes_all_b9da43939383a8e5dadfca776345e4dc/M_Bar_WoodPlank_BaseColor_3b9f879e_101.png",
+    "e9d655ca0f633717.png": "extracted/bar_scenes_all_b9da43939383a8e5dadfca776345e4dc/M_Bar_WoodPlank_Normal_7702cb86_95.png",
+    "a49413602dab62e2.png": "extracted/bar_scenes_all_b9da43939383a8e5dadfca776345e4dc/M_Bar_Timber_BaseColor_c31b8a6b_124.png",
+    "58cb66e9e653073c.png": "extracted/bar_scenes_all_b9da43939383a8e5dadfca776345e4dc/M_Bar_Timber_Normal_e29e786c_167.png",
+    "b098a86c87df1129.png": "extracted/bar_scenes_all_b9da43939383a8e5dadfca776345e4dc/Bar_Iron_BaseColor_188.png",
+    "30484e9eef986219.png": "extracted/bar_scenes_all_b9da43939383a8e5dadfca776345e4dc/Bar_Iron_Normal_184.png",
+    "0d36a542a67b78a5.png": "extracted/counting_scenes_all_089cbda0302d53359e2fb22541ffb15d/Merchant_BaseColor_d7290297_56.png",
+    "e901ff0c1489aae7.png": "extracted/counting_scenes_all_089cbda0302d53359e2fb22541ffb15d/Prop_BrassTelescope_BaseColor_2374cef6_59.png",
+    "29000936cdb9e93c.png": "extracted/counting_scenes_all_089cbda0302d53359e2fb22541ffb15d/Prop_BrassTelescope_Normal_a7f950b8_110.png",
+    "cbe53a7f8064e8ff.png": "extracted/counting_scenes_all_089cbda0302d53359e2fb22541ffb15d/SO_Rug_BaseColor_561229fe_38.png",
+    "9bb7f589ba20905a.png": "extracted/counting_scenes_all_089cbda0302d53359e2fb22541ffb15d/SO_Rug_Normal_adc51f3a_79.png",
+    "55826f211bca5d04.png": "extracted/counting_scenes_all_089cbda0302d53359e2fb22541ffb15d/SO_WoodFurniture_BaseColor_5f4649e5_91.png",
+    "ce1fb70145b19bc7.png": "extracted/counting_scenes_all_089cbda0302d53359e2fb22541ffb15d/SO_WoodFurniture_Normal_e60d3860_82.png",
+    "fd3e0502dbc14409.png": "extracted/counting_scenes_all_089cbda0302d53359e2fb22541ffb15d/SO_Leather_BaseColor_131.png",
+    "229c3b5d9686019d.png": "extracted/counting_scenes_all_089cbda0302d53359e2fb22541ffb15d/SO_Leather_Normal_134.png",
+    "1008c17a26a87260.png": "extracted/counting_scenes_all_089cbda0302d53359e2fb22541ffb15d/SO_Paper_BaseColor_c842f723_104.png",
+    "b786592808b22543.png": "extracted/counting_scenes_all_089cbda0302d53359e2fb22541ffb15d/SO_Paper_Normal_ae22ed48_69.png",
+    "980cb3b7d93e67ce.png": "extracted/counting_scenes_all_089cbda0302d53359e2fb22541ffb15d/SO_WoodFurniture_Edge_BaseColor_6f369c9f_74.png",
+    "1139edb0f4936ced.png": "extracted/counting_scenes_all_089cbda0302d53359e2fb22541ffb15d/SO_BookAtlas_BaseColor_d4551008_81.png",
+    "e5ea75ccc455820a.png": "extracted/counting_scenes_all_089cbda0302d53359e2fb22541ffb15d/SO_BookAtlas_Normal_a3256fa8_28.png",
+    "3ccdd1fb744edc95.png": "extracted/counting_scenes_all_089cbda0302d53359e2fb22541ffb15d/SO_Chart_North_BaseColor_56a0e5c4_101.png",
+    "8b2b6e49e18db112.png": "extracted/counting_scenes_all_089cbda0302d53359e2fb22541ffb15d/SO_Chart_North_Normal_7176ec3e_35.png",
+    "31cce13c5b587da8.png": "extracted/counting_scenes_all_089cbda0302d53359e2fb22541ffb15d/SO_Chart_Moon_BaseColor_9913caa8_97.png",
+    "7817908b00f7a2c7.png": "extracted/counting_scenes_all_089cbda0302d53359e2fb22541ffb15d/SO_Chart_Moon_Normal_3cba9449_107.png",
+    "b81cfcb10e11a0ef.png": "extracted/counting_scenes_all_089cbda0302d53359e2fb22541ffb15d/SO_Chart_Constellation_BaseColor_296218b9_111.png",
+    "3ef3928c9646a417.png": "extracted/counting_scenes_all_089cbda0302d53359e2fb22541ffb15d/SO_Chart_Constellation_Normal_8c12655e_54.png",
+    "476fdac7c82e57bb.png": "extracted/counting_scenes_all_089cbda0302d53359e2fb22541ffb15d/SO_Chart_Zodiac_BaseColor_b31efa2c_116.png",
+    "a51d0f9e9813a45b.png": "extracted/counting_scenes_all_089cbda0302d53359e2fb22541ffb15d/SO_Chart_Zodiac_Normal_4347372c_85.png",
+    "fad3ffac96540c59.png": "extracted/counting_scenes_all_089cbda0302d53359e2fb22541ffb15d/SO_Chart_Orbits_BaseColor_0b51d9cf_102.png",
+    "930b585c8141c0c1.png": "extracted/counting_scenes_all_089cbda0302d53359e2fb22541ffb15d/SO_Chart_Orbits_Normal_acaddbcb_47.png",
+    "13e7244a457867ae.png": "extracted/counting_scenes_all_089cbda0302d53359e2fb22541ffb15d/Prop_Lantern_BaseColor_bdca7ab2_68.png",
+    "996d91b09dfe139a.png": "extracted/counting_scenes_all_089cbda0302d53359e2fb22541ffb15d/Prop_Lantern_Normal_db04d918_43.png",
+    "3eae010a85ed8d35.png": "extracted/counting_scenes_all_089cbda0302d53359e2fb22541ffb15d/Prop_Lantern_Glass_BaseColor_129.png",
+    "e401547f5a08b9fa.png": "extracted/counting_scenes_all_089cbda0302d53359e2fb22541ffb15d/SO_Candle_BaseColor_136.png",
+    "5ba0743bbf0e511c.png": "extracted/counting_scenes_all_089cbda0302d53359e2fb22541ffb15d/SO_Candle_Normal_128.png",
+    "7fe63f774d8f3abd.png": "extracted/counting_scenes_all_089cbda0302d53359e2fb22541ffb15d/SO_WoodBeam_BaseColor_9022d4da_88.png",
+    "f4f91b7493f534f6.png": "extracted/counting_scenes_all_089cbda0302d53359e2fb22541ffb15d/SO_WoodBeam_Normal_f5273741_58.png",
+    "1d8e6397ec7ccf17.png": "extracted/counting_scenes_all_089cbda0302d53359e2fb22541ffb15d/SO_IronRust_BaseColor_4af2f7a7_105.png",
+    "36781711761c31e6.png": "extracted/counting_scenes_all_089cbda0302d53359e2fb22541ffb15d/SO_IronRust_Normal_d3c8e590_109.png",
+    "74650a8b8740c79b.png": "extracted/counting_scenes_all_089cbda0302d53359e2fb22541ffb15d/SO_Cliff_BaseColor_9a0319f1_86.png",
+    "55d2444d41a70230.png": "extracted/counting_scenes_all_089cbda0302d53359e2fb22541ffb15d/SO_Cliff_Normal_a5df1c47_57.png",
+    "84982eafb24c3549.png": "extracted/lamp_scenes_all_8f509513f920bc338bf932325265e981/Lamplighter_BaseColor_fbe22daa_35.png",
+    "63719c7e2a7782d0.png": "extracted/lamp_scenes_all_8f509513f920bc338bf932325265e981/Lighter_Iron_BaseColor_f3189f44_60.png",
+    "712f98ab5dfb3b0d.png": "extracted/lamp_scenes_all_8f509513f920bc338bf932325265e981/Lighter_Iron_Normal_0f8e47d1_58.png",
+    "a097fa03b24b5855.png": "extracted/lamp_scenes_all_8f509513f920bc338bf932325265e981/Lighter_Wand_Wood_BaseColor_fe8c5397_65.png",
+    "855eb808ffa8ad74.png": "extracted/lamp_scenes_all_8f509513f920bc338bf932325265e981/Lighter_Lantern_BaseColor_aaf316a1_32.png",
+    "c8c64ca851939d4b.png": "extracted/lamp_scenes_all_8f509513f920bc338bf932325265e981/Lighter_Lantern_Normal_397d6c52_64.png",
+    "294509fb5f56e4e6.png": "extracted/lamp_scenes_all_8f509513f920bc338bf932325265e981/Lighter_Boulder_01_AO_67.png",
+    "ee0f0be5fce4f8e1.png": "extracted/lamp_scenes_all_8f509513f920bc338bf932325265e981/Rock_01_BaseColor_267d522b_47.png",
+    "f26d9c301e1121b7.png": "extracted/lamp_scenes_all_8f509513f920bc338bf932325265e981/Rock_01_Normal_42614653_41.png",
+    "2b8b89c9400eea78.png": "extracted/lamp_scenes_all_8f509513f920bc338bf932325265e981/Lighter_Boulder_02_AO_45.png",
+    "e6a7c5d6d10dd54a.png": "extracted/geo_scenes_all_51dcdcc97916712edd4bd2822a3ae928/Geographer_Body_BaseColor_e69e9468_74.png",
+    "1a85b17c253e7e50.png": "extracted/geo_scenes_all_51dcdcc97916712edd4bd2822a3ae928/GEO_Prop_MapTable_BaseColor_5ea8d6de_107.png",
+    "c85fbeac8ea606cf.png": "extracted/geo_scenes_all_51dcdcc97916712edd4bd2822a3ae928/GEO_Prop_MapTable_Normal_bdc3f2cf_56.png",
+    "054241890eadb52a.png": "extracted/geo_scenes_all_51dcdcc97916712edd4bd2822a3ae928/GEO_Walnut_BaseColor_747dea2f_113.png",
+    "6e1afc69c422af0d.png": "extracted/geo_scenes_all_51dcdcc97916712edd4bd2822a3ae928/GEO_Walnut_Normal_1e2b228b_87.png",
+    "1ee3407f9439b64e.png": "extracted/geo_scenes_all_51dcdcc97916712edd4bd2822a3ae928/GEO_Foliage_BaseColor_d8f7e4d9_57.png",
+    "0cbe3423c76d9fa0.png": "extracted/geo_scenes_all_51dcdcc97916712edd4bd2822a3ae928/GEO_Bark_BaseColor_853dffd8_105.png",
+    "2ba3c71ba32391b4.png": "extracted/geo_scenes_all_51dcdcc97916712edd4bd2822a3ae928/GEO_Bark_Normal_17509053_132.png",
+    "030c291b7198b60a.png": "extracted/bar_scenes_all_b9da43939383a8e5dadfca776345e4dc/Veg_Bark_BaseColor_a90f729c_74.png",
+    "d5a07453622d9368.png": "extracted/bar_scenes_all_b9da43939383a8e5dadfca776345e4dc/Veg_Bark_Normal_2139023c_91.png",
+    "03fb15e52ad443b6.png": "extracted/bar_scenes_all_b9da43939383a8e5dadfca776345e4dc/Veg_Leaves_BaseColor_ad5bcba5_146.png",
+    "1861a4b4eeb75c32.png": "extracted/bar_scenes_all_b9da43939383a8e5dadfca776345e4dc/Veg_Leaves_Normal_cd28fa05_173.png",
+    "af48aab375e3ec70.png": "extracted/earth_scenes_desert_valley_14cf4e65852fe4c0258c47bdd0d8b076/Fox_BaseColor_7a511c88_231.png",
+    "105f32fc67ad7d70.png": "extracted/earth_scenes_desert_valley_14cf4e65852fe4c0258c47bdd0d8b076/Snake_Rigged_BaseColor_6eee8298_227.png",
+    "845e0942bbb717c2.png": "extracted/earth_scenes_desert_dunes_1a8d0bd235b925791a5f105f6f53dd05/Pilot_BaseColor_a22025ba_99.png",
+    "9d0cef12dcab4914.png": "extracted/earth_scenes_desert_valley_14cf4e65852fe4c0258c47bdd0d8b076/AppleTree_Bark_BaseColor_1efe71fd_207.png",
+    "1084be258949bf21.png": "extracted/earth_scenes_desert_valley_14cf4e65852fe4c0258c47bdd0d8b076/AppleTree_Bark_Normal_939caae2_140.png",
+    "c481f1d7a926c642.png": "extracted/earth_scenes_desert_valley_14cf4e65852fe4c0258c47bdd0d8b076/AppleTree_Foliage_BaseColor_4a9e73aa_94.png",
+    "5d791f0eb35c56dc.png": "extracted/earth_scenes_desert_valley_14cf4e65852fe4c0258c47bdd0d8b076/AppleTree_Foliage_Normal_9322d57e_188.png",
+    "ef53aae2e7775402.png": "extracted/earth_scenes_desert_valley_14cf4e65852fe4c0258c47bdd0d8b076/Limestone_BaseColor_fe6f3e29_183.png",
+    "705c722acede0346.png": "extracted/earth_scenes_desert_valley_14cf4e65852fe4c0258c47bdd0d8b076/Limestone_Normal_15981ce2_192.png",
+    "91345ab14cb67bc1.png": "extracted/earth_scenes_desert_valley_14cf4e65852fe4c0258c47bdd0d8b076/Mortar_BaseColor_36061a47_200.png",
+    "51dbe09bd0e72436.png": "extracted/earth_scenes_desert_valley_14cf4e65852fe4c0258c47bdd0d8b076/Mortar_Normal_e64a27c2_80.png",
+    "eea2f1a6edcaa90f.png": "extracted/earth_scenes_desert_valley_14cf4e65852fe4c0258c47bdd0d8b076/Desert_FoliageAtlas_BaseColor_bbeb49ac_164.png",
+    "a9ca4b12f43b5cfa.png": "extracted/earth_scenes_desert_valley_14cf4e65852fe4c0258c47bdd0d8b076/Desert_FoliageAtlas_Normal_8c03cfd8_179.png",
+    "194dea75787df1d2.png": "extracted/earth_scenes_desert_valley_14cf4e65852fe4c0258c47bdd0d8b076/DeadWood_BaseColor_fd332c08_144.png",
+    "13d907776a531a9f.png": "extracted/earth_scenes_desert_valley_14cf4e65852fe4c0258c47bdd0d8b076/DeadWood_Normal_0bad37a9_69.png",
+    "990df07ad63da44d.png": "extracted/earth_scenes_desert_valley_14cf4e65852fe4c0258c47bdd0d8b076/RoseBush_BaseColor_TrueRed_af985dbd_62.png",
+    "e9bf299648a80e34.png": "extracted/earth_scenes_desert_valley_14cf4e65852fe4c0258c47bdd0d8b076/RoseBush_Normal_5269582c_166.png",
+    "b75dab53bcc7ce2b.png": "extracted/earth_scenes_desert_valley_14cf4e65852fe4c0258c47bdd0d8b076/OldBoard_BaseColor_a63c82b4_190.png",
+    "9d268adac4140527.png": "extracted/earth_scenes_desert_valley_14cf4e65852fe4c0258c47bdd0d8b076/OldBoard_Normal_e29a7e61_147.png",
+    "fffb22e8a401e2b1.png": "extracted/earth_scenes_desert_valley_14cf4e65852fe4c0258c47bdd0d8b076/UserStone_BaseColor_807301f7_211.png",
+    "f39ef2fe64fdfb03.png": "extracted/earth_scenes_desert_valley_14cf4e65852fe4c0258c47bdd0d8b076/UserStone_Normal_598583bd_223.png",
+    "2f099126b4d438e7.png": "extracted/earth_scenes_desert_valley_14cf4e65852fe4c0258c47bdd0d8b076/StoneCottage_BaseColor_7dcdd292_177.png",
+    "e8b8e3b28743f10a.png": "extracted/earth_scenes_desert_valley_14cf4e65852fe4c0258c47bdd0d8b076/StoneCottage_Normal_63330c3e_57.png",
+    "66ce942305ce8c87.png": "extracted/earth_scenes_desert_dunes_1a8d0bd235b925791a5f105f6f53dd05/PlaneWreck_BaseColor_Paint_v6_8baa9a52_79.png",
+    "2b1d4ef3f6b7f73c.png": "extracted/earth_scenes_desert_dunes_1a8d0bd235b925791a5f105f6f53dd05/PlaneWreck_Normal_0e12b6c6_78.png",
+    "8b61be85c825c84d.png": "extracted/earth_scenes_desert_dunes_1a8d0bd235b925791a5f105f6f53dd05/SteamLocomotive_BaseColor_26bc98ef_205.png",
+    "005d8230359f0ffa.png": "extracted/earth_scenes_desert_dunes_1a8d0bd235b925791a5f105f6f53dd05/SteamLocomotive_Normal_89e39909_92.png",
+    "952b6856dd085e66.png": "extracted/earth_scenes_desert_dunes_1a8d0bd235b925791a5f105f6f53dd05/PassengerCarriage_BaseColor_df1065bf_196.png",
+    "2a2bbcd5ebd9270b.png": "extracted/earth_scenes_desert_dunes_1a8d0bd235b925791a5f105f6f53dd05/PassengerCarriage_Normal_619173ac_149.png",
+    "40bfaf453ecdab83.png": "extracted/earth_scenes_desert_dunes_1a8d0bd235b925791a5f105f6f53dd05/Limestone_BaseColor_fe6f3e29_174.png",
+    "4a4cbb6b45e5ba7a.png": "extracted/earth_scenes_desert_dunes_1a8d0bd235b925791a5f105f6f53dd05/Limestone_Normal_15981ce2_183.png",
+    "bda156e5b3ca2606.png": "extracted/earth_scenes_desert_dunes_1a8d0bd235b925791a5f105f6f53dd05/OldBoard_BaseColor_a63c82b4_182.png",
+    "07a2ef73061f9dd7.png": "extracted/earth_scenes_desert_dunes_1a8d0bd235b925791a5f105f6f53dd05/OldBoard_Normal_e29a7e61_146.png",
+    "55fc3716fffc5bfe.png": "extracted/earth_scenes_desert_dunes_1a8d0bd235b925791a5f105f6f53dd05/CrateWood_BaseColor_349630d5_61.png",
+    "43357957159865f5.png": "extracted/earth_scenes_desert_dunes_1a8d0bd235b925791a5f105f6f53dd05/CrateWood_Normal_92df164b_199.png",
+    "5321b069a3c5ea85.png": "extracted/earth_scenes_desert_dunes_1a8d0bd235b925791a5f105f6f53dd05/RustyMetal_BaseColor_46eb6be3_121.png",
+    "136d32960bacb640.png": "extracted/earth_scenes_desert_dunes_1a8d0bd235b925791a5f105f6f53dd05/RustyMetal_Normal_28d31705_191.png",
+    "d4a11b25d016f3fd.png": "extracted/earth_scenes_desert_dunes_1a8d0bd235b925791a5f105f6f53dd05/Gravel_BaseColor_624792dc_144.png",
+    "cb2bf71e196495cd.png": "extracted/earth_scenes_desert_dunes_1a8d0bd235b925791a5f105f6f53dd05/Gravel_Normal_78f16ca8_215.png",
+    "8bbe12d68c593310.png": "extracted/earth_scenes_desert_dunes_1a8d0bd235b925791a5f105f6f53dd05/Blanket_BaseColor_b859b4e2_73.png",
+    "63bf05904948f613.png": "extracted/earth_scenes_desert_dunes_1a8d0bd235b925791a5f105f6f53dd05/Blanket_Normal_5253dfb1_212.png",
+    "6ef7023feae2daeb.png": "extracted/earth_scenes_desert_dunes_1a8d0bd235b925791a5f105f6f53dd05/Pilot_Wrench_BaseColor_224.png",
+    "98d55c41bd838d66.png": "extracted/earth_scenes_desert_dunes_1a8d0bd235b925791a5f105f6f53dd05/DeadWood_BaseColor_fd332c08_145.png",
+    "a17e92a0b60540f2.png": "extracted/earth_scenes_desert_dunes_1a8d0bd235b925791a5f105f6f53dd05/DeadWood_Normal_0bad37a9_72.png",
+    "2db2426146f393c3.png": "extracted/earth_scenes_desert_dunes_1a8d0bd235b925791a5f105f6f53dd05/Ruin_Column_Tall_BaseColor_70634195_129.png",
+    "b826c77c992d0af6.png": "extracted/earth_scenes_desert_dunes_1a8d0bd235b925791a5f105f6f53dd05/Ruin_Column_Tall_Normal_44ddf066_106.png",
+    "5900053205d6c809.png": "extracted/earth_scenes_desert_dunes_1a8d0bd235b925791a5f105f6f53dd05/Ruin_Column_Short_BaseColor_89b85bee_163.png",
+    "04a5c6734965ee0b.png": "extracted/earth_scenes_desert_dunes_1a8d0bd235b925791a5f105f6f53dd05/Ruin_Column_Short_Normal_71551dbe_102.png",
+    "8132042e5ec3b3ff.png": "extracted/earth_scenes_desert_dunes_1a8d0bd235b925791a5f105f6f53dd05/Ruin_Block_A_BaseColor_98d62d4c_142.png",
+    "d7460546cc2c5a88.png": "extracted/earth_scenes_desert_dunes_1a8d0bd235b925791a5f105f6f53dd05/Ruin_Block_A_Normal_8a102781_97.png",
+    "9ec3c8e2273880c6.png": "extracted/theater_scenes_all_e2f618313ea2960aa084f1d092ed065b/Vanity_AisleCarpet_BaseColor_cf9a6aee_188.png",
+    "6b031445f9bfe420.png": "extracted/theater_scenes_all_e2f618313ea2960aa084f1d092ed065b/Vanity_AisleCarpet_Normal_622e2ca1_138.png",
+    "9d9247ac4a146103.png": "extracted/theater_scenes_all_e2f618313ea2960aa084f1d092ed065b/Vanity_CrimsonRoof_BaseColor_9ba50451_167.png",
+    "d206bcda7ff9585a.png": "extracted/theater_scenes_all_e2f618313ea2960aa084f1d092ed065b/Vanity_CrimsonRoof_Normal_dc6089f2_129.png",
+    "81ded30bd61afe09.png": "extracted/theater_scenes_all_e2f618313ea2960aa084f1d092ed065b/Vanity_IvoryRoof_BaseColor_cef4ae0d_147.png",
+    "3fd5606bae91b844.png": "extracted/theater_scenes_all_e2f618313ea2960aa084f1d092ed065b/Vanity_IvoryRoof_Normal_7f26a431_154.png",
+    "289c39c40bf41117.png": "extracted/theater_scenes_all_e2f618313ea2960aa084f1d092ed065b/WoodScan_RawTimberVertical_BaseColor_76122adb_203.png",
+    "2df4399fe79351e9.png": "extracted/theater_scenes_all_e2f618313ea2960aa084f1d092ed065b/WoodScan_RawTimberVertical_Normal_348f26ad_182.png",
+    "49e731a9b54b713e.png": "extracted/theater_scenes_all_e2f618313ea2960aa084f1d092ed065b/Vanity_CrimsonEave_BaseColor_08b4ca9d_144.png",
+    "9f4041fa802cfc5e.png": "extracted/theater_scenes_all_e2f618313ea2960aa084f1d092ed065b/Vanity_CrimsonEave_Normal_1f22bc3d_137.png",
+    "e22c33e93ebdf857.png": "extracted/theater_scenes_all_e2f618313ea2960aa084f1d092ed065b/Vanity_IvoryEave_BaseColor_1e55d126_185.png",
+    "83035c27631d7e53.png": "extracted/theater_scenes_all_e2f618313ea2960aa084f1d092ed065b/Vanity_IvoryEave_Normal_d5feae5c_130.png",
+    "2b16e057e957bed8.png": "extracted/theater_scenes_all_e2f618313ea2960aa084f1d092ed065b/Vanity_RedVelvet_BaseColor_9eebebbd_216.png",
+    "78b36c1c04767571.png": "extracted/theater_scenes_all_e2f618313ea2960aa084f1d092ed065b/Vanity_RedVelvet_Normal_004a5da1_134.png",
+    "3e3147ee99135b36.png": "extracted/theater_scenes_all_e2f618313ea2960aa084f1d092ed065b/Vanity_HewnLog_Normal_306c5d62_180.png",
+    "f02ec470bbd5662e.png": "extracted/theater_scenes_all_e2f618313ea2960aa084f1d092ed065b/Vanity_InteriorPlaster_BaseColor_a1596cfb_112.png",
+    "e979767db821abda.png": "extracted/theater_scenes_all_e2f618313ea2960aa084f1d092ed065b/Vanity_InteriorPlaster_Normal_ec036f44_106.png",
+    "c1e85aaf36c91de0.png": "extracted/theater_scenes_all_e2f618313ea2960aa084f1d092ed065b/Vanity_AgedCanvas_BaseColor_becdd4b2_136.png",
+    "f3b6de71e0b47832.png": "extracted/theater_scenes_all_e2f618313ea2960aa084f1d092ed065b/Vanity_AgedCanvas_Normal_180dab59_117.png",
+    "ca2ae0f66fc8b9c5.png": "extracted/theater_scenes_all_e2f618313ea2960aa084f1d092ed065b/Vanity_BackdropVelvet_BaseColor_7dc3aa28_168.png",
+    "47b011c59c9437c9.png": "extracted/theater_scenes_all_e2f618313ea2960aa084f1d092ed065b/Vanity_BackdropVelvet_Normal_ec8b2604_179.png",
+    "1599031a82cb07e3.png": "extracted/theater_scenes_all_e2f618313ea2960aa084f1d092ed065b/Vanity_CrimsonRoofInner_BaseColor_fc99a206_123.png",
+    "c26f926ea429eeb6.png": "extracted/theater_scenes_all_e2f618313ea2960aa084f1d092ed065b/Vanity_CrimsonRoofInner_Normal_693ed6f9_195.png",
+    "39ae86187940b2eb.png": "extracted/theater_scenes_all_e2f618313ea2960aa084f1d092ed065b/Vanity_IvoryRoofInner_BaseColor_6057f9e7_132.png",
+    "de392eadca8b20d9.png": "extracted/theater_scenes_all_e2f618313ea2960aa084f1d092ed065b/Vanity_IvoryRoofInner_Normal_b492cfc9_200.png",
+    "6a4781cf86607e94.png": "extracted/theater_scenes_all_e2f618313ea2960aa084f1d092ed065b/Vanity_WindowGlow_BaseColor_e61df3b5_153.png",
+    "438a2eec7f64c001.png": "extracted/theater_scenes_all_e2f618313ea2960aa084f1d092ed065b/Vanity_WindowSky_BaseColor_a3d2b3c8_169.png",
+    "78c173a7dcb7ed32.png": "extracted/bar_scenes_all_b9da43939383a8e5dadfca776345e4dc/M_Bar_Stone_BaseColor_90adc8a5_157.png",
+    "1fa9406bb13cb203.png": "extracted/bar_scenes_all_b9da43939383a8e5dadfca776345e4dc/M_Bar_Stone_Normal_999529dd_72.png",
+    "5b90505a7a634875.png": "extracted/bar_scenes_all_b9da43939383a8e5dadfca776345e4dc/M_Bar_Plaster_BaseColor_6c18c083_119.png",
+    "c0bb4a9be86445a6.png": "extracted/bar_scenes_all_b9da43939383a8e5dadfca776345e4dc/M_Bar_Plaster_Normal_170b8838_117.png",
+    "d68bd74b497728eb.png": "extracted/bar_scenes_all_b9da43939383a8e5dadfca776345e4dc/M_Bar_RoofTile_BaseColor_15966c88_126.png",
+    "de842cb3f4b0c2fc.png": "extracted/bar_scenes_all_b9da43939383a8e5dadfca776345e4dc/M_Bar_RoofTile_Normal_a9449e4d_84.png",
+    "e5989623fea029d6.png": "extracted/counting_scenes_all_089cbda0302d53359e2fb22541ffb15d/SO_StonePlinth_BaseColor_63e6ba1b_80.png",
+    "618c96b75ee7cecb.png": "extracted/counting_scenes_all_089cbda0302d53359e2fb22541ffb15d/SO_StonePlinth_Normal_34fc2a4f_52.png",
+    "7b9af760b3ee7ae2.png": "extracted/counting_scenes_all_089cbda0302d53359e2fb22541ffb15d/SO_StoneDressed_BaseColor_a94bb83b_36.png",
+    "2c15fa18cce96476.png": "extracted/counting_scenes_all_089cbda0302d53359e2fb22541ffb15d/SO_StoneDressed_Normal_d61de7c5_72.png",
+    "d0e939c9b9326c71.png": "extracted/counting_scenes_all_089cbda0302d53359e2fb22541ffb15d/SO_StoneRubble_BaseColor_f089aef9_45.png",
+    "9815553836682230.png": "extracted/counting_scenes_all_089cbda0302d53359e2fb22541ffb15d/SO_StoneRubble_Normal_a100b4f7_112.png",
+    "5ea6344afa4d774a.png": "extracted/counting_scenes_all_089cbda0302d53359e2fb22541ffb15d/SO_Bronze_BaseColor_9b3a8ae1_114.png",
+    "c8970ae12501670b.png": "extracted/counting_scenes_all_089cbda0302d53359e2fb22541ffb15d/SO_Bronze_Normal_3bec1c72_118.png",
+    "341ffccda9707ad1.png": "extracted/counting_scenes_all_089cbda0302d53359e2fb22541ffb15d/SO_Plaster_BaseColor_4df26d96_25.png",
+    "d3a2f85a16e2b518.png": "extracted/counting_scenes_all_089cbda0302d53359e2fb22541ffb15d/SO_Plaster_Normal_da71aafb_34.png",
+    "7c4b403ce34fd3a5.png": "extracted/counting_scenes_all_089cbda0302d53359e2fb22541ffb15d/SO_WoodFloor_BaseColor_7043cb26_61.png",
+    "1b8a8408466ed0f2.png": "extracted/counting_scenes_all_089cbda0302d53359e2fb22541ffb15d/SO_WoodFloor_Normal_9be11a0c_120.png",
+    "8d6713522b22a33e.png": "extracted/geo_scenes_all_51dcdcc97916712edd4bd2822a3ae928/GEO_Limestone_BaseColor_f22af9d4_39.png",
+    "22d7cd4996614566.png": "extracted/geo_scenes_all_51dcdcc97916712edd4bd2822a3ae928/GEO_Limestone_Normal_2ca44e70_62.png",
+    "90f993e1c7120c06.png": "extracted/geo_scenes_all_51dcdcc97916712edd4bd2822a3ae928/GEO_Banner_BaseColor_75275f03_83.png",
+    "745706d7730410b5.png": "extracted/geo_scenes_all_51dcdcc97916712edd4bd2822a3ae928/GEO_Banner_Normal_9b116470_129.png",
+    "61891a230170a670.png": "extracted/geo_scenes_all_51dcdcc97916712edd4bd2822a3ae928/GEO_RoofShingle_BaseColor_d9d5670b_51.png",
+    "227fb47615209162.png": "extracted/geo_scenes_all_51dcdcc97916712edd4bd2822a3ae928/GEO_RoofShingle_Normal_2fe44a8a_75.png",
+    "946d0d807cdc9230.png": "extracted/b612_scenes_all_f593f551f550041f5a2feb47872f92c6/Rose_Mask_7bba209d_93.png",
+    "79fb9b5ec029db13.png": "extracted/b612_scenes_all_f593f551f550041f5a2feb47872f92c6/ClocheBase_Mask_3e06d021_73.png",
+    "d2eb537b66c45dc7.png": "extracted/b612_scenes_all_f593f551f550041f5a2feb47872f92c6/Rock_04_Mask_ea44dad9_77.png",
+    "6a53c8943c4339c8.png": "extracted/b612_scenes_all_f593f551f550041f5a2feb47872f92c6/WindScreen_Mask_1fd6ceeb_59.png",
+    "098485cc2a80d595.png": "extracted/b612_scenes_all_f593f551f550041f5a2feb47872f92c6/WateringCan_Mask_cde24dd3_86.png",
+    "abf576c9e3cab6d6.png": "extracted/b612_scenes_all_f593f551f550041f5a2feb47872f92c6/ToolShed_Wood_Mask_ba041a78_118.png",
+    "2297def79753fc57.png": "extracted/b612_scenes_all_f593f551f550041f5a2feb47872f92c6/VolcanoA_Emission_f23a0117_85.png",
+    "edb46befd0e8d226.png": "extracted/b612_scenes_all_f593f551f550041f5a2feb47872f92c6/VolcanoA_Mask_ca755e94_54.png",
+    "1331c7a64343886b.png": "extracted/b612_scenes_all_f593f551f550041f5a2feb47872f92c6/VolcanoB_Emission_95bccccc_96.png",
+    "441025d9819a6ed7.png": "extracted/b612_scenes_all_f593f551f550041f5a2feb47872f92c6/VolcanoB_Mask_450028f2_90.png",
+    "1b5af8decb7b0813.png": "extracted/b612_scenes_all_f593f551f550041f5a2feb47872f92c6/BaobabSeedling_Mask_9815bc23_46.png",
+    "276f09288f062e7c.png": "extracted/b612_scenes_all_f593f551f550041f5a2feb47872f92c6/SleepingPad_Mask_9e1ca819_66.png",
+    "2aa512637ad0fac4.png": "extracted/b612_scenes_all_f593f551f550041f5a2feb47872f92c6/Blanket_Mask_c12baeba_98.png",
+    "6feceba109ae54d1.png": "extracted/b612_scenes_all_f593f551f550041f5a2feb47872f92c6/FlatStones_Mask_9f0bf2af_125.png",
+    "b284659459de5851.png": "extracted/b612_scenes_all_f593f551f550041f5a2feb47872f92c6/SunsetChair_Mask_b69a74aa_84.png",
+    "d5c557e57de25743.png": "extracted/b612_scenes_all_f593f551f550041f5a2feb47872f92c6/Rock_01_Mask_3fb55ff1_82.png",
+    "8ef8c51f01f3f871.png": "extracted/b612_scenes_all_f593f551f550041f5a2feb47872f92c6/Pebbles_Mask_138.png",
+    "5753a739a8c1978b.png": "extracted/b612_scenes_all_f593f551f550041f5a2feb47872f92c6/Rock_03_Mask_2b110279_26.png",
+    "67dc8f09626e2f3b.png": "extracted/b612_scenes_all_f593f551f550041f5a2feb47872f92c6/Rock_05_Mask_80750817_44.png",
+    "ec1f004e27a3ab21.png": "extracted/b612_scenes_all_f593f551f550041f5a2feb47872f92c6/LifeProps_Tools_Mask_0bede41d_127.png",
+    "4ec7c18591b8a7d7.png": "extracted/king_scenes_all_5bb118ea0cc898dfffe446eaaf2f3b36/RC_CandleWax_Emission_120.png",
+    "00d0ae5b6403e4aa.png": "extracted/theater_scenes_all_e2f618313ea2960aa084f1d092ed065b/P02_StandingMirror_Original_MetallicSmoothness_a95a7c29_118.png",
+    "8806c816f885fa5c.png": "extracted/theater_scenes_all_e2f618313ea2960aa084f1d092ed065b/Vanity_AisleCarpet_MetallicSmoothness_a96496d8_166.png",
+    "3fb3c38917389ec7.png": "extracted/theater_scenes_all_e2f618313ea2960aa084f1d092ed065b/Vanity_DarkIron_MetallicSmoothness_298.png",
+    "3941a1aa438553c7.png": "extracted/theater_scenes_all_e2f618313ea2960aa084f1d092ed065b/Vanity_BrightBrass_MetallicSmoothness_308.png",
+    "66ed08bce0a56a67.png": "extracted/theater_scenes_all_e2f618313ea2960aa084f1d092ed065b/Vanity_WarmBulb_MetallicSmoothness_261.png",
+    "d51af507cada9841.png": "extracted/theater_scenes_all_e2f618313ea2960aa084f1d092ed065b/Vanity_GiltPiping_MetallicSmoothness_316.png",
+    "1532df4ed2701ee5.png": "extracted/theater_scenes_all_e2f618313ea2960aa084f1d092ed065b/Vanity_CrimsonRoof_MetallicSmoothness_7ab7fb51_149.png",
+    "363a8677406debb5.png": "extracted/theater_scenes_all_e2f618313ea2960aa084f1d092ed065b/Vanity_IvoryRoof_MetallicSmoothness_901c2e4e_121.png",
+    "f093bbb29b871b94.png": "extracted/theater_scenes_all_e2f618313ea2960aa084f1d092ed065b/WoodScan_RawTimberVertical_MetallicSmoothness_e2ff1bc2_113.png",
+    "eb0ac1efdf403d77.png": "extracted/theater_scenes_all_e2f618313ea2960aa084f1d092ed065b/Vanity_AntiqueGold_MetallicSmoothness_291.png",
+    "7df8f17686df9c37.png": "extracted/theater_scenes_all_e2f618313ea2960aa084f1d092ed065b/Vanity_CrimsonEave_MetallicSmoothness_ba22bea2_126.png",
+    "17ea1947ce596e78.png": "extracted/theater_scenes_all_e2f618313ea2960aa084f1d092ed065b/Vanity_IvoryEave_MetallicSmoothness_33a9c50a_196.png",
+    "1dcad80b4dcf320e.png": "extracted/theater_scenes_all_e2f618313ea2960aa084f1d092ed065b/Vanity_RedVelvet_MetallicSmoothness_ad86fec6_142.png",
+    "2b785f8899b5a7d3.png": "extracted/theater_scenes_all_e2f618313ea2960aa084f1d092ed065b/Vanity_InteriorPlaster_MetallicSmoothness_5199653f_124.png",
+    "74ca6ea94b72a295.png": "extracted/theater_scenes_all_e2f618313ea2960aa084f1d092ed065b/Vanity_AgedCanvas_MetallicSmoothness_8c6e3efc_146.png",
+    "3ad67628ccbeaa56.png": "extracted/theater_scenes_all_e2f618313ea2960aa084f1d092ed065b/Vanity_GildedCarving_MetallicSmoothness_246.png",
+    "7f99c4517ada4c5c.png": "extracted/theater_scenes_all_e2f618313ea2960aa084f1d092ed065b/Vanity_HempRope_MetallicSmoothness_286.png",
+    "9edabcfb05660ce3.png": "extracted/theater_scenes_all_e2f618313ea2960aa084f1d092ed065b/Vanity_BackdropVelvet_MetallicSmoothness_c0f49785_212.png",
+    "12def0bed036143f.png": "extracted/theater_scenes_all_e2f618313ea2960aa084f1d092ed065b/Vanity_CrimsonRoofInner_MetallicSmoothness_ed738cfc_173.png",
+    "fe5ce183052c3300.png": "extracted/theater_scenes_all_e2f618313ea2960aa084f1d092ed065b/Vanity_IvoryRoofInner_MetallicSmoothness_695e3591_175.png",
+    "4acb271acf4cb8d7.png": "extracted/bar_scenes_all_b9da43939383a8e5dadfca776345e4dc/M_Bar_WoodPlank_Mask_b6d02071_120.png",
+    "9b5433460fa4711f.png": "extracted/bar_scenes_all_b9da43939383a8e5dadfca776345e4dc/M_Bar_Timber_Mask_b40fbc74_155.png",
+    "6a421bab2b44cb9e.png": "extracted/bar_scenes_all_b9da43939383a8e5dadfca776345e4dc/Bar_Iron_Mask_187.png",
+    "afb63bd7940b55b0.png": "extracted/bar_scenes_all_b9da43939383a8e5dadfca776345e4dc/M_Bar_Stone_Mask_66578de8_100.png",
+    "6d80edb17277929c.png": "extracted/bar_scenes_all_b9da43939383a8e5dadfca776345e4dc/M_Bar_Plaster_Mask_f0974fb5_151.png",
+    "3a057b5a434892c3.png": "extracted/bar_scenes_all_b9da43939383a8e5dadfca776345e4dc/M_Bar_RoofTile_Mask_53dcbdf4_163.png",
+    "dc3492922a71d2cb.png": "extracted/counting_scenes_all_089cbda0302d53359e2fb22541ffb15d/Prop_BrassTelescope_MetallicSmoothness_344ddc82_53.png",
+    "18546f27b54ae67b.png": "extracted/counting_scenes_all_089cbda0302d53359e2fb22541ffb15d/SO_StonePlinth_MetallicSmoothness_64a7e458_20.png",
+    "e77b38c5778d87de.png": "extracted/counting_scenes_all_089cbda0302d53359e2fb22541ffb15d/SO_StoneDressed_MetallicSmoothness_8cb2c4a6_89.png",
+    "86eff22086dfc532.png": "extracted/counting_scenes_all_089cbda0302d53359e2fb22541ffb15d/SO_StoneRubble_MetallicSmoothness_23889358_29.png",
+    "e554b1f5e7aea865.png": "extracted/counting_scenes_all_089cbda0302d53359e2fb22541ffb15d/SO_Bronze_MetallicSmoothness_748360e5_90.png",
+    "ef41b8dc41dd0470.png": "extracted/counting_scenes_all_089cbda0302d53359e2fb22541ffb15d/SO_WoodBeam_MetallicSmoothness_060c6ec7_51.png",
+    "84a3fe0a98b73308.png": "extracted/counting_scenes_all_089cbda0302d53359e2fb22541ffb15d/SO_IronRust_MetallicSmoothness_e6e66b44_94.png",
+    "a54a83e0b1b91498.png": "extracted/counting_scenes_all_089cbda0302d53359e2fb22541ffb15d/SO_Plaster_MetallicSmoothness_46bfa17f_83.png",
+    "6ad8087fac2664b6.png": "extracted/counting_scenes_all_089cbda0302d53359e2fb22541ffb15d/SO_WoodFloor_MetallicSmoothness_3fcd1a48_75.png",
+    "ee17d7f7dfe9654b.png": "extracted/counting_scenes_all_089cbda0302d53359e2fb22541ffb15d/T_SO_BrassWear_MS_133.png",
+    "4df357834b1401e5.png": "extracted/counting_scenes_all_089cbda0302d53359e2fb22541ffb15d/SO_Rug_MetallicSmoothness_4ccbba8d_121.png",
+    "b4b8eda48a666801.png": "extracted/counting_scenes_all_089cbda0302d53359e2fb22541ffb15d/SO_WoodFurniture_MetallicSmoothness_3da3e3c1_70.png",
+    "901092bb666f52bd.png": "extracted/counting_scenes_all_089cbda0302d53359e2fb22541ffb15d/SO_Leather_MetallicSmoothness_132.png",
+    "31fa10694a9b951a.png": "extracted/counting_scenes_all_089cbda0302d53359e2fb22541ffb15d/SO_Paper_MetallicSmoothness_6f583dcb_24.png",
+    "1d54ca25af885661.png": "extracted/counting_scenes_all_089cbda0302d53359e2fb22541ffb15d/SO_BookAtlas_MetallicSmoothness_fe5a1545_117.png",
+    "85da0589a08c8b73.png": "extracted/counting_scenes_all_089cbda0302d53359e2fb22541ffb15d/SO_Chart_North_MetallicSmoothness_52a73216_30.png",
+    "11985b6bd4c8b26b.png": "extracted/counting_scenes_all_089cbda0302d53359e2fb22541ffb15d/SO_Chart_Moon_MetallicSmoothness_8272e205_31.png",
+    "944d00663aa26498.png": "extracted/counting_scenes_all_089cbda0302d53359e2fb22541ffb15d/SO_Chart_Constellation_MetallicSmoothness_d1c6e056_50.png",
+    "361a169f6cbe6331.png": "extracted/counting_scenes_all_089cbda0302d53359e2fb22541ffb15d/SO_Chart_Zodiac_MetallicSmoothness_e971d77a_48.png",
+    "8fe1e18af75c8ae4.png": "extracted/counting_scenes_all_089cbda0302d53359e2fb22541ffb15d/SO_Chart_Orbits_MetallicSmoothness_a94c41c6_65.png",
+    "364c3dbd9d5dc251.png": "extracted/counting_scenes_all_089cbda0302d53359e2fb22541ffb15d/Prop_Lantern_Emission_304e6086_123.png",
+    "4de1d8590f547da2.png": "extracted/counting_scenes_all_089cbda0302d53359e2fb22541ffb15d/Prop_Lantern_MetallicSmoothness_f89ab10d_55.png",
+    "ee341585d8f01e4a.png": "extracted/counting_scenes_all_089cbda0302d53359e2fb22541ffb15d/Prop_Lantern_Glass_Emission_127.png",
+    "7ff99a005bc450b1.png": "extracted/counting_scenes_all_089cbda0302d53359e2fb22541ffb15d/SO_Candle_Emission_130.png",
+    "21bd7ec38e90618f.png": "extracted/counting_scenes_all_089cbda0302d53359e2fb22541ffb15d/SO_Candle_MetallicSmoothness_126.png",
+    "2361f8f6e180b212.png": "extracted/counting_scenes_all_089cbda0302d53359e2fb22541ffb15d/SO_Cliff_MetallicSmoothness_36a4b59c_99.png",
+    "23d1ab6e0540eda6.png": "extracted/lamp_scenes_all_8f509513f920bc338bf932325265e981/Lighter_Iron_MetallicSmoothness_da79ac01_52.png",
+    "955bf11ab7f6d4c8.png": "extracted/lamp_scenes_all_8f509513f920bc338bf932325265e981/Lighter_Lantern_MetallicSmoothness_ddee0c44_42.png",
+    "0bab3d28fd975df8.png": "extracted/geo_scenes_all_51dcdcc97916712edd4bd2822a3ae928/GEO_Prop_MapTable_MaskMap_e54efbff_103.png",
+    "51bfe85725a6157a.png": "extracted/geo_scenes_all_51dcdcc97916712edd4bd2822a3ae928/GEO_Walnut_MaskMap_b350c926_101.png",
+    "e642dc4d8c457286.png": "extracted/geo_scenes_all_51dcdcc97916712edd4bd2822a3ae928/GEO_Bark_MaskMap_58f18e34_55.png",
+    "96c995403942528d.png": "extracted/geo_scenes_all_51dcdcc97916712edd4bd2822a3ae928/GEO_Limestone_MaskMap_aa0cb806_82.png",
+    "35c2e12dfc900c00.png": "extracted/geo_scenes_all_51dcdcc97916712edd4bd2822a3ae928/GEO_Banner_MaskMap_0b698a81_81.png",
+    "a87e2afbf2fcd49c.png": "extracted/geo_scenes_all_51dcdcc97916712edd4bd2822a3ae928/GEO_RoofShingle_MaskMap_aec32ce2_102.png"
+  },
+  "unmapped": []
+}

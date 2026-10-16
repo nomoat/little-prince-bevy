@@ -13,7 +13,7 @@ use crate::core::sky::Sky;
 use crate::core::story::{Anchors, set_flag};
 use bevy::ecs::message::{MessageCursor, Messages};
 use bevy::light::NotShadowCaster;
-use std::f32::consts::{FRAC_PI_2, PI, TAU};
+use std::f32::consts::{PI, TAU};
 
 /// Where things are (filled by world::build).
 #[derive(Resource, Clone)]
@@ -137,6 +137,7 @@ pub struct B612State {
 #[derive(Clone)]
 struct FxAssets {
     ball: Handle<Mesh>,
+    smoke: Handle<Mesh>,
     water: Handle<StandardMaterial>,
     steam: Handle<StandardMaterial>,
     spark: Handle<StandardMaterial>,
@@ -150,6 +151,8 @@ fn speed(w: &World) -> f32 {
 #[allow(clippy::too_many_arguments)]
 pub fn init_state(world: &mut World, test: bool, player: Entity, rose: Entity, can: Entity, cloche: Entity, chair: Entity, soil: Entity) {
     let ball = world.resource_mut::<Assets<Mesh>>().add(Sphere::new(1.0).mesh().ico(1).unwrap());
+    let smoke = world.resource_mut::<Assets<Mesh>>().add(Rectangle::new(2.0,2.0));
+    let smoke_texture = world.resource::<AssetServer>().load("original/b612/steam.png");
     let mut mats = world.resource_mut::<Assets<StandardMaterial>>();
     let water = mats.add(StandardMaterial {
         base_color: Color::srgba(0.7, 0.86, 0.95, 0.75),
@@ -158,7 +161,9 @@ pub fn init_state(world: &mut World, test: bool, player: Entity, rose: Entity, c
         ..default()
     });
     let steam = mats.add(StandardMaterial {
-        base_color: Color::srgba(0.95, 0.94, 0.92, 0.35),
+        base_color: Color::srgba(1.0, 0.95, 0.86, 0.3),
+        base_color_texture: Some(smoke_texture),
+        cull_mode: None,
         alpha_mode: AlphaMode::Blend,
         unlit: true,
         ..default()
@@ -192,7 +197,7 @@ pub fn init_state(world: &mut World, test: bool, player: Entity, rose: Entity, c
         carrying: false,
         fill: 0.0,
         can_down: false,
-        can_rest: (sites.can_home, SHED_YAW + 200.0),
+        can_rest: (sites.can_home, CAN_YAW),
         care_step: None,
         seq: Seq::None,
         wet: 0.0,
@@ -210,7 +215,7 @@ pub fn init_state(world: &mut World, test: bool, player: Entity, rose: Entity, c
         fly_from: Vec3::ZERO,
         fly_to: Vec3::ZERO,
         depart_t: 0.0,
-        assets: FxAssets { ball, water, steam, spark },
+        assets: FxAssets { ball, smoke, water, steam, spark },
     });
     // asleep on the pad: lying on his back, head to the west
     if let Some(mut pl) = world.get_mut::<Player>(player) {
@@ -218,19 +223,16 @@ pub fn init_state(world: &mut World, test: bool, player: Entity, rose: Entity, c
         pl.pose = Pose::None;
     }
     if let Some(mut t) = world.get_mut::<Transform>(player) {
-        t.rotation = lying();
-        t.translation = sites.feet + Vec3::Y * 0.15;
+        t.rotation = Quat::IDENTITY;
+        t.translation = sites.feet;
     }
-}
-
-fn lying() -> Quat {
-    Quat::from_rotation_x(-FRAC_PI_2)
 }
 
 // ------------------------------------------------------------- components
 
 #[derive(Component)]
 pub struct Particle {
+    billboard: bool,
     vel: Vec3,
     life: f32,
     max: f32,
@@ -617,7 +619,7 @@ fn on_use(w: &mut World, id: &str) {
             let home = w.resource::<Sites>().can_home;
             let mut s = st(w);
             s.carrying = false;
-            s.can_rest = (home, SHED_YAW + 200.0);
+            s.can_rest = (home, CAN_YAW);
             drop(s);
             sfx(w, "sfx.tin");
         }
@@ -671,7 +673,7 @@ fn on_use(w: &mut World, id: &str) {
 /// B612Opening: asleep under the card → wake-up → camera orbit → hand-over.
 fn opening(w: &mut World, dt: f32) {
     const SLEEP: f32 = 4.5;
-    const WAKE: f32 = 1.7; // wake clip at speed 1.2
+    const WAKE: f32 = 3.9 / 1.2; // wake clip at speed 1.2
     const STAND: f32 = 0.3;
     const ORBIT: f32 = 5.2;
     const HOLD: f32 = 1.4;
@@ -689,30 +691,30 @@ fn opening(w: &mut World, dt: f32) {
         s.open_t
     };
     let feet = w.resource::<Sites>().feet;
-    let yaw = 0.0f32;
-    let behind = feet + Vec3::new(0.0, 1.0 + 3.4 * 4f32.to_radians().sin(), -3.4 * 4f32.to_radians().cos());
+    let yaw = SPAWN_YAW.to_radians();
+    let facing = Quat::from_rotation_y(yaw);
+    let behind = feet + facing * Vec3::new(0.0, 1.0 + 3.4 * 4f32.to_radians().sin(), -3.4 * 4f32.to_radians().cos());
     // body
     let u = ((t - SLEEP) / WAKE).clamp(0.0, 1.0);
-    let e = ease(u);
     with_player(w, |pl, tf| {
         pl.drive = Drive::External;
         pl.yaw = yaw;
-        tf.rotation = lying().slerp(Quat::IDENTITY, e);
-        tf.translation = feet + Vec3::Y * 0.15 * (1.0 - e);
+        tf.rotation = Quat::IDENTITY;
+        tf.translation = feet;
     });
     if t < SLEEP + WAKE + STAND {
         // camera one: from the head side, rising with the clip (riseFrom 0.3 → riseTo 0.95)
         let r = ease((u - 0.3) / 0.65);
-        let cam = (feet + Vec3::new(1.5, 1.35, -1.7)).lerp(behind, r);
-        let look = (feet + Vec3::new(0.0, 0.2, -0.55)).lerp(feet + Vec3::Y * 1.0, r);
+        let cam = (feet + facing * Vec3::new(0.75, 1.15, -1.95)).lerp(behind, r);
+        let look = (feet + facing * Vec3::new(0.0, 0.3, 0.75)).lerp(feet + Vec3::Y * 1.0, r);
         director::shot(w, cam, look, 0.0, 38.0);
         return;
     }
     let o = ((t - SLEEP - WAKE - STAND) / ORBIT).clamp(0.0, 1.0);
     if o < 1.0 || t < SLEEP + WAKE + STAND + ORBIT + HOLD {
-        // camera two: behind → his right → front (9° off), arcing over the pit rim
+        // Camera two arcs from behind to the original site's hand-over view.
         let eo = o * o * o * (o * (o * 6.0 - 15.0) + 10.0);
-        let az = (180.0 + 189.0 * eo).to_radians();
+        let az = (yaw + PI) + (OPENING_VIEW_YAW.to_radians() + 2.0 * PI - yaw - PI) * eo;
         let pitch = (4.0 + 6.0 * (eo * PI).sin()).to_radians();
         let pivot = feet + Vec3::Y * 1.0;
         let cam = pivot + Vec3::new(az.sin() * pitch.cos(), pitch.sin(), az.cos() * pitch.cos()) * 3.4;
@@ -720,7 +722,7 @@ fn opening(w: &mut World, dt: f32) {
         return;
     }
     // hand over to the player camera
-    w.resource_mut::<CameraRig>().snap_behind(yaw);
+    w.resource_mut::<CameraRig>().snap_behind(OPENING_VIEW_YAW.to_radians() + PI);
     director::release(w, 1.6);
     with_player(w, |pl, tf| {
         pl.drive = Drive::Player;
@@ -1111,8 +1113,8 @@ fn sequences(w: &mut World, dt: f32) {
                     with_player(w, |pl, tf| {
                         pl.drive = Drive::External;
                         pl.pose = Pose::Sit;
-                        pl.yaw = PI;
-                        pl.face_target = Some(PI);
+                        pl.yaw = CHAIR_YAW.to_radians();
+                        pl.face_target = Some(CHAIR_YAW.to_radians());
                         tf.translation = chair + Vec3::new(0.0, 0.045, 0.06);
                         tf.rotation = Quat::IDENTITY;
                     });
@@ -1309,6 +1311,7 @@ fn spawn_particle(w: &mut World, pos: Vec3, vel: Vec3, life: f32, size: f32, gro
     };
     w.spawn((
         Particle {
+            billboard: kind == 1,
             vel,
             life,
             max: life,
@@ -1316,7 +1319,7 @@ fn spawn_particle(w: &mut World, pos: Vec3, vel: Vec3, life: f32, size: f32, gro
             size,
             grow,
         },
-        Mesh3d(a.ball),
+        Mesh3d(if kind == 1 { a.smoke } else { a.ball }),
         MeshMaterial3d(mat),
         Transform::from_translation(pos).with_scale(Vec3::splat(size)),
         NotShadowCaster,
@@ -1337,11 +1340,11 @@ fn emitters(w: &mut World, dt: f32) {
         *v += dt;
     }
     // steam
-    if t[0] > 0.45 {
+    if t[0] > 0.12 {
         t[0] = 0.0;
         for v in &sites.vents {
             let j = Vec3::new(rng.range(-0.08, 0.08), 0.0, rng.range(-0.08, 0.08));
-            spawn_particle(w, *v + j, Vec3::new(0.12, 0.35, 0.05), 4.0, 0.08, 0.16, -0.0, 1);
+            spawn_particle(w, *v + j, Vec3::new(0.12, 0.45, 0.05), 7.0, 0.13, 0.6, -0.0, 1);
         }
     }
     // waterfall spray
@@ -1391,7 +1394,7 @@ fn emitters(w: &mut World, dt: f32) {
 
 // ------------------------------------------------------------- plain systems
 
-pub fn particles(mut commands: Commands, time: Res<Time>, mut q: Query<(Entity, &mut Particle, &mut Transform)>) {
+pub fn particles(mut commands: Commands, time: Res<Time>, camera:Res<CameraRig>, mut q: Query<(Entity, &mut Particle, &mut Transform)>) {
     let dt = time.delta_secs();
     for (e, mut p, mut t) in &mut q {
         p.life -= dt;
@@ -1401,6 +1404,9 @@ pub fn particles(mut commands: Commands, time: Res<Time>, mut q: Query<(Entity, 
         }
         p.vel.y -= p.gravity * dt;
         t.translation += p.vel * dt;
+        if p.billboard {
+            t.look_at(camera.last_pos,Vec3::Y);
+        }
         let age = 1.0 - p.life / p.max;
         let fade = (p.life / p.max * 3.0).min(1.0);
         t.scale = Vec3::splat((p.size + p.grow * age) * fade);

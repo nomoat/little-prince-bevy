@@ -1,7 +1,10 @@
 //! The core engine shared by all chapters. See docs/CORE_API.md.
 
 pub mod audio;
+#[cfg(target_arch = "wasm32")]
+mod web_audio;
 pub mod camera;
+pub mod environment;
 pub mod chapter;
 pub mod i18n;
 pub mod input;
@@ -9,6 +12,7 @@ pub mod interact;
 pub mod manifest;
 pub mod meshkit;
 pub mod models;
+pub(crate) mod original_rig;
 pub mod params;
 pub mod physics;
 pub mod planet;
@@ -83,8 +87,7 @@ pub fn build_app(app: &mut App) {
         };
     }
     let test = params.test;
-    app.add_plugins(
-        DefaultPlugins
+    let plugins = DefaultPlugins
             .set(WindowPlugin {
                 primary_window: Some(Window {
                     title: "小王子 · 星辰之旅".into(),
@@ -97,8 +100,11 @@ pub fn build_app(app: &mut App) {
                 ..default()
             })
             .set(AssetPlugin { meta_check: AssetMetaCheck::Never, file_path: asset_root(), ..default() })
-            .set(bevy::log::LogPlugin { filter: "wgpu=error,naga=warn,bevy_render=warn,bevy_asset=warn".into(), ..default() }),
-    );
+            .set(bevy::log::LogPlugin { filter: "wgpu=error,naga=warn,bevy_render=warn,bevy_asset=warn".into(), ..default() });
+    #[cfg(target_arch = "wasm32")]
+    let plugins = plugins.disable::<bevy::audio::AudioPlugin>();
+    app.add_plugins(plugins);
+    environment::plugin(app);
     let mut i18n = i18n::I18n::default();
     i18n.lang = save.lang;
     i18n.add_table(i18n::CORE_STRINGS);
@@ -135,6 +141,7 @@ pub fn build_app(app: &mut App) {
         .init_resource::<camera::CameraTuning>()
         .init_resource::<camera::CameraRig>()
         .init_resource::<sky::Sky>()
+        .init_resource::<original_rig::OriginalAnimations>()
         .init_resource::<story::StoryRunner>()
         .init_resource::<story::StoryLock>()
         .init_resource::<story::Anchors>()
@@ -152,7 +159,7 @@ pub fn build_app(app: &mut App) {
     app.add_systems(Startup, (models::setup_shared_materials, boot_fonts, start_manifest_loading, setup_camera, sky::setup_sky))
         .add_systems(Update, state::boot.run_if(in_state(AppState::Boot)))
         .add_systems(Update, (merge_runtime_manifests, state::handle_flow, testing::flow_driver, testing::probe, testing::exit_when_done, save::persist_save, apply_quality, i18n::apply_translations))
-        .add_systems(OnEnter(AppState::Loading), state::loading_hop)
+        .add_systems(Update, state::loading_hop.run_if(in_state(AppState::Loading)))
         .add_systems(OnEnter(AppState::Chapter), (state::enter_chapter, reset_autopilot))
         .add_systems(OnExit(AppState::Chapter), state::exit_chapter)
         .add_systems(Update, (story::update_input_gate, input::gather_input).chain().in_set(CoreSet::Input))
@@ -167,7 +174,7 @@ pub fn build_app(app: &mut App) {
         .add_systems(Update, camera::update_camera.in_set(CoreSet::Camera))
         .add_systems(
             Update,
-            (sky::tick_sky_clock, sky::apply_sky, player::animate_prince, audio::handle_audio, audio::update_tracks, audio::footsteps, audio::feedback, player::prince_fill).chain().in_set(CoreSet::Presentation),
+            (sky::tick_sky_clock, sky::apply_sky, player::animate_prince, original_rig::bind_original_parts, original_rig::advance_original_animation, original_rig::animate_original_prince, original_rig::animate_original_scarf, audio::handle_audio, audio::update_tracks, audio::footsteps, audio::feedback, player::prince_fill).chain().in_set(CoreSet::Presentation),
         );
 }
 

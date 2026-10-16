@@ -1,8 +1,17 @@
 # Asset credits
 
-All third-party assets are CC0 (public domain) except the UI font (SIL OFL 1.1).
-Everything else (planets, characters, props, sky, music pads, many sound effects) is
-generated procedurally by the game's own code.
+The active manifests now use the original assets supplied by the user in
+`~/lp_extract` for characters, major props/buildings, music and several sound effects.
+These files are **not covered by this project's CC0/MIT declarations**. Their original
+rights remain with their respective owners; no new license is asserted here.
+`original/import-report.json` records each model's source bundle/mesh, each texture's
+source image, and each audio file's source. `scripts/import_original_assets.py`
+converts them locally without downloading additional assets.
+`original/shared/animations-report.json` records the 35 original character clips
+resampled by `scripts/import_original_animation.py`; the same original rights apply.
+
+The following CC0 packs and procedural assets remain as fallbacks or for unmapped
+effects/props. The UI font remains SIL OFL 1.1.
 
 | Asset | Files | Source | License |
 |---|---|---|---|

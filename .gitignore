@@ -11,3 +11,5 @@ assets/fonts/_full_*
 tests/node_modules/
 dist-dev/
 dist-dev2/
+__pycache__/
+*.pyc

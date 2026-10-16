@@ -1,27 +1,32 @@
 #![enable(implicit_some)]
-// Asset keys of chapter "b612" (edited only by that chapter). Same format as
-// assets/manifest.ron; see docs/ASSETS.md. Every key below currently uses its
-// procedural fallback (src/chapters/b612/models.rs); add `path: "models/b612/<file>.glb"`
-// to swap in a real model (origin at the base, +Z = front, metres).
+// Original assets imported from ~/lp_extract. The procedural generators
+// remain as fallbacks. See original/import-report.json and docs/ASSETS.md.
 (
   entries: {
-    "music.b612": (procedural: "pad_home", volume: 0.7, looped: true),
-    "model.b612.rose": (procedural: "b612.rose", note: "the rose, ~0.55 m at scale 1; parts 'rose_stem' and 'rose_head' (bloom, pivot at stem top) are animated"),
-    "model.b612.cloche": (procedural: "b612.cloche", note: "glass cloche, 0.46 m across x 0.65 m tall at scale 1 (spawned at 0.75)"),
-    "model.b612.boulder": (procedural: "b612.boulder", note: "flat-topped boulder, top at 0.555 m"),
-    "model.b612.screen": (procedural: "b612.screen", note: "three-panel wind screen, ~0.75 m"),
-    "model.b612.can": (procedural: "b612.can", note: "watering can ~0.3 m, spout toward +Z, tip at (0, 0.27, 0.31)"),
-    "model.b612.shed": (procedural: "b612.shed", note: "open-front tool shed 2.4 x 1.8 m, front = +Z"),
-    "model.b612.volcano": (procedural: "b612.volcano", note: "active volcano, ~0.9 m, foot ~2.2 m; part 'vent_glow'"),
-    "model.b612.crater": (procedural: "b612.crater", note: "dormant crater ring"),
-    "model.b612.sprout": (procedural: "b612.sprout", note: "baobab sprout, ~0.3 m (decoration)"),
-    "model.b612.pad": (procedural: "b612.pad", note: "sleeping pad + pillow (pillow toward -Z)"),
-    "model.b612.stone": (procedural: "b612.stone", note: "ring stone (nook, spring)"),
-    "model.b612.slab": (procedural: "b612.slab", note: "flat fetch slab at the spring"),
+        "model.b612.world": (path:"original/b612/b612_world.glb"),
+        "model.b612.terrain": (path:"original/b612/b612_terrain.glb"),
+        "model.b612.rose_authored": (path:"original/b612/b612_rose_authored.glb"),
+        "model.b612.can_authored": (path:"original/b612/b612_can_authored.glb"),
+        "model.b612.cloche_authored": (path:"original/b612/b612_cloche_authored.glb"),
+        "model.b612.chair_authored": (path:"original/b612/b612_chair_authored.glb"),
+
+    "music.b612": (path: "original/audio/b612_B612_Music.ogg", procedural: "pad_home", volume: 0.7, looped: true),
+    "model.b612.rose": (path: "original/b612/b612_rose.glb", procedural: "b612.rose", note: "the rose, ~0.55 m at scale 1; parts 'rose_stem' and 'rose_head' (bloom, pivot at stem top) are animated"),
+    "model.b612.cloche": (path: "original/b612/b612_cloche.glb", procedural: "b612.cloche", note: "glass cloche, 0.46 m across x 0.65 m tall at scale 1 (spawned at 0.75)"),
+    "model.b612.boulder": (path: "original/b612/b612_boulder.glb", procedural: "b612.boulder", note: "flat-topped boulder, top at 0.555 m"),
+    "model.b612.screen": (path: "original/b612/b612_screen.glb", procedural: "b612.screen", note: "three-panel wind screen, ~0.75 m"),
+    "model.b612.can": (path: "original/b612/b612_can.glb", procedural: "b612.can", note: "watering can ~0.3 m, spout toward +Z, tip at (0, 0.27, 0.31)"),
+    "model.b612.shed": (path: "original/b612/b612_shed.glb", procedural: "b612.shed", note: "open-front tool shed 2.4 x 1.8 m, front = +Z"),
+    "model.b612.volcano": (path: "original/b612/b612_volcano.glb", procedural: "b612.volcano", note: "active volcano, ~0.9 m, foot ~2.2 m; part 'vent_glow'"),
+    "model.b612.crater": (path: "original/b612/b612_crater.glb", procedural: "b612.crater", note: "dormant crater ring"),
+    "model.b612.sprout": (path: "original/b612/b612_sprout.glb", procedural: "b612.sprout", note: "baobab sprout, ~0.3 m (decoration)"),
+    "model.b612.pad": (path: "original/b612/b612_pad.glb", procedural: "b612.pad", note: "sleeping pad + pillow (pillow toward -Z)"),
+    "model.b612.stone": (path: "original/b612/b612_stone.glb", procedural: "b612.stone", note: "ring stone (nook, spring)"),
+    "model.b612.slab": (path: "original/b612/b612_slab.glb", procedural: "b612.slab", note: "flat fetch slab at the spring"),
     "model.b612.butterfly": (procedural: "b612.butterfly", note: "parts 'bfly_wing_l/r' flap"),
     "model.b612.bird": (procedural: "b612.bird", note: "migrating bird; parts 'bird_wing_l/r' flap"),
     "model.b612.rake": (procedural: "b612.rake", note: "rake leaning on the shed"),
     "model.b612.cloud": (procedural: "b612.cloud", note: "cloud bank of the cloud sea below the rim (~8 m)"),
-    "model.b612.chair": (procedural: "chair", note: "the sunset chair (seat at 0.485 m, back toward -Z)"),
+    "model.b612.chair": (path: "original/b612/b612_chair.glb", procedural: "chair", note: "the sunset chair (seat at 0.485 m, back toward -Z)"),
   },
 )
